@@ -1,0 +1,31 @@
+a{
+    padding: 20px;
+    margin:20px;
+    background-color: blue;
+    color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: red;
+    border-radius: 10%;
+}
+ 
+ 
+div{
+    display:inline-block;
+    margin: 20px;
+    margin-top:40px;
+    
+ 
+}
+ 
+.caixa{
+    margin-left: 10%;
+}
+ 
+.caixa2{
+    width:200px;
+    padding:20px;
+    border: 5px solid blue;
+    overflow:scroll;
+    margin-left: 10%;
+}

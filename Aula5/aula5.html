@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Importação do CSS externo -->
+    <link rel="stylesheet" href="aula5.css">
+
+    <!-- PRIORIDADES: EM LINHA > CSS INTERNO (HEAD) > CSS EXTERNO (FICHEIRO CSS) -->
+    <style>
+        h1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Isto é um título azul</h1>
+    <h1 style="color: green; font-size: 32px;">Isto é um título verde</h1> <!-- Não é recomendado usar CSS em linha, a não ser em casos específicos -->
+
+    <div class="zeca">
+        <p id="p1">paragrafo1</p>
+        <p id="p2">paragrafo2</p>
+        <p id="p3">paragrafo3</p>
+    </div>
+</body>
+</html>
