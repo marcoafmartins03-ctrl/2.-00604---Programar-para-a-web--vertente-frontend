@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 6.1: Introdução ao Flexbox
+========================================
+
+Flexbox (Flexible Box Layout) organiza elementos numa só direção.
+Use esta abordagem quando quiser alinhar cartões, botões ou painéis
+sem cálculos manuais de largura/altura.
+
+PASSOS PRINCIPAIS
+1. Tornar o elemento pai num flex container (`display: flex`).
+2. Ajustar direção (`flex-direction`) e espaçamento (`gap`).
+3. Os elementos filhos alinham-se automaticamente na linha definida.
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexbox — lista de alertas</title>
+  <!-- CSS externo (ficheiro dedicado) -->
+  <link rel="stylesheet" href="6.1_flexbox_intro.css" />
+</head>
+<body>
+  <!-- Container flex com três cartões -->
+  <!-- class="alertas" aplica o seletor .alertas (flex container) -->
+  <section class="alertas">
+    <!-- class="alerta" aplica o estilo dos cartões (itens flex) -->
+    <article class="alerta">
+      <h2>Firewall</h2>
+      <p>Porta 22 bloqueada</p>
+    </article>
+    <!-- mesma classe, mesmo estilo -->
+    <article class="alerta">
+      <h2>IDS</h2>
+      <p>Tráfego suspeito detectado</p>
+    </article>
+    <article class="alerta">
+      <h2>Backup</h2>
+      <p>Última execução há 2h</p>
+    </article>
+  </section>
+</body>
+</html>

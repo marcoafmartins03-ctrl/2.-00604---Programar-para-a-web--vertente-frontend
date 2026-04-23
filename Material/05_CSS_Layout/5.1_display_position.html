@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 5.1: display e position (CSS Layout)
+========================================
+
+Neste ficheiro praticamos dois conceitos de layout:
+- `display`: controla como o elemento ocupa o espaço (linha vs. bloco)
+- `position`: fixa o elemento em relação à janela (ex.: `fixed`)
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>display e position</title>
+  <!-- CSS externo (ficheiro dedicado) -->
+  <link rel="stylesheet" href="5.1_display_position.css" />
+</head>
+<body>
+  <!-- Caixas inline-block: ocupam a mesma linha -->
+  <!-- class="caixa" aplica dimensoes base; class="inline" muda o display -->
+  <div class="caixa inline">Firewall</div>
+  <!-- classes repetidas permitem reutilizar estilos -->
+  <div class="caixa inline">IDS</div>
+
+  <!-- Botão fixo no canto: permanece visível durante o scroll -->
+  <!-- class="fixo" usa position fixed -->
+  <div class="fixo">Contacto de emergência</div>
+</body>
+</html>

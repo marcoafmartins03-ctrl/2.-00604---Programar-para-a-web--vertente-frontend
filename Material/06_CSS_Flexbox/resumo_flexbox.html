@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resumo: Flexbox</title>
+  <link rel="stylesheet" href="resumo_flexbox.css" />
+</head>
+<body>
+
+  <h1>Flexbox — Resumo Visual</h1>
+
+  <!-- ATIVAR FLEXBOX -->
+  <section class="cheat">
+    <h2>1. Ativar Flexbox</h2>
+    <div class="codigo">
+.container {
+  display: flex;
+  gap: 10px;  /* espaço entre itens */
+}
+    </div>
+  </section>
+
+  <!-- FLEX DIRECTION -->
+  <section class="cheat">
+    <h2>2. Flex Direction</h2>
+    <table>
+      <tr>
+        <th>Valor</th>
+        <th>Direção</th>
+      </tr>
+      <tr>
+        <td><code>row</code></td>
+        <td>Horizontal → (padrão)</td>
+      </tr>
+      <tr>
+        <td><code>row-reverse</code></td>
+        <td>Horizontal ←</td>
+      </tr>
+      <tr>
+        <td><code>column</code></td>
+        <td>Vertical ↓</td>
+      </tr>
+      <tr>
+        <td><code>column-reverse</code></td>
+        <td>Vertical ↑</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- JUSTIFY-CONTENT -->
+  <section class="cheat">
+    <h2>3. justify-content (Eixo Principal)</h2>
+    <table>
+      <tr>
+        <th>Valor</th>
+        <th>Efeito</th>
+      </tr>
+      <tr>
+        <td><code>flex-start</code></td>
+        <td>Início (padrão)</td>
+      </tr>
+      <tr>
+        <td><code>center</code></td>
+        <td>Centro</td>
+      </tr>
+      <tr>
+        <td><code>flex-end</code></td>
+        <td>Fim</td>
+      </tr>
+      <tr>
+        <td><code>space-between</code></td>
+        <td>Espaço entre (extremos colados)</td>
+      </tr>
+      <tr>
+        <td><code>space-around</code></td>
+        <td>Espaço à volta</td>
+      </tr>
+      <tr>
+        <td><code>space-evenly</code></td>
+        <td>Espaço igual</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ALIGN-ITEMS -->
+  <section class="cheat">
+    <h2>4. align-items (Eixo Cruzado)</h2>
+    <table>
+      <tr>
+        <th>Valor</th>
+        <th>Efeito</th>
+      </tr>
+      <tr>
+        <td><code>stretch</code></td>
+        <td>Estica (padrão)</td>
+      </tr>
+      <tr>
+        <td><code>flex-start</code></td>
+        <td>Topo</td>
+      </tr>
+      <tr>
+        <td><code>center</code></td>
+        <td>Centro vertical</td>
+      </tr>
+      <tr>
+        <td><code>flex-end</code></td>
+        <td>Fundo</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- FLEX ITENS -->
+  <section class="cheat">
+    <h2>5. Flex nos Itens</h2>
+    <table>
+      <tr>
+        <th>Código</th>
+        <th>Efeito</th>
+      </tr>
+      <tr>
+        <td><code>flex: 1</code></td>
+        <td>Cresce igual aos outros</td>
+      </tr>
+      <tr>
+        <td><code>flex: 2</code></td>
+        <td>Cresce o dobro</td>
+      </tr>
+      <tr>
+        <td><code>flex: 0 0 200px</code></td>
+        <td>Tamanho fixo 200px</td>
+      </tr>
+      <tr>
+        <td><code>flex: 1 1 200px</code></td>
+        <td>Mínimo 200px, flexível</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- CÓDIGO RÁPIDO -->
+  <section class="cheat">
+    <h2>6. Código Rápido</h2>
+    <div class="codigo">
+/* Centrar perfeitamente */
+.centrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Header com logo e menu */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Grid responsivo de cards */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.card {
+  flex: 1 1 250px;
+}
+
+/* Sidebar fixa + conteúdo flexível */
+.sidebar { flex: 0 0 200px; }
+.conteudo { flex: 1; }
+    </div>
+  </section>
+
+</body>
+</html>

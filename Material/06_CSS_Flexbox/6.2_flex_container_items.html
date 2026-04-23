@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 6.2: Flex container vs. itens
+========================================
+
+Quando definimos `display: flex` no elemento pai, os filhos passam a chamar-se
+itens flex. Nesta lição vamos controlar quanto espaço cada cartão ocupa
+num painel de monitorização.
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexbox — tamanhos relativos</title>
+  <!-- CSS externo (ficheiro dedicado) -->
+  <link rel="stylesheet" href="6.2_flex_container_items.css" />
+</head>
+<body>
+  <!-- class="painel" cria o flex container -->
+  <section class="painel">
+    <!-- class="cartao" aplica base visual; cartao-critico aumenta o flex -->
+    <article class="cartao cartao-critico">
+      <h2>Incidentes críticos</h2>
+      <p>3 a investigar</p>
+    </article>
+    <!-- cartao-normal usa flex menor -->
+    <article class="cartao cartao-normal">
+      <h2>Alertas moderados</h2>
+      <p>7 na fila</p>
+    </article>
+  </section>
+</body>
+</html>

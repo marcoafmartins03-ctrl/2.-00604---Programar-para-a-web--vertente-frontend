@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resumo: CSS Layout</title>
+  <link rel="stylesheet" href="resumo_layout.css" />
+</head>
+<body>
+
+  <h1>CSS Layout — Resumo Visual</h1>
+
+  <!-- DISPLAY -->
+  <section class="cheat">
+    <h2>1. Display</h2>
+    <table>
+      <tr>
+        <th>Valor</th>
+        <th>Comportamento</th>
+        <th>Width/Height?</th>
+      </tr>
+      <tr>
+        <td><code>block</code></td>
+        <td>Nova linha, 100% largura</td>
+        <td>Sim</td>
+      </tr>
+      <tr>
+        <td><code>inline</code></td>
+        <td>Mesma linha, só conteúdo</td>
+        <td>Não</td>
+      </tr>
+      <tr>
+        <td><code>inline-block</code></td>
+        <td>Mesma linha</td>
+        <td>Sim</td>
+      </tr>
+      <tr>
+        <td><code>none</code></td>
+        <td>Escondido</td>
+        <td>-</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- POSITION -->
+  <section class="cheat">
+    <h2>2. Position</h2>
+    <table>
+      <tr>
+        <th>Valor</th>
+        <th>Comportamento</th>
+        <th>Referência</th>
+      </tr>
+      <tr>
+        <td><code>static</code></td>
+        <td>Fluxo normal (padrão)</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><code>relative</code></td>
+        <td>Move da posição original</td>
+        <td>Posição original</td>
+      </tr>
+      <tr>
+        <td><code>absolute</code></td>
+        <td>Sai do fluxo</td>
+        <td>Pai com position</td>
+      </tr>
+      <tr>
+        <td><code>fixed</code></td>
+        <td>Fixo na janela</td>
+        <td>Viewport</td>
+      </tr>
+    </table>
+    <div class="nota">
+      <strong>Dica:</strong> Para <code>absolute</code> funcionar, o pai precisa de <code>position: relative</code>!
+    </div>
+  </section>
+
+  <!-- CENTRAR -->
+  <section class="cheat">
+    <h2>3. Centrar Elementos</h2>
+    <table>
+      <tr>
+        <th>Técnica</th>
+        <th>Direção</th>
+        <th>Código</th>
+      </tr>
+      <tr>
+        <td>margin: auto</td>
+        <td>Horizontal</td>
+        <td><code>width: 300px; margin: 0 auto;</code></td>
+      </tr>
+      <tr>
+        <td>text-align</td>
+        <td>Horizontal</td>
+        <td><code>text-align: center;</code> (no pai)</td>
+      </tr>
+      <tr>
+        <td>line-height</td>
+        <td>Vertical</td>
+        <td><code>height: 80px; line-height: 80px;</code></td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- CÓDIGO RÁPIDO -->
+  <section class="cheat">
+    <h2>4. Código Rápido</h2>
+    <div class="codigo">
+/* Centrar horizontalmente */
+.centrar {
+  width: 300px;
+  margin: 0 auto;
+}
+
+/* Badge no canto */
+.card {
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Botão fixo */
+.fixo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+    </div>
+  </section>
+
+</body>
+</html>

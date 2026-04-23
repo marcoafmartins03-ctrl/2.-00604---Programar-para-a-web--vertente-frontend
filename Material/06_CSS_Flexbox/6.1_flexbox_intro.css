@@ -1,0 +1,45 @@
+/*
+  Licao 6.1: Introducao ao Flexbox
+  - body: estilo base
+  - .alertas: flex container
+  - .alerta: itens flex
+*/
+
+/* body: tipografia e fundo */
+body {
+  font-family: system-ui, sans-serif; /* tipo de letra base */
+  margin: 24px; /* margem externa */
+  background: #f4f6f8; /* cor de fundo */
+}
+
+/* .alertas: container flex com espacamento */
+.alertas {
+  display: flex; /* torna o container flex */
+  gap: 12px; /* espaco entre cartoes */
+  padding: 16px; /* espaco interno */
+  background: #ffffff; /* fundo branco */
+  border-radius: 8px; /* cantos arredondados */
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08); /* sombra suave */
+}
+
+/* .alerta: cartoes (itens flex) */
+.alerta {
+  flex: 1; /* todos crescem igualmente */
+  padding: 20px; /* espaco interno */
+  border-radius: 6px; /* cantos arredondados */
+  background: #0a66c2; /* cor de fundo */
+  color: #fff; /* cor do texto */
+  text-align: center; /* alinhar texto ao centro */
+}
+
+/* h2 dentro de .alerta */
+.alerta h2 {
+  margin: 0 0 8px; /* espaco inferior */
+  font-size: 1.1rem; /* tamanho do titulo */
+}
+
+/* p dentro de .alerta */
+.alerta p {
+  margin: 0; /* remover margem padrao */
+  font-size: 0.95rem; /* tamanho do texto */
+}

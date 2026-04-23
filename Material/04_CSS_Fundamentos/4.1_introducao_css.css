@@ -1,0 +1,42 @@
+/*
+  Licao 4.1: Introducao ao CSS
+  - Seletor de elemento (h1)
+  - Seletor de classe (.cartao)
+  - Seletor de id (#critico)
+
+  Unidades CSS mais comuns:
+  - px: tamanho fixo em pixels
+  - %: percentagem do elemento pai
+  - em: relativo ao tamanho da fonte do elemento
+  - rem: relativo ao tamanho da fonte da raiz (html)
+  - vw/vh: percentagem do tamanho da janela (viewport)
+  - vmin/vmax: menor/maior lado do viewport
+  - ch: largura aproximada do caractere "0"
+  - fr: fracao de espaco livre em CSS Grid
+*/
+
+/* h1: estilo do titulo principal */
+h1 {
+  font-family: system-ui, sans-serif; /* familia tipografica */
+  background: #0a66c2; /* cor de fundo */
+  color: #fff; /* cor do texto */
+  padding: 16px; /* espaco interno */
+  border-radius: 6px; /* arredondar cantos */
+  text-align: center; /* alinhar texto ao centro */
+}
+
+/* .cartao: bloco reutilizavel para alertas */
+.cartao {
+  font-family: system-ui, sans-serif; /* fonte do cartao */
+  background: #ffffff; /* fundo do cartao */
+  border-left: 4px solid #0a66c2; /* faixa colorida lateral */
+  padding: 12px; /* espaco interno */
+  border-radius: 6px; /* cantos arredondados */
+  margin-bottom: 12px; /* espaco entre cartoes */
+}
+
+/* #critico: id para destaque unico */
+#critico {
+  border-color: #e63946; /* cor da faixa lateral */
+  background: #ffe5e9; /* fundo de destaque */
+}

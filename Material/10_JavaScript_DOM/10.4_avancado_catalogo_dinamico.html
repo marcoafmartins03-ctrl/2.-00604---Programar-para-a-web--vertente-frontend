@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <!-- Charset da pagina -->
+  <meta charset="utf-8" />
+  <!-- Escala responsiva em mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Titulo da aba -->
+  <title>10.4 Avancado - Catalogo Dinamico</title>
+  <style>
+    /* Base visual da pagina */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    /* Container central */
+    .container {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 0 16px 24px;
+    }
+    /* Cartao padrao */
+    .painel {
+      background: white;
+      border: 1px solid #dbe2ea;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+    /* Grelha de filtros */
+    .filtros {
+      display: grid;
+      grid-template-columns: 1fr 180px 180px;
+      gap: 10px;
+    }
+    /* Estilo de inputs e selects */
+    input, select {
+      font: inherit;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+    }
+    /* Grelha de cards de produto */
+    .grelha {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    /* Card individual de produto */
+    .card {
+      border: 1px solid #dbe2ea;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+    }
+    /* Preco destacado */
+    .preco {
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Conteudo principal -->
+  <main class="container">
+    <h1>10.4 Avancado - DOM na pratica: Catalogo dinamico</h1>
+    <p>Objetivo: renderizar cards a partir de array e aplicar pesquisa, filtros e ordenacao.</p>
+
+    <!-- Painel de filtros -->
+    <section class="painel">
+      <div class="filtros">
+        <div>
+          <label for="pesquisa">Pesquisar</label>
+          <input id="pesquisa" type="text" placeholder="Ex.: teclado" />
+        </div>
+        <div>
+          <label for="categoria">Categoria</label>
+          <select id="categoria">
+            <option value="todos">Todas</option>
+            <option value="hardware">Hardware</option>
+            <option value="audio">Audio</option>
+            <option value="acessorios">Acessorios</option>
+          </select>
+        </div>
+        <div>
+          <label for="ordenacao">Ordenacao</label>
+          <select id="ordenacao">
+            <option value="nome">Nome A-Z</option>
+            <option value="precoAsc">Preco crescente</option>
+            <option value="precoDesc">Preco decrescente</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Painel de resultados renderizados por JS -->
+    <section class="painel">
+      <div id="resultado" class="grelha"></div>
+    </section>
+  </main>
+
+  <!-- Script da licao 10.4 -->
+  <script src="10.4_avancado_catalogo_dinamico.js"></script>
+</body>
+</html>

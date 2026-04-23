@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <!--
+        META VIEWPORT - Essencial para design responsivo!
+        width=device-width: a largura da pagina adapta-se ao ecra do dispositivo
+        initial-scale=1.0: o zoom inicial e 1 (sem zoom)
+        SEM esta tag, o telemovel mostra a versao desktop encolhida!
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries - Basico</title>
+    <link rel="stylesheet" href="6B.1_media_queries_basico.css">
+</head>
+<body>
+    <!--
+        O QUE SAO MEDIA QUERIES?
+        ========================
+        Media queries permitem aplicar CSS diferente conforme o tamanho do ecra.
+        Usamos @media no CSS para definir regras que so se aplicam a partir de
+        determinadas larguras (breakpoints).
+
+        CONCEITO DE VIEWPORT:
+        O viewport e a area visivel da pagina no ecra do utilizador.
+        Num telemovel e pequeno (~375px), num tablet medio (~768px),
+        num desktop grande (~1024px+).
+
+        BREAKPOINTS COMUNS:
+        - 480px  : telemoveis em paisagem (landscape)
+        - 768px  : tablets
+        - 1024px : desktops
+        - 1200px : ecras grandes
+
+        INSTRUCAO: Redimensione a janela do browser para ver as mudancas!
+    -->
+
+    <header>
+        <h1>Media Queries - Basico</h1>
+        <p>Redimensione a janela do browser e observe as mudancas em cada seccao.</p>
+    </header>
+
+    <!-- SECCAO 1: Caixa que muda de cor -->
+    <section class="seccao">
+        <h2>1. Caixa que muda de cor</h2>
+        <p>Esta caixa muda de cor conforme a largura do ecra:
+           <strong>vermelho</strong> (mobile), <strong>laranja</strong> (480px+),
+           <strong>verde</strong> (768px+), <strong>azul</strong> (1024px+).</p>
+        <div class="caixa-cor">
+            <span class="indicador-largura">Redimensione o browser!</span>
+        </div>
+    </section>
+
+    <!-- SECCAO 2: Texto que muda de tamanho -->
+    <section class="seccao">
+        <h2>2. Texto responsivo</h2>
+        <p>O paragrafo abaixo muda de tamanho de fonte nos diferentes breakpoints.
+           No mobile e pequeno (14px), em tablet medio (18px), em desktop grande (22px).</p>
+        <p class="texto-responsivo">
+            Este texto adapta o seu tamanho conforme a largura do ecra.
+            A tipografia responsiva melhora a leitura em todos os dispositivos.
+        </p>
+    </section>
+
+    <!-- SECCAO 3: Navegacao horizontal/vertical -->
+    <section class="seccao">
+        <h2>3. Navegacao responsiva</h2>
+        <p>Os links abaixo ficam empilhados (vertical) no mobile e lado a lado
+           (horizontal) a partir de 768px. Isto e um padrao muito comum.</p>
+        <nav class="nav-demo">
+            <a href="#" class="nav-link">Inicio</a>
+            <a href="#" class="nav-link">Sobre</a>
+            <a href="#" class="nav-link">Servicos</a>
+            <a href="#" class="nav-link">Contacto</a>
+        </nav>
+    </section>
+
+    <!-- SECCAO 4: Referencia de breakpoints -->
+    <section class="seccao">
+        <h2>4. Breakpoints utilizados</h2>
+        <p>Consulte a tabela abaixo para saber que regras se aplicam em cada largura.</p>
+        <div class="tabela-breakpoints">
+            <div class="bp-linha bp-mobile">< 480px — Mobile (base)</div>
+            <div class="bp-linha bp-landscape">480px+ — Telemovel paisagem</div>
+            <div class="bp-linha bp-tablet">768px+ — Tablet</div>
+            <div class="bp-linha bp-desktop">1024px+ — Desktop</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Modulo 06B — CSS Responsivo — Aula 1: Media Queries Basico</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM – Introdução</title>
+    <link rel="stylesheet" href="../template-styles.css">
+    <style>
+        body { background: #f0f4f8; }
+        .element-exemplo {
+            border: 2px solid #38a169;
+            padding: 16px;
+            border-radius: 8px;
+            background: #e6fffa;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>🎯 DOM – Introdução</h1>
+            <p>Entender o que é o Document Object Model e manipular o primeiro elemento.</p>
+        </header>
+
+        <section>
+            <h2>📚 O que é o DOM?</h2>
+            <div class="card">
+                <p>O DOM é uma representação em árvore do documento HTML. Cada elemento é um nó que pode ser lido e alterado com JavaScript.</p>
+                <pre class="output">document
+├── html
+│   ├── head
+│   └── body
+│       ├── header
+│       └── section</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>Teste 1</h2>
+            <div class="card">
+                <div id="elemento-basico" class="element-exemplo">
+                    <div id="conteudo-dinamico">
+                        <p>Este texto será modificado via JavaScript.</p>
+                    </div>
+                    <button type="button" onclick="alterarElementoBasico()">Alterar texto</button>
+                    <button type="button" class="secondary" onclick="restaurarElementoBasico()">Restaurar</button>
+                </div>
+                <div id="output-basico" class="output">Clique nos botões para ver o efeito.</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const elementoBasico = document.getElementById('elemento-basico');
+        const outputBasico = document.getElementById('output-basico');
+        const conteudoDinamico = document.getElementById('conteudo-dinamico');
+        const estadoInicial = conteudoDinamico.innerHTML;
+
+        function alterarElementoBasico() {
+            conteudoDinamico.innerHTML = `
+                <h3>Conteúdo alterado ✓</h3>
+                <p>Este parágrafo foi inserido dinamicamente.</p>
+            `;
+            outputBasico.textContent = 'O HTML interno do elemento foi substituído.';
+        }
+
+        function restaurarElementoBasico() {
+            conteudoDinamico.innerHTML = estadoInicial;
+            outputBasico.textContent = 'Estado restaurado ao original.';
+        }
+    </script>
+</body>
+</html>

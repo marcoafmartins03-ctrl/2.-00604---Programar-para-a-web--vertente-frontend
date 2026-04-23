@@ -1,0 +1,161 @@
+/*
+  Licao 6.3: Alinhamento com Flexbox
+  - justify-content: alinhamento horizontal
+  - align-items: alinhamento vertical
+  - .header: exemplo pratico
+*/
+
+/* body: estilo base */
+body {
+  font-family: system-ui, sans-serif; /* tipo de letra */
+  margin: 24px; /* margem externa */
+  background: #f4f6f8; /* cor de fundo */
+}
+
+/* h1: titulo principal */
+h1 {
+  color: #0a66c2; /* cor azul */
+  margin-bottom: 24px; /* espaco inferior */
+}
+
+/* .exemplo: seccao de cada exemplo */
+.exemplo {
+  background: white; /* fundo branco */
+  padding: 20px; /* espaco interno */
+  margin-bottom: 24px; /* espaco entre seccoes */
+  border-radius: 8px; /* cantos arredondados */
+}
+
+/* h2: titulo de seccao */
+.exemplo h2 {
+  color: #0a66c2; /* cor azul */
+  margin-top: 0; /* remover margem superior */
+}
+
+/* p: paragrafos */
+.exemplo p {
+  margin: 15px 0 5px; /* margem superior e inferior */
+  color: #666; /* cinza */
+}
+
+/* ================================
+   CONTAINER BASE
+   ================================ */
+
+/* .container: flex container de demonstracao */
+.container {
+  display: flex; /* ativa flexbox */
+  gap: 10px; /* espaco entre itens */
+  padding: 15px; /* espaco interno */
+  background: #f1f5f9; /* cinza claro */
+  border-radius: 6px; /* cantos */
+  border: 2px dashed #cbd5e1; /* borda tracejada */
+}
+
+/* .item: itens flex */
+.item {
+  background: #0a66c2; /* azul */
+  color: white; /* texto branco */
+  padding: 15px 25px; /* espaco interno */
+  border-radius: 4px; /* cantos */
+  font-weight: bold; /* negrito */
+}
+
+/* ================================
+   JUSTIFY-CONTENT (horizontal)
+   ================================ */
+
+/* .justify-start: alinha a esquerda (padrao) */
+.justify-start {
+  justify-content: flex-start; /* inicio */
+}
+
+/* .justify-center: alinha ao centro */
+.justify-center {
+  justify-content: center; /* centro */
+}
+
+/* .justify-between: espaco entre itens */
+.justify-between {
+  justify-content: space-between; /* primeiro e ultimo nas pontas */
+}
+
+/* ================================
+   ALIGN-ITEMS (vertical)
+   ================================ */
+
+/* .alto: container mais alto para demonstrar */
+.alto {
+  min-height: 120px; /* altura minima */
+}
+
+/* .align-start: alinha ao topo */
+.align-start {
+  align-items: flex-start; /* topo */
+}
+
+/* .align-center: alinha ao centro vertical */
+.align-center {
+  align-items: center; /* centro */
+}
+
+/* .align-end: alinha ao fundo */
+.align-end {
+  align-items: flex-end; /* fundo */
+}
+
+/* ================================
+   CENTRAR PERFEITAMENTE
+   ================================ */
+
+/* .centrar-perfeito: combina justify + align */
+.centrar-perfeito {
+  justify-content: center; /* centro horizontal */
+  align-items: center; /* centro vertical */
+  min-height: 150px; /* altura para demonstrar */
+  background: linear-gradient(135deg, #dbeafe, #c7d2fe); /* gradiente */
+}
+
+/* .grande: item maior */
+.item.grande {
+  padding: 25px 50px; /* mais espaco */
+  font-size: 1.2rem; /* texto maior */
+}
+
+/* ================================
+   EXEMPLO: HEADER
+   ================================ */
+
+/* .header: barra de navegacao */
+.header {
+  display: flex; /* ativa flexbox */
+  justify-content: space-between; /* logo esquerda, menu direita */
+  align-items: center; /* centrado verticalmente */
+  padding: 15px 25px; /* espaco interno */
+  background: #0a66c2; /* azul */
+  border-radius: 8px; /* cantos */
+}
+
+/* .logo: marca */
+.logo {
+  color: white; /* texto branco */
+  font-size: 1.3rem; /* tamanho maior */
+  font-weight: bold; /* negrito */
+}
+
+/* .menu: container dos links */
+.menu {
+  display: flex; /* flex para os links */
+  gap: 20px; /* espaco entre links */
+}
+
+/* links do menu */
+.menu a {
+  color: white; /* texto branco */
+  text-decoration: none; /* sem sublinhado */
+}
+
+/* hover nos links */
+.menu a:hover {
+  text-decoration: underline; /* sublinhado ao passar */
+}

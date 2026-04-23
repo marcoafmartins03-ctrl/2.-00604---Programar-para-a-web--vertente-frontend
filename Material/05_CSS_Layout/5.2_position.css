@@ -1,0 +1,144 @@
+/*
+  Licao 5.2: position relative e absolute
+  - .caixa-normal: elemento sem position (static)
+  - .caixa-relative: usa position relative para mover
+  - .card + .badge: demonstra absolute dentro de relative
+  - .container + .pos-*: multiplas posicoes absolute
+*/
+
+/* body: estilo base */
+body {
+  font-family: system-ui, sans-serif; /* tipo de letra */
+  margin: 24px; /* margem externa */
+  background: #f4f6f8; /* cor de fundo */
+}
+
+/* h1: titulo principal */
+h1 {
+  color: #0a66c2; /* cor azul */
+  margin-bottom: 24px; /* espaco inferior */
+}
+
+/* .exemplo: seccao de cada exemplo */
+.exemplo {
+  background: white; /* fundo branco */
+  padding: 20px; /* espaco interno */
+  margin-bottom: 24px; /* espaco entre seccoes */
+  border-radius: 8px; /* cantos arredondados */
+}
+
+/* h2: titulo de seccao */
+.exemplo h2 {
+  color: #0a66c2; /* cor azul */
+  margin-top: 0; /* remover margem superior */
+}
+
+/* ================================
+   EXEMPLO 1: Position Relative
+   ================================ */
+
+/* .caixa-normal: posicao normal (static) */
+.caixa-normal {
+  display: inline-block; /* permite width */
+  width: 100px; /* largura */
+  padding: 15px; /* espaco interno */
+  background: #e0e0e0; /* cinza */
+  text-align: center; /* texto centrado */
+  border-radius: 4px; /* cantos */
+}
+
+/* .caixa-relative: movida da posicao original */
+.caixa-relative {
+  display: inline-block; /* permite width */
+  position: relative; /* ATIVA relative */
+  top: 20px; /* move 20px para baixo */
+  left: 30px; /* move 30px para direita */
+  width: 200px; /* largura */
+  padding: 15px; /* espaco interno */
+  background: #f59e0b; /* laranja */
+  color: white; /* texto branco */
+  text-align: center; /* texto centrado */
+  border-radius: 4px; /* cantos */
+}
+
+/* ================================
+   EXEMPLO 2: Card com Badge
+   ================================ */
+
+/* .card: container com position relative */
+.card {
+  position: relative; /* OBRIGATORIO para o badge absolute */
+  width: 200px; /* largura fixa */
+  padding: 20px; /* espaco interno */
+  background: white; /* fundo */
+  border: 1px solid #e0e0e0; /* borda */
+  border-radius: 8px; /* cantos */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* sombra */
+}
+
+/* .badge: posicionado no canto do card */
+.badge {
+  position: absolute; /* sai do fluxo normal */
+  top: -10px; /* sobe 10px acima do card */
+  right: -10px; /* sai 10px para a direita */
+  background: #ef4444; /* vermelho */
+  color: white; /* texto branco */
+  padding: 5px 10px; /* espaco interno */
+  border-radius: 4px; /* cantos */
+  font-size: 12px; /* texto pequeno */
+  font-weight: bold; /* negrito */
+}
+
+/* .preco: estilo do preco */
+.preco {
+  font-size: 1.2rem; /* tamanho maior */
+  font-weight: bold; /* negrito */
+  color: #0a66c2; /* azul */
+  margin: 0; /* sem margem */
+}
+
+/* ================================
+   EXEMPLO 3: Multiplas Posicoes
+   ================================ */
+
+/* .container: area com posicoes absolutas */
+.container {
+  position: relative; /* contexto para os filhos */
+  height: 200px; /* altura fixa */
+  background: #dbeafe; /* azul claro */
+  border-radius: 8px; /* cantos */
+}
+
+/* Base para todos os elementos posicionados */
+.container div {
+  position: absolute; /* todos absolute */
+  background: #0a66c2; /* azul */
+  color: white; /* texto branco */
+  padding: 10px; /* espaco interno */
+  border-radius: 4px; /* cantos */
+  font-size: 12px; /* texto pequeno */
+}
+
+/* Posicao: topo esquerdo */
+.pos-topo-esq {
+  top: 10px; /* distancia ao topo */
+  left: 10px; /* distancia a esquerda */
+}
+
+/* Posicao: topo direito */
+.pos-topo-dir {
+  top: 10px; /* distancia ao topo */
+  right: 10px; /* distancia a direita */
+}
+
+/* Posicao: baixo esquerdo */
+.pos-baixo-esq {
+  bottom: 10px; /* distancia ao fundo */
+  left: 10px; /* distancia a esquerda */
+}
+
+/* Posicao: baixo direito */
+.pos-baixo-dir {
+  bottom: 10px; /* distancia ao fundo */
+  right: 10px; /* distancia a direita */
+}

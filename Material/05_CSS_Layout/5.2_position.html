@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 5.2: position relative e absolute
+========================================
+
+Neste ficheiro praticamos:
+- `position: relative`: move o elemento da sua posição original
+- `position: absolute`: posiciona relativo ao pai com position
+
+CONCEITO CHAVE:
+Para absolute funcionar, o pai precisa de position: relative!
+
+========================================
+EXEMPLO PRÁTICO: Card com badge
+========================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>position relative e absolute</title>
+  <link rel="stylesheet" href="5.2_position.css" />
+</head>
+<body>
+
+  <h1>Position: Relative e Absolute</h1>
+
+  <!-- Exemplo 1: Relative move o elemento -->
+  <section class="exemplo">
+    <h2>1. Position Relative</h2>
+    <p>O elemento move-se da posição original:</p>
+    <div class="caixa-normal">Normal</div>
+    <div class="caixa-relative">Relative (top: 20px, left: 30px)</div>
+  </section>
+
+  <!-- Exemplo 2: Absolute precisa de pai relative -->
+  <section class="exemplo">
+    <h2>2. Position Absolute</h2>
+    <p>O badge posiciona-se relativo ao card (que tem position: relative):</p>
+
+    <!-- Card com badge - exemplo prático -->
+    <div class="card">
+      <span class="badge">NOVO</span>
+      <h3>Produto</h3>
+      <p>Descrição do produto aqui.</p>
+      <p class="preco">€29.99</p>
+    </div>
+  </section>
+
+  <!-- Exemplo 3: Múltiplas posições absolute -->
+  <section class="exemplo">
+    <h2>3. Várias posições</h2>
+    <div class="container">
+      <div class="pos-topo-esq">Topo Esq</div>
+      <div class="pos-topo-dir">Topo Dir</div>
+      <div class="pos-baixo-esq">Baixo Esq</div>
+      <div class="pos-baixo-dir">Baixo Dir</div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 5.3: Centrar elementos (sem Flexbox)
+========================================
+
+Neste ficheiro praticamos técnicas clássicas de centrar:
+- margin: auto (centrar horizontal - precisa de width!)
+- text-align: center (centrar texto e inline-block)
+- line-height = height (centrar texto vertical)
+
+DICA: Flexbox é mais fácil, mas estas técnicas
+são importantes para entender CSS tradicional.
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Centrar elementos</title>
+  <link rel="stylesheet" href="5.3_centrar.css" />
+</head>
+<body>
+
+  <h1>Centrar Elementos (Sem Flexbox)</h1>
+
+  <!-- Técnica 1: margin: auto -->
+  <section class="exemplo">
+    <h2>1. margin: auto (horizontal)</h2>
+    <p>O elemento precisa de width definida:</p>
+    <div class="centrar-margin">
+      Centrado com margin: auto
+    </div>
+  </section>
+
+  <!-- Técnica 2: text-align: center -->
+  <section class="exemplo">
+    <h2>2. text-align: center</h2>
+    <p>Centra texto e elementos inline-block:</p>
+    <div class="centrar-texto">
+      <span class="botao">Botão 1</span>
+      <span class="botao">Botão 2</span>
+      <span class="botao">Botão 3</span>
+    </div>
+  </section>
+
+  <!-- Técnica 3: line-height = height -->
+  <section class="exemplo">
+    <h2>3. line-height = height (vertical)</h2>
+    <p>Truque para centrar texto numa caixa:</p>
+    <div class="centrar-vertical">
+      Texto centrado verticalmente!
+    </div>
+  </section>
+
+  <!-- Exemplo prático: Card centrado -->
+  <section class="exemplo">
+    <h2>4. Exemplo: Card Centrado</h2>
+    <div class="card-centrado">
+      <h3>Bem-vindo!</h3>
+      <p>Este card usa margin: auto para ficar centrado.</p>
+      <button class="btn">Começar</button>
+    </div>
+  </section>
+
+</body>
+</html>

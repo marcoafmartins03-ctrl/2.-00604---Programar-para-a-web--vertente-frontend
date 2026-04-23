@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM – Eventos</title>
+    <link rel="stylesheet" href="../template-styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>⚡ Eventos no DOM</h1>
+            <p>Registar, executar e remover event listeners.</p>
+        </header>
+
+        <section>
+            <h2>1. Evento de clique</h2>
+            <div class="card">
+                <button id="botao-click">Clique-me</button>
+                <button class="secondary" onclick="removerEvento()">Remover evento</button>
+                <div id="log-eventos" class="output">Log dos eventos aparecerá aqui.</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Formulário com prevenção</h2>
+            <div class="card">
+                <form id="form-demo">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" placeholder="Introduz algo...">
+                    <button type="submit">Enviar</button>
+                </form>
+                <div id="log-form" class="output">Submissões serão listadas.</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const botao = document.getElementById('botao-click');
+        const logEventos = document.getElementById('log-eventos');
+        const logForm = document.getElementById('log-form');
+
+        function registarEventoClick() {
+            botao.addEventListener('click', handlerClick);
+        }
+
+        function handlerClick(evento) {
+            const linha = `[${new Date().toLocaleTimeString()}] Clique detectado. target=${evento.target.tagName}`;
+            logEventos.textContent = linha;
+        }
+
+        function removerEvento() {
+            botao.removeEventListener('click', handlerClick);
+            logEventos.textContent = 'Evento removido.';
+        }
+
+        const formDemo = document.getElementById('form-demo');
+        formDemo.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const valor = document.getElementById('nome').value.trim();
+            if (!valor) {
+                logForm.textContent = 'Por favor, introduz um valor.';
+            } else {
+                logForm.textContent = `Form submetido: ${valor}`;
+            }
+        });
+
+        registarEventoClick();
+    </script>
+</body>
+</html>

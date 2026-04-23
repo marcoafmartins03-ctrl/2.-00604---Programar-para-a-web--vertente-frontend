@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--
+========================================
+RESUMO: JavaScript Fundamentos
+========================================
+Cheatsheet com os conceitos essenciais.
+========================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resumo: JavaScript</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 { color: #f59e0b; text-align: center; }
+    .cheat {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .cheat h2 {
+      color: #f59e0b;
+      margin-top: 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f59e0b;
+    }
+    code {
+      background: #fef3c7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Consolas', monospace;
+    }
+    .codigo {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Consolas', monospace;
+      font-size: 13px;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+    th, td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: left; }
+    th { background: #fef3c7; }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript — Resumo Visual</h1>
+
+  <!-- VARIÁVEIS -->
+  <section class="cheat">
+    <h2>1. Variáveis</h2>
+    <table>
+      <tr>
+        <th>Palavra</th>
+        <th>Uso</th>
+        <th>Pode mudar?</th>
+      </tr>
+      <tr>
+        <td><code>const</code></td>
+        <td>Valores fixos</td>
+        <td>Não</td>
+      </tr>
+      <tr>
+        <td><code>let</code></td>
+        <td>Valores que mudam</td>
+        <td>Sim</td>
+      </tr>
+      <tr>
+        <td><code>var</code></td>
+        <td>NÃO USAR (antigo)</td>
+        <td>Sim</td>
+      </tr>
+    </table>
+    <div class="codigo">const nome = "Ana";      // valor fixo
+let idade = 25;          // pode mudar
+idade = 26;              // OK com let</div>
+  </section>
+
+  <!-- TIPOS -->
+  <section class="cheat">
+    <h2>2. Tipos de Dados</h2>
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>Exemplo</th>
+      </tr>
+      <tr><td>String</td><td><code>"texto"</code> ou <code>'texto'</code></td></tr>
+      <tr><td>Number</td><td><code>42</code>, <code>3.14</code></td></tr>
+      <tr><td>Boolean</td><td><code>true</code>, <code>false</code></td></tr>
+      <tr><td>Array</td><td><code>[1, 2, 3]</code></td></tr>
+      <tr><td>Object</td><td><code>{ nome: "Ana" }</code></td></tr>
+      <tr><td>null / undefined</td><td>Ausência de valor</td></tr>
+    </table>
+  </section>
+
+  <!-- CONDICIONAIS -->
+  <section class="cheat">
+    <h2>3. Condicionais</h2>
+    <div class="codigo">if (idade >= 18) {
+  console.log("Maior de idade");
+} else if (idade >= 16) {
+  console.log("Quase lá");
+} else {
+  console.log("Menor de idade");
+}</div>
+    <p><strong>Operadores:</strong> <code>===</code> igual, <code>!==</code> diferente, <code>&gt;</code> maior, <code>&lt;</code> menor, <code>&gt;=</code> <code>&lt;=</code></p>
+  </section>
+
+  <!-- LOOPS -->
+  <section class="cheat">
+    <h2>4. Loops</h2>
+    <div class="codigo">// for - repetir X vezes
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+// for...of - percorrer array
+const frutas = ["maçã", "banana", "laranja"];
+for (const fruta of frutas) {
+  console.log(fruta);
+}
+
+// forEach - alternativa
+frutas.forEach(function(fruta) {
+  console.log(fruta);
+});</div>
+  </section>
+
+  <!-- FUNÇÕES -->
+  <section class="cheat">
+    <h2>5. Funções</h2>
+    <div class="codigo">// Função tradicional
+function somar(a, b) {
+  return a + b;
+}
+
+// Arrow function (forma curta)
+const multiplicar = (a, b) => a * b;
+
+// Usar
+console.log(somar(2, 3));        // 5
+console.log(multiplicar(2, 3)); // 6</div>
+  </section>
+
+  <!-- ARRAYS -->
+  <section class="cheat">
+    <h2>6. Arrays</h2>
+    <div class="codigo">const numeros = [1, 2, 3, 4, 5];
+
+numeros.length;        // 5 (tamanho)
+numeros[0];            // 1 (primeiro)
+numeros.push(6);       // adiciona no fim
+numeros.pop();         // remove do fim
+numeros.includes(3);   // true (existe?)
+
+// Métodos úteis
+numeros.map(n => n * 2);     // [2, 4, 6, 8, 10]
+numeros.filter(n => n > 2);  // [3, 4, 5]
+numeros.find(n => n > 2);    // 3 (primeiro)</div>
+  </section>
+
+  <!-- OBJETOS -->
+  <section class="cheat">
+    <h2>7. Objetos</h2>
+    <div class="codigo">const pessoa = {
+  nome: "Ana",
+  idade: 25,
+  cidade: "Lisboa",
+
+  // Método (função no objeto)
+  apresentar: function() {
+    return "Olá, sou " + this.nome;
+  }
+};
+
+// Aceder propriedades
+pessoa.nome;           // "Ana"
+pessoa["idade"];       // 25
+
+// Adicionar/modificar
+pessoa.email = "ana@email.com";
+pessoa.idade = 26;</div>
+  </section>
+
+  <!-- CONSOLE -->
+  <section class="cheat">
+    <h2>8. Console (Debug)</h2>
+    <div class="codigo">console.log("Mensagem normal");
+console.warn("Aviso!");
+console.error("Erro!");
+console.table([1, 2, 3]);  // tabela bonita</div>
+  </section>
+
+</body>
+</html>

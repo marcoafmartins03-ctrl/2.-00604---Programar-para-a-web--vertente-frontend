@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 4.1: Introdução ao CSS
+========================================
+
+CSS (Cascading Style Sheets) descreve o aspeto dos elementos HTML.
+Nesta lição vamos aplicar estilos simples a um painel de segurança.
+
+FORMAS DE USAR CSS
+1. Inline — rápido, mas difícil de manter.
+2. Interno — usa <style> no próprio ficheiro (ideal para testes).
+3. Externo — ficheiro .css (padrão em projetos maiores).
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel SOC — estilos básicos</title>
+  <!-- CSS externo (ficheiro dedicado) -->
+  <link rel="stylesheet" href="4.1_introducao_css.css" />
+</head>
+<body>
+  <!-- h1 e um seletor de elemento (estilo aplicado a todas as tags h1) -->
+  <h1>Centro de Operações de Segurança</h1>
+
+  <!-- class="cartao" aplica o seletor de classe .cartao -->
+  <!-- id="critico" aplica o seletor de id #critico (unico) -->
+  <section class="cartao" id="critico">
+    <h2>Incidentes críticos</h2>
+    <p>Dois servidores reportaram atividade suspeita.</p>
+  </section>
+
+  <!-- class="cartao" reutiliza o mesmo estilo do cartao -->
+  <section class="cartao">
+    <h2>Alertas moderados</h2>
+    <p>5 alertas aguardam revisão manual.</p>
+  </section>
+
+  <!-- Exemplo de CSS inline aplicado diretamente no elemento -->
+  <p style="font-family: monospace; color: #475569;">
+    Este parágrafo usa CSS inline para destacar uma nota rápida.
+  </p>
+</body>
+</html>

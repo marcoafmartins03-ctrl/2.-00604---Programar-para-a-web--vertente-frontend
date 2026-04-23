@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 2: LINKS E IMAGENS
+========================================
+
+Nesta lição vamos aprender sobre:
+- Links internos e externos
+- Atributos de links (href, target, title)
+- Inserção e formatação de imagens
+- Atributos de imagens (src, alt, width, height)
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links e Imagens - Lição 2</title>
+</head>
+<body>
+    <h1>Links e Imagens em HTML</h1>
+
+    <!-- Tipos de Links -->
+    <h2>Tipos de Links</h2>
+    
+    <h3>Link Externo</h3>
+    <!-- href é o destino; target define onde abre; title mostra dica ao passar o rato -->
+    <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer" title="Abrir Google numa nova aba">
+        Visitar Google (nova aba)
+    </a></p>
+
+    <h3>Link Interno (mesma página)</h3>
+    <!-- href com # aponta para um id na mesma página -->
+    <p><a href="#secao-imagens" title="Ir para seção de imagens">
+        Ir para Seção de Imagens
+    </a></p>
+
+    <h3>Link para Email</h3>
+    <!-- mailto permite abrir o cliente de email com assunto e corpo pré-preenchidos -->
+    <p><a href="mailto:exemplo@email.com?subject=Assunto&body=Mensagem">
+        Enviar Email
+    </a></p>
+
+    <h3>Link para Telefone</h3>
+    <!-- tel é útil em mobile para iniciar chamadas -->
+    <p><a href="tel:+351123456789">
+        Ligar: +351 123 456 789
+    </a></p>
+
+    <h3>Link para Ficheiro</h3>
+    <!-- download sugere ao browser descarregar e usar um nome de ficheiro -->
+    <p><a href="documento.pdf" download="manual.pdf">
+        Descarregar Manual PDF
+    </a></p>
+
+    <!-- Navegação com Links -->
+    <!-- nav é uma área de navegação principal -->
+    <nav>
+        <h3>Menu de Navegação</h3>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <!-- Seção de Imagens -->
+    <!-- id cria um ponto de âncora para links internos -->
+    <section id="secao-imagens">
+        <h2>Imagens em HTML</h2>
+
+        <h3>Imagem Básica</h3>
+        <!-- src é o caminho da imagem; alt descreve a imagem para acessibilidade -->
+        <img src="https://via.placeholder.com/300x200/0066cc/ffffff?text=Exemplo" 
+             alt="Imagem de exemplo azul com texto">
+
+        <h3>Imagem com Dimensões Específicas</h3>
+        <!-- width e height definem dimensões apresentadas (em px) -->
+        <img src="https://via.placeholder.com/400x300/ff6600/ffffff?text=Redimensionada" 
+             alt="Imagem redimensionada" 
+             width="200" 
+             height="150">
+
+        <h3>Imagem com Estilo Inline</h3>
+        <!-- style inline aplica CSS direto no elemento (usar com moderação) -->
+        <img src="https://via.placeholder.com/300x200/009900/ffffff?text=Estilizada" 
+             alt="Imagem com bordas" 
+             style="border: 3px solid #333; border-radius: 10px;">
+
+        <h3>Imagem como Link</h3>
+        <!-- É possível envolver uma imagem num link -->
+        <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://via.placeholder.com/200x100/cc0066/ffffff?text=Clique+Aqui" 
+                 alt="Clique na imagem para visitar exemplo.com">
+        </a>
+
+        <!-- Figure e Figcaption -->
+        <h3>Imagem com Legenda</h3>
+        <!-- figure agrupa imagem e legenda; figcaption descreve a imagem -->
+        <figure>
+            <img src="https://via.placeholder.com/350x200/663399/ffffff?text=Gráfico" 
+                 alt="Gráfico de vendas do primeiro trimestre">
+            <figcaption>
+                <strong>Figura 1:</strong> Gráfico de vendas do primeiro trimestre de 2024
+            </figcaption>
+        </figure>
+
+        <!-- Imagem Responsiva -->
+        <h3>Imagem Responsiva</h3>
+        <!-- max-width: 100% mantém a imagem dentro do contentor -->
+        <img src="https://via.placeholder.com/800x400/336699/ffffff?text=Responsiva" 
+             alt="Imagem responsiva" 
+             style="max-width: 100%; height: auto;">
+
+        <!-- Picture Element para Diferentes Formatos -->
+        <h3>Elemento Picture (Formatos Múltiplos)</h3>
+        <!-- picture permite servir formatos diferentes conforme o suporte -->
+        <picture>
+            <source srcset="https://via.placeholder.com/400x200/ff3333/ffffff?text=WebP" type="image/webp">
+            <source srcset="https://via.placeholder.com/400x200/ff3333/ffffff?text=JPEG" type="image/jpeg">
+            <img src="https://via.placeholder.com/400x200/ff3333/ffffff?text=Fallback" 
+                 alt="Imagem com múltiplos formatos">
+        </picture>
+    </section>
+
+    <!-- Links Âncora -->
+    <!-- Os ids abaixo servem de destino para links com # -->
+    <h2 id="inicio">Seção Início</h2>
+    <p>Esta é a seção início. <a href="#secao-imagens">Voltar às imagens</a></p>
+
+    <h2 id="sobre">Seção Sobre</h2>
+    <p>Esta é a seção sobre. <a href="#inicio">Voltar ao início</a></p>
+
+    <h2 id="servicos">Seção Serviços</h2>
+    <p>Esta é a seção serviços.</p>
+
+    <h2 id="contacto">Seção Contacto</h2>
+    <p>Esta é a seção contacto.</p>
+
+    <!-- Link para voltar ao topo -->
+    <!-- href="#" volta ao topo da página -->
+    <p><a href="#" title="Voltar ao topo da página">↑ Voltar ao topo</a></p>
+</body>
+</html>

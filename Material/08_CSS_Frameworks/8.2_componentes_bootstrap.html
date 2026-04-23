@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+========================================
+LICAO 8.2: Componentes Bootstrap
+========================================
+
+Nesta licao usamos componentes prontos do Bootstrap:
+- Navbar
+- Alerts
+- Cards
+- List group
+- Badges
+- Table
+
+Objetivo: perceber como combinar componentes sem CSS custom.
+
+DETALHE TÉCNICO
+- Bootstrap não injeta HTML novo no documento.
+- O programador define a estrutura com elementos HTML normais.
+- As classes Bootstrap aplicam o visual/comportamento base.
+- Os atributos data-bs-* ligam markup ao JavaScript do Bootstrap.
+========================================
+EXEMPLO PRATICO
+========================================
+-->
+<html lang="pt">
+<head>
+  <!-- UTF-8 para caracteres acentuados -->
+  <meta charset="utf-8" />
+  <!-- Escala correta em dispositivos móveis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap - componentes essenciais</title>
+  <!-- Bootstrap via CDN (CSS) -->
+  <!-- SRI (integrity) protege contra alterações inesperadas no ficheiro CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+</head>
+<body class="bg-light">
+  <!-- Navbar: barra superior com links e botao -->
+  <!-- navbar-expand-lg: menu colapsa abaixo do breakpoint lg (>=992px expande) -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+    <div class="container">
+      <!-- navbar-brand destaca o nome da app -->
+      <a class="navbar-brand fw-semibold" href="#">Orbita Lab</a>
+
+      <!-- botao para abrir o menu em ecras pequenos -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#menuPrincipal"
+        aria-controls="menuPrincipal"
+        aria-expanded="false"
+        aria-label="Abrir menu"
+      >
+        <!-- data-bs-toggle/data-bs-target são lidos pelo JS para abrir/fechar o menu -->
+        <!-- atributos aria-* melhoram acessibilidade para leitores de ecrã -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- collapse esconde/mostra o menu no mobile -->
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <!-- navbar-nav cria lista de links com estilo Bootstrap -->
+        <!-- ms-auto empurra os links para a direita; gap-lg-2 cria espaço em lg+ -->
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Pedidos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Relatorios</a></li>
+        </ul>
+        <!-- btn cria botao com estilo pronto -->
+        <button class="btn btn-primary btn-sm ms-lg-3">Novo pedido</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- container centra o conteúdo principal; py-4 cria respiro vertical -->
+  <main class="container py-4">
+    <h1 class="mb-2">Pedidos em andamento</h1>
+    <p class="text-secondary">Resumo das tarefas do dia para a equipa.</p>
+
+    <!-- alert mostra mensagens de destaque -->
+    <div class="alert alert-info d-flex justify-content-between align-items-center">
+      <span>Ha 3 pedidos urgentes a aguardar validacao.</span>
+      <button class="btn btn-outline-info btn-sm">Ver detalhe</button>
+    </div>
+
+    <!-- row + col organizam cards em grelha responsiva -->
+    <!-- col-md-6 = 2 colunas em md; col-lg-4 = 3 colunas em lg -->
+    <div class="row g-3">
+      <section class="col-md-6 col-lg-4">
+        <!-- card e shadow-sm criam bloco com sombra leve -->
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <!-- d-flex alinha titulo e badge na mesma linha -->
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="h6 mb-0">Pedido #245</h2>
+              <!-- badge destaca o estado -->
+              <span class="badge bg-warning text-dark">Em analise</span>
+            </div>
+            <p class="mt-2 mb-3">Revisao de conteudo para landing page.</p>
+            <!-- gap-2 aplica espaçamento horizontal entre botões no flex container -->
+            <div class="d-flex gap-2">
+              <button class="btn btn-outline-secondary btn-sm">Atribuir</button>
+              <button class="btn btn-success btn-sm">Concluir</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-md-6 col-lg-4">
+        <!-- h-100 mantém os cards com altura uniforme na mesma linha -->
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="h6 mb-0">Pedido #246</h2>
+              <span class="badge bg-success">Resolvido</span>
+            </div>
+            <p class="mt-2 mb-3">Atualizacao do portfolio institucional.</p>
+            <button class="btn btn-outline-success btn-sm">Arquivar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-md-6 col-lg-4">
+        <!-- Repetição do padrão facilita consistência e manutenção -->
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="h6 mb-0">Pedido #247</h2>
+              <span class="badge bg-danger">Critico</span>
+            </div>
+            <p class="mt-2 mb-3">Bug de layout em mobile (prioridade alta).</p>
+            <!-- btn-group agrupa ações relacionadas no mesmo bloco -->
+            <div class="btn-group" role="group" aria-label="Acoes do pedido">
+              <button class="btn btn-danger btn-sm">Abrir</button>
+              <button class="btn btn-outline-danger btn-sm">Delegar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="row g-4 mt-1">
+      <section class="col-lg-5">
+        <h2 class="h5">Fila de prioridades</h2>
+        <!-- list-group cria lista estilizada -->
+        <!-- rounded-pill deixa a badge em formato cápsula -->
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Incidente 74
+            <span class="badge bg-danger rounded-pill">Alta</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Campanha de email
+            <span class="badge bg-warning text-dark rounded-pill">Media</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Revisao legal
+            <span class="badge bg-secondary rounded-pill">Baixa</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="col-lg-7">
+        <h2 class="h5">Resumo semanal</h2>
+        <!-- table oferece estilos prontos para tabelas -->
+        <!-- table-striped adiciona zebrado; align-middle centraliza conteúdo verticalmente -->
+        <table class="table table-striped align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Responsavel</th>
+              <th>Pedidos</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ines</td>
+              <td>12</td>
+              <td><span class="badge bg-success">Fechados</span></td>
+            </tr>
+            <tr>
+              <td>Rui</td>
+              <td>7</td>
+              <td><span class="badge bg-warning text-dark">Em curso</span></td>
+            </tr>
+            <tr>
+              <td>Marta</td>
+              <td>4</td>
+              <td><span class="badge bg-danger">Criticos</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+
+  <!-- Bootstrap JS (necessario para collapse, modal, dropdown, offcanvas, tooltips...) -->
+  <!-- bootstrap.bundle.min.js inclui Popper, exigido por tooltip/popover/dropdown -->
+  <!-- Script no final do body evita bloquear renderização inicial da página -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>

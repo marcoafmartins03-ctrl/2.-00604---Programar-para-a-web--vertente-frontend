@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM – Funcionalidades Avançadas</title>
+    <link rel="stylesheet" href="../template-styles.css">
+    <style>
+        .drag-area {
+            border: 3px dashed #48bb78;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 16px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .drag-area.dragover {
+            background: #48bb78;
+            color: #fff;
+        }
+        .drag-element {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ed64a6, #d53f8c);
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-top: 12px;
+            cursor: grab;
+        }
+        .alert {
+            display: none;
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+        .alert.error { background: #fed7d7; color: #742a2a; }
+        .alert.success { background: #c6f6d5; color: #22543d; }
+        #animacao {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #63b3ed, #4299e1);
+            border-radius: 50%;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>🚀 DOM – Avançado</h1>
+            <p>Drag & drop, validação em tempo real e animações simples.</p>
+        </header>
+
+        <section>
+            <h2>1. Drag & drop</h2>
+            <div class="card">
+                <div id="elemento-arrasto" class="drag-element" draggable="true">Arrasta-me</div>
+                <div id="area-destino" class="drag-area">Larga o elemento aqui</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Validação contínua</h2>
+            <div class="card">
+                <label for="telefone">Telefone (mín. 9 dígitos)</label>
+                <input id="telefone" placeholder="+351 912 345 678">
+                <div id="erro-telefone" class="alert error"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Força da password</h2>
+            <div class="card">
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Escolhe uma password forte">
+                <div id="forca-password" class="alert success" style="display:block;">Força: —</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Animação simples</h2>
+            <div class="card">
+                <div id="animacao"></div>
+                <button onclick="animar()">Animar</button>
+                <button class="secondary" onclick="parar()">Parar</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Drag & drop
+        const elemento = document.getElementById('elemento-arrasto');
+        const destino = document.getElementById('area-destino');
+        elemento.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text/plain', e.target.id);
+        });
+        destino.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            destino.classList.add('dragover');
+        });
+        destino.addEventListener('dragleave', () => destino.classList.remove('dragover'));
+        destino.addEventListener('drop', (e) => {
+            e.preventDefault();
+            destino.classList.remove('dragover');
+            const id = e.dataTransfer.getData('text/plain');
+            destino.appendChild(document.getElementById(id));
+        });
+
+        // Validação de telefone
+        const inputTelefone = document.getElementById('telefone');
+        const alertaTelefone = document.getElementById('erro-telefone');
+        inputTelefone.addEventListener('input', () => {
+            const regex = /^[+]?[\d\s-]{9,}$/;
+            if (!regex.test(inputTelefone.value.trim())) {
+                alertaTelefone.textContent = '❌ Formato inválido';
+                alertaTelefone.style.display = 'block';
+            } else {
+                alertaTelefone.style.display = 'none';
+            }
+        });
+
+        // Força da password
+        const password = document.getElementById('password');
+        const forcaPassword = document.getElementById('forca-password');
+        password.addEventListener('input', () => {
+            const valor = password.value;
+            let pontos = 0;
+            if (valor.length >= 8) pontos++;
+            if (/[A-Z]/.test(valor)) pontos++;
+            if (/[a-z]/.test(valor)) pontos++;
+            if (/[0-9]/.test(valor)) pontos++;
+            if (/[^A-Za-z0-9]/.test(valor)) pontos++;
+            const mensagens = ['Muito fraca', 'Fraca', 'Média', 'Forte', 'Muito forte'];
+            forcaPassword.textContent = `Força: ${mensagens[Math.max(0, pontos - 1)] || '—'}`;
+        });
+
+        // Animação simples
+        let intervalo;
+        function animar() {
+            if (intervalo) return;
+            const elemento = document.getElementById('animacao');
+            let pos = 0;
+            intervalo = setInterval(() => {
+                pos += 4;
+                elemento.style.left = pos + 'px';
+                if (pos >= 260) {
+                    clearInterval(intervalo);
+                    intervalo = null;
+                }
+            }, 16);
+        }
+        function parar() {
+            clearInterval(intervalo);
+            intervalo = null;
+            document.getElementById('animacao').style.left = '0px';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <!-- Define codificacao para suportar caracteres PT -->
+  <meta charset="utf-8" />
+  <!-- Garante responsividade em dispositivos moveis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Titulo mostrado no separador do browser -->
+  <title>10.3 Avancado - Lista de Tarefas</title>
+  <style>
+    /* Base visual da pagina */
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 760px;
+      margin: 32px auto;
+      padding: 0 16px 32px;
+      line-height: 1.5;
+      background: #f7fafc;
+    }
+    /* Cartao reutilizavel para secoes */
+    .card {
+      background: #ffffff;
+      border: 1px solid #dbe2ea;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+    /* Labels em bloco para melhor leitura */
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    /* Tipografia consistente em campos e botoes */
+    input, select, button {
+      font: inherit;
+    }
+    /* Estilo base de campos */
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    /* Grelha para linha de filtros */
+    .linha {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 10px;
+    }
+    /* Estilo base de botoes */
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+    }
+    /* Botao principal (acao primaria) */
+    .btn-principal {
+      background: #2563eb;
+      color: white;
+    }
+    /* Botao secundario (acoes de item) */
+    .btn-secundario {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+    /* Remove bullets da lista de tarefas */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    /* Visual de cada tarefa */
+    li {
+      border: 1px solid #dbe2ea;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+    }
+    /* Classe aplicada quando tarefa esta concluida */
+    .titulo-tarefa.concluida {
+      text-decoration: line-through;
+      color: #64748b;
+    }
+    /* Container para botoes de acao de cada tarefa */
+    .acoes {
+      display: flex;
+      gap: 6px;
+    }
+    /* Tag visual da categoria */
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      border-radius: 999px;
+      padding: 2px 8px;
+      background: #eef2ff;
+      color: #3730a3;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Titulo principal da licao -->
+  <h1>10.3 Avancado - DOM na pratica: Lista de Tarefas</h1>
+  <!-- Contexto rapido da atividade -->
+  <p>Objetivo: criar elementos dinamicamente, atualizar estado em memoria e reagir a eventos.</p>
+
+  <!-- Secao de criacao de tarefas -->
+  <section class="card">
+    <h2>Nova tarefa</h2>
+    <!-- Formulario principal; novalidate desativa validacao nativa para demonstrar JS -->
+    <form id="form-tarefa" novalidate>
+      <!-- Campo de titulo -->
+      <label for="titulo">Titulo da tarefa</label>
+      <input id="titulo" name="titulo" type="text" placeholder="Ex.: Rever Flexbox" required />
+
+      <!-- Campo de categoria -->
+      <label for="categoria">Categoria</label>
+      <select id="categoria" name="categoria">
+        <option value="estudo">Estudo</option>
+        <option value="projeto">Projeto</option>
+        <option value="revisao">Revisao</option>
+      </select>
+
+      <!-- Botao de submissao para adicionar tarefa -->
+      <button class="btn-principal" type="submit">Adicionar tarefa</button>
+    </form>
+    <!-- Zona de feedback de sucesso/erro -->
+    <p id="feedback" aria-live="polite"></p>
+  </section>
+
+  <!-- Secao de filtros -->
+  <section class="card">
+    <h2>Filtro</h2>
+    <div class="linha">
+      <div>
+        <label for="filtro-texto">Pesquisar por texto</label>
+        <input id="filtro-texto" type="text" placeholder="Ex.: projeto" />
+      </div>
+      <div>
+        <label for="filtro-estado">Estado</label>
+        <select id="filtro-estado">
+          <option value="todos">Todos</option>
+          <option value="abertas">Abertas</option>
+          <option value="concluidas">Concluidas</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Secao onde o JavaScript vai renderizar a lista -->
+  <section class="card">
+    <h2>Lista</h2>
+    <ul id="lista-tarefas"></ul>
+  </section>
+
+  <!-- Script da licao 10.3 -->
+  <script src="10.3_avancado_lista_tarefas.js"></script>
+</body>
+</html>

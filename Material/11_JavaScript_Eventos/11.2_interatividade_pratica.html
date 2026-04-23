@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <!-- Metadados base -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11.2 Interatividade Pratica</title>
+  <style>
+    /* Estrutura base da pagina */
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 32px auto; padding: 0 16px; }
+    /* Botao principal */
+    button { border: none; border-radius: 8px; padding: 10px 12px; cursor: pointer; background: #2563eb; color: #fff; }
+    /* Painel oculto por defeito */
+    #detalhes { margin-top: 12px; border: 1px solid #dbe2ea; border-radius: 8px; padding: 12px; display: none; }
+    /* Classe ativada pelo JavaScript para mostrar painel */
+    #detalhes.visivel { display: block; }
+    /* Campo de pesquisa */
+    input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <!-- Titulo da demonstracao -->
+  <h1>11.2 - Interatividade Pratica</h1>
+  <p>Exemplo de toggle, filtro em tempo real e controlo por teclado.</p>
+
+  <!-- Botao que alterna visibilidade do painel -->
+  <button id="alternar" type="button">Mostrar detalhes</button>
+  <!-- Contador de cliques do botao -->
+  <p>Total de cliques no botao: <strong id="contador-cliques">0</strong></p>
+
+  <!-- Painel controlado por classe .visivel -->
+  <section id="detalhes" aria-live="polite">
+    <label for="pesquisa-detalhes">Filtrar itens</label>
+    <input id="pesquisa-detalhes" type="text" placeholder="Escreve para filtrar" />
+
+    <ul>
+      <li>Validar estrutura semantica</li>
+      <li>Aplicar responsividade mobile-first</li>
+      <li>Reforcar acessibilidade basica</li>
+      <li>Testar formulario principal</li>
+    </ul>
+  </section>
+
+  <!-- Script da licao -->
+  <script src="11.2_interatividade_pratica.js"></script>
+</body>
+</html>

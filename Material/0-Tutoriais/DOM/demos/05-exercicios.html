@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM – Mini Exercícios</title>
+    <link rel="stylesheet" href="../template-styles.css">
+    <style>
+        .grid-two {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .carrinho-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>💪 Mini Exercícios DOM</h1>
+            <p>Três micro-projetos para treinar manipulação, arrays e estados.</p>
+        </header>
+
+        <div class="grid-two">
+            <section>
+                <h2>1. Contador</h2>
+                <div class="card">
+                    <div class="output" id="contador-display">0</div>
+                    <button onclick="alterarContador(1)">+1</button>
+                    <button onclick="alterarContador(-1)">-1</button>
+                    <button class="secondary" onclick="resetarContador()">Reset</button>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Lista dinâmica</h2>
+                <div class="card">
+                    <label for="item">Novo item</label>
+                    <input id="item" placeholder="Escreve algo...">
+                    <button onclick="adicionarItem()">Adicionar</button>
+                    <button class="secondary" onclick="removerItem()">Remover último</button>
+                    <ul id="lista" style="margin-top:12px;"></ul>
+                </div>
+            </section>
+        </div>
+
+        <section>
+            <h2>3. Carrinho simples</h2>
+            <div class="card">
+                <div>
+                    <button onclick="adicionarProduto('Livro', 12.5)">Adicionar Livro €12,50</button>
+                    <button onclick="adicionarProduto('Mouse', 25)">Adicionar Mouse €25,00</button>
+                    <button onclick="adicionarProduto('Teclado', 40)">Adicionar Teclado €40,00</button>
+                    <button class="danger" onclick="limparCarrinho()">Limpar carrinho</button>
+                </div>
+                <div id="itens-carrinho" style="margin-top:16px;"></div>
+                <p>Total: <strong id="total">€0.00</strong></p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Contador
+        let contador = 0;
+        function alterarContador(valor) {
+            contador += valor;
+            document.getElementById('contador-display').textContent = contador;
+        }
+        function resetarContador() {
+            contador = 0;
+            document.getElementById('contador-display').textContent = contador;
+        }
+
+        // Lista dinâmica
+        function adicionarItem() {
+            const input = document.getElementById('item');
+            const lista = document.getElementById('lista');
+            if (!input.value.trim()) return;
+            const li = document.createElement('li');
+            li.textContent = input.value.trim();
+            lista.appendChild(li);
+            input.value = '';
+        }
+        function removerItem() {
+            const lista = document.getElementById('lista');
+            if (lista.lastElementChild) {
+                lista.removeChild(lista.lastElementChild);
+            }
+        }
+
+        // Carrinho simples
+        let carrinho = [];
+        function adicionarProduto(nome, preco) {
+            carrinho.push({ nome, preco });
+            renderCarrinho();
+        }
+        function limparCarrinho() {
+            carrinho = [];
+            renderCarrinho();
+        }
+        function renderCarrinho() {
+            const container = document.getElementById('itens-carrinho');
+            const totalSpan = document.getElementById('total');
+            if (!carrinho.length) {
+                container.innerHTML = '<p>Carrinho vazio.</p>';
+                totalSpan.textContent = '€0.00';
+                return;
+            }
+            container.innerHTML = carrinho.map(item => `
+                <div class="carrinho-item">
+                    <span>${item.nome}</span>
+                    <span>€${item.preco.toFixed(2)}</span>
+                </div>
+            `).join('');
+            const total = carrinho.reduce((acc, item) => acc + item.preco, 0);
+            totalSpan.textContent = `€${total.toFixed(2)}`;
+        }
+
+        renderCarrinho();
+    </script>
+</body>
+</html>

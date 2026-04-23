@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM – Manipulação</title>
+    <link rel="stylesheet" href="../template-styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>🔧 Manipulação do DOM</h1>
+            <p>Adicionar, modificar e remover conteúdo dinamicamente.</p>
+        </header>
+
+        <section>
+            <h2>1. Alterar conteúdo</h2>
+            <div class="card">
+                <div id="box-conteudo" class="output" style="background:#fff;border:1px solid #cbd5e0;color:#2d3748;">
+                    Conteúdo original…
+                </div>
+                <button onclick="alterarInnerHTML()">innerHTML</button>
+                <button class="secondary" onclick="alterarTextContent()">textContent</button>
+                <button onclick="restaurarConteudo()">Restaurar</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Criar e remover elementos</h2>
+            <div class="card">
+                <div id="container-elementos" class="card" style="background:#f7fafc;border-style:dashed;">
+                    <p>Elemento base</p>
+                </div>
+                <button onclick="criarElemento()">Adicionar div</button>
+                <button onclick="removerUltimo()">Remover último</button>
+                <button class="danger" onclick="limparTudo()">Limpar tudo</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const boxConteudo = document.getElementById('box-conteudo');
+        const estadoInicial = boxConteudo.innerHTML;
+
+        function alterarInnerHTML() {
+            boxConteudo.innerHTML = '<strong>innerHTML</strong> permite inserir <em>HTML</em> completo.';
+        }
+
+        function alterarTextContent() {
+            boxConteudo.textContent = 'textContent escreve texto literal (tags aparecem como texto).';
+        }
+
+        function restaurarConteudo() {
+            boxConteudo.innerHTML = estadoInicial;
+        }
+
+        function criarElemento() {
+            const novo = document.createElement('div');
+            novo.className = 'output';
+            novo.style.background = '#ebf8ff';
+            novo.style.color = '#2b6cb0';
+            novo.textContent = `Novo elemento criado às ${new Date().toLocaleTimeString()}`;
+            document.getElementById('container-elementos').appendChild(novo);
+        }
+
+        function removerUltimo() {
+            const container = document.getElementById('container-elementos');
+            if (container.children.length > 1) {
+                container.removeChild(container.lastElementChild);
+            }
+        }
+
+        function limparTudo() {
+            const container = document.getElementById('container-elementos');
+            container.innerHTML = '<p>Elemento base</p>';
+        }
+    </script>
+</body>
+</html>

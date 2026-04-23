@@ -1,0 +1,82 @@
+/*
+  Resumo Visual: CSS Layout
+  Estilos para o cheatsheet
+*/
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 24px;
+  background: #f4f6f8;
+  max-width: 800px;
+}
+
+h1 {
+  color: #0a66c2;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Secção do cheatsheet */
+.cheat {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cheat h2 {
+  color: #0a66c2;
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #0a66c2;
+}
+
+/* Tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+th, td {
+  border: 1px solid #e2e8f0;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+th {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+/* Código inline */
+code {
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+/* Nota */
+.nota {
+  background: #dbeafe;
+  border-left: 4px solid #0a66c2;
+  padding: 10px 15px;
+  margin-top: 15px;
+  border-radius: 0 6px 6px 0;
+}
+
+/* Bloco de código */
+.codigo {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: 'Consolas', monospace;
+  font-size: 13px;
+  white-space: pre;
+  overflow-x: auto;
+}

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 8.4: Componentes com Tailwind CSS
+========================================
+
+Nesta lição vamos construir componentes comuns:
+- Navbar responsiva
+- Cards de produto
+- Formulário estilizado
+- Alertas/Notificações
+- Botões variados
+
+IMPORTANTE: Tailwind não tem componentes prontos!
+Nós construímos tudo com classes utilitárias.
+
+========================================
+EXEMPLO PRÁTICO: Dashboard de Produtos
+========================================
+-->
+<html lang="pt">
+<head>
+  <!-- UTF-8 para suportar textos com acentos -->
+  <meta charset="utf-8" />
+  <!-- viewport responsiva para escalar em ecrãs pequenos -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tailwind CSS — Componentes</title>
+  <!-- CDN do Tailwind -->
+  <!-- Play CDN para aula rápida; em produção prefere-se build com purge/content -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+  <!-- ========================================
+       NAVBAR
+       ======================================== -->
+  <nav class="bg-white shadow-sm border-b">
+    <!--
+      EXPLICAÇÃO:
+      - bg-white: fundo branco
+      - shadow-sm: sombra pequena
+      - border-b: borda apenas em baixo
+    -->
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <!--
+          EXPLICAÇÃO DO FLEX:
+          - flex: ativa flexbox
+          - items-center: alinha verticalmente ao centro
+          - justify-between: espaço máximo entre elementos
+          - h-16: altura fixa (16 x 4px = 64px)
+        -->
+
+        <!-- Logo -->
+        <a href="#" class="text-xl font-bold text-indigo-600">
+          TechStore
+        </a>
+
+        <!-- Links de navegação -->
+        <div class="hidden md:flex items-center space-x-6">
+          <!--
+            EXPLICAÇÃO:
+            - hidden: escondido por defeito (mobile)
+            - md:flex: visível como flex em ecrãs médios+
+            - space-x-6: espaço horizontal entre links
+            - padrão mobile-first: sem prefixo = mobile, com md: = ecrãs maiores
+          -->
+          <a href="#" class="text-gray-600 hover:text-indigo-600">Produtos</a>
+          <a href="#" class="text-gray-600 hover:text-indigo-600">Categorias</a>
+          <a href="#" class="text-gray-600 hover:text-indigo-600">Sobre</a>
+          <a href="#" class="text-gray-600 hover:text-indigo-600">Contacto</a>
+        </div>
+
+        <!-- Botão CTA -->
+        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          Entrar
+        </button>
+        <!--
+          NOVO: transition-colors
+          - Adiciona animação suave ao mudar de cor (hover)
+        -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Área principal centrada com limite de largura -->
+  <main class="max-w-6xl mx-auto py-8 px-4">
+
+    <!-- ========================================
+         ALERTA / NOTIFICAÇÃO
+         ======================================== -->
+    <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-6 flex items-center justify-between">
+      <!--
+        CONSTRUÇÃO DO ALERTA:
+        - bg-indigo-50: fundo azul muito claro
+        - border border-indigo-200: borda azul clara
+        - flex items-center justify-between: layout horizontal
+      -->
+      <div class="flex items-center gap-3">
+        <!-- Ícone (emoji como placeholder) -->
+        <span class="text-2xl">🎉</span>
+        <div>
+          <p class="font-medium text-indigo-800">Novos produtos disponíveis!</p>
+          <p class="text-sm text-indigo-600">Confere as últimas novidades da loja.</p>
+        </div>
+      </div>
+      <button class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+        Ver mais →
+      </button>
+    </div>
+
+    <!-- Título da secção -->
+    <div class="flex items-center justify-between mb-6">
+      <h1 class="text-2xl font-bold text-gray-800">Produtos em Destaque</h1>
+      <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <!--
+          NOVO: focus:outline-none focus:ring-2 focus:ring-indigo-500
+          - Remove outline padrão
+          - Adiciona anel colorido ao focar
+          - focus:* melhora feedback visual para teclado/acessibilidade
+        -->
+        <option>Ordenar por: Popular</option>
+        <option>Preço: Baixo → Alto</option>
+        <option>Preço: Alto → Baixo</option>
+        <option>Mais recentes</option>
+      </select>
+    </div>
+
+    <!-- ========================================
+         GRID DE CARDS DE PRODUTO
+         ======================================== -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!--
+        GRID RESPONSIVO:
+        - grid-cols-1: 1 coluna (mobile)
+        - sm:grid-cols-2: 2 colunas (640px+)
+        - lg:grid-cols-4: 4 colunas (1024px+)
+        - gap-6: espaço entre cards
+      -->
+
+      <!-- Card Produto 1 -->
+      <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+        <!--
+          NOVO:
+          - rounded-xl: cantos mais arredondados
+          - hover:shadow-md: sombra aumenta ao hover
+          - transition-shadow: animação suave
+          - overflow-hidden: esconde conteúdo que saia
+          - group: permite estilos em filhos baseados no hover do pai
+          - transition-shadow evita mudança brusca de sombra
+        -->
+
+        <!-- Imagem placeholder -->
+        <div class="bg-gray-200 h-48 flex items-center justify-center">
+          <span class="text-4xl">📱</span>
+        </div>
+
+        <!-- Conteúdo do card -->
+        <div class="p-4">
+          <!-- Badge de categoria -->
+          <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+            Smartphones
+          </span>
+          <!--
+            BADGE:
+            - text-xs: texto extra pequeno
+            - rounded-full: totalmente redondo (pill)
+          -->
+
+          <h3 class="font-semibold text-gray-800 mt-2">iPhone 15 Pro</h3>
+          <p class="text-sm text-gray-500 mt-1">256GB, Titanium Natural</p>
+
+          <!-- Preço e botão -->
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-lg font-bold text-gray-800">€1.199</span>
+            <button class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-3 py-1.5 rounded-lg transition-colors">
+              Adicionar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Produto 2 -->
+      <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+        <!-- Mesmo esqueleto do card anterior, mudando apenas conteúdo e cores -->
+        <div class="bg-gray-200 h-48 flex items-center justify-center">
+          <span class="text-4xl">💻</span>
+        </div>
+        <div class="p-4">
+          <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">
+            Laptops
+          </span>
+          <h3 class="font-semibold text-gray-800 mt-2">MacBook Air M3</h3>
+          <p class="text-sm text-gray-500 mt-1">8GB RAM, 256GB SSD</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-lg font-bold text-gray-800">€1.299</span>
+            <button class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-3 py-1.5 rounded-lg transition-colors">
+              Adicionar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Produto 3 -->
+      <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+        <!-- Reutilização de estrutura para facilitar manutenção e consistência -->
+        <div class="bg-gray-200 h-48 flex items-center justify-center">
+          <span class="text-4xl">🎧</span>
+        </div>
+        <div class="p-4">
+          <span class="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded-full">
+            Áudio
+          </span>
+          <h3 class="font-semibold text-gray-800 mt-2">AirPods Pro 2</h3>
+          <p class="text-sm text-gray-500 mt-1">Com cancelamento de ruído</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-lg font-bold text-gray-800">€279</span>
+            <button class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-3 py-1.5 rounded-lg transition-colors">
+              Adicionar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Produto 4 - Em promoção -->
+      <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden relative">
+        <!--
+          NOVO: relative
+          - Permite posicionar elementos absolutos dentro
+        -->
+
+        <!-- Badge de promoção -->
+        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+          -20%
+        </div>
+        <!--
+          POSICIONAMENTO ABSOLUTO:
+          - absolute: posição absoluta
+          - top-2 right-2: 8px do topo e direita
+        -->
+
+        <div class="bg-gray-200 h-48 flex items-center justify-center">
+          <span class="text-4xl">⌚</span>
+        </div>
+        <div class="p-4">
+          <span class="text-xs font-medium text-orange-600 bg-orange-50 px-2 py-1 rounded-full">
+            Wearables
+          </span>
+          <h3 class="font-semibold text-gray-800 mt-2">Apple Watch SE</h3>
+          <p class="text-sm text-gray-500 mt-1">GPS, 44mm</p>
+          <div class="flex items-center justify-between mt-4">
+            <div>
+              <span class="text-sm text-gray-400 line-through">€299</span>
+              <!--
+                line-through: texto riscado (preço antigo)
+              -->
+              <span class="text-lg font-bold text-red-600 ml-1">€239</span>
+            </div>
+            <button class="bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1.5 rounded-lg transition-colors">
+              Comprar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+         SECÇÃO: FORMULÁRIO DE CONTACTO
+         ======================================== -->
+    <div class="mt-12 bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Subscreve a Newsletter</h2>
+      <p class="text-gray-600 mb-4">Recebe novidades e promoções exclusivas.</p>
+
+      <form class="flex flex-col sm:flex-row gap-3">
+        <!--
+          FORM RESPONSIVO:
+          - flex-col: coluna em mobile
+          - sm:flex-row: linha em ecrãs maiores
+          - sm: começa no breakpoint 640px (small)
+        -->
+        <input
+          type="email"
+          placeholder="O teu email"
+          class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+        />
+        <!--
+          INPUT ESTILIZADO:
+          - flex-1: ocupa espaço disponível
+          - focus:border-transparent: remove borda ao focar (usa ring)
+        -->
+        <button
+          type="submit"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+        >
+          Subscrever
+        </button>
+        <!-- type="submit" dispara submissão nativa do formulário -->
+      </form>
+    </div>
+
+    <!-- ========================================
+         SECÇÃO: TIPOS DE BOTÕES
+         ======================================== -->
+    <div class="mt-12">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">📋 Exemplos de Botões Tailwind</h2>
+      <!-- flex-wrap permite quebrar linha quando faltar largura -->
+      <div class="flex flex-wrap gap-3">
+        <!-- Botão Primary -->
+        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">
+          Primary
+        </button>
+        <!-- Botão Secondary -->
+        <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg">
+          Secondary
+        </button>
+        <!-- Botão Success -->
+        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
+          Success
+        </button>
+        <!-- Botão Danger -->
+        <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+          Danger
+        </button>
+        <!-- Botão Outline -->
+        <button class="border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white px-4 py-2 rounded-lg transition-colors">
+          Outline
+        </button>
+        <!-- Combinação de hover:bg + hover:text cria efeito invertido no hover -->
+        <!-- Botão Ghost -->
+        <button class="text-indigo-600 hover:bg-indigo-50 px-4 py-2 rounded-lg transition-colors">
+          Ghost
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer class="bg-gray-800 text-gray-400 mt-12 py-8">
+    <!-- Rodapé simples para fechar a página com contraste -->
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <p class="text-sm">© 2026 TechStore. Exemplo para aprender Tailwind CSS.</p>
+      <p class="text-xs mt-2">Criado com ❤️ para o curso UC00604</p>
+    </div>
+  </footer>
+
+</body>
+</html>

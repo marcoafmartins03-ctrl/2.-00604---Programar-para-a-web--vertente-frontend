@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 4: HTML5 SEMÂNTICO
+========================================
+
+Nesta lição vamos aprender sobre:
+- Elementos semânticos do HTML5
+- Estrutura semântica de uma página
+- Diferença entre div/span e elementos semânticos
+- Benefícios para SEO e acessibilidade
+- Melhores práticas de estruturação
+
+HTML semântico significa usar elementos que têm significado,
+não apenas para apresentação visual.
+
+========================================
+GLOSSÁRIO DE SYNTAX
+========================================
+
+ELEMENTOS SEMÂNTICOS (substituem <div> quando o conteúdo tem significado):
+
+<header>          → Cabeçalho da página ou de uma secção (logo, título, navegação)
+<nav>             → Bloco de navegação (menus, links principais)
+<main>            → Conteúdo PRINCIPAL da página (só pode haver UM por página)
+<section>         → Secção temática (agrupa conteúdo relacionado, deve ter um <h2>-<h6>)
+<article>         → Conteúdo autónomo (faz sentido sozinho: post, notícia, card)
+<aside>           → Conteúdo lateral/secundário (sidebar, notas, publicidade)
+<footer>          → Rodapé da página ou de uma secção (contactos, copyright)
+<figure>          → Contentor para imagens/diagramas com legenda
+<figcaption>      → Legenda dentro de um <figure>
+
+QUANDO USAR O QUÊ:
+  <div>           → Quando NÃO há significado semântico (apenas agrupar para CSS)
+  <section>       → Quando agrupas conteúdo por tema (ex: "Destinos", "Vantagens")
+  <article>       → Quando o conteúdo faz sentido isolado (ex: um card, um post de blog)
+  <header>        → Topo da página OU topo de uma secção/article
+  <footer>        → Fundo da página OU fundo de uma secção/article
+
+ESTRUTURA TIPO DE UMA PÁGINA:
+  <body>
+    <header>              ← cabeçalho do site
+      <nav>...</nav>      ← menu de navegação
+    </header>
+    <main>                ← conteúdo principal (único)
+      <section>           ← secção temática
+        <h2>Título</h2>
+        <article>...</article>  ← conteúdo autónomo
+        <article>...</article>
+      </section>
+    </main>
+    <aside>...</aside>    ← barra lateral
+    <footer>...</footer>  ← rodapé
+  </body>
+
+PORQUÊ USAR SEMÂNTICA?
+  1. Acessibilidade — leitores de ecrã navegam por secções
+  2. SEO — motores de busca entendem a estrutura
+  3. Manutenção — código mais legível para outros programadores
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Semântico - Lição 4</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Layout semântico */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            background-color: #343a40;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #495057;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .content {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        aside {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+
+        article {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        section {
+            margin: 2rem 0;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .semantic-example {
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: #d4edda;
+        }
+
+        .non-semantic-example {
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: #f8d7da;
+        }
+
+        .code-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+
+        .good {
+            border-left: 4px solid #28a745;
+        }
+
+        .bad {
+            border-left: 4px solid #dc3545;
+        }
+
+        .tag-highlight {
+            color: #81c784;
+            font-weight: bold;
+        }
+
+        .attribute-highlight {
+            color: #ffb74d;
+        }
+
+        .content-highlight {
+            color: #64b5f6;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%);
+            border: 1px solid #ff9800;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .element-demo {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .screen-reader-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .code-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Elementos para demonstrar hierarquia */
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 2rem; margin: 2rem 0 1rem 0; border-bottom: 2px solid #007bff; padding-bottom: 0.5rem; }
+        h3 { font-size: 1.5rem; margin: 1.5rem 0 1rem 0; color: #495057; }
+        h4 { font-size: 1.25rem; margin: 1rem 0 0.5rem 0; color: #6c757d; }
+
+        .breadcrumb {
+            background-color: #e9ecef;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        figcaption {
+            font-style: italic;
+            color: #6c757d;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        mark {
+            background-color: #fff3cd;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        time {
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        details {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            padding: 0.5rem;
+            background-color: #f8f9fa;
+            margin: -1rem -1rem 1rem -1rem;
+            border-radius: 6px 6px 0 0;
+        }
+
+        summary:hover {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho semântico: topo da página (logo/título/intro) -->
+    <header>
+        <div class="container">
+            <h1>HTML5 Semântico</h1>
+            <p>Estruturação significativa para web moderna</p>
+        </div>
+    </header>
+
+    <!-- Navegação semântica: aria-label descreve a função para leitores de ecrã -->
+    <nav role="navigation" aria-label="Navegação principal">
+        <ul>
+            <li><a href="#conceitos" aria-describedby="nav-conceitos">Conceitos</a></li>
+            <li><a href="#elementos" aria-describedby="nav-elementos">Elementos</a></li>
+            <li><a href="#estrutura" aria-describedby="nav-estrutura">Estrutura</a></li>
+            <li><a href="#exemplos" aria-describedby="nav-exemplos">Exemplos</a></li>
+            <li><a href="#boas-praticas" aria-describedby="nav-praticas">Boas Práticas</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Navegação estrutural (breadcrumb) para indicar o caminho -->
+        <nav class="breadcrumb" aria-label="Navegação estrutural">
+            <a href="../index.html">Curso</a> &gt; 
+            <a href="index.html">HTML Elementos</a> &gt; 
+            <span aria-current="page">HTML5 Semântico</span>
+        </nav>
+
+        <!-- Conteúdo principal: deve existir apenas um <main> por página -->
+        <main>
+            <div class="content">
+                <!-- section agrupa conteúdos relacionados -->
+                <section id="conceitos">
+                    <h2>📚 Conceitos Fundamentais</h2>
+                    
+                    <!-- article é um conteúdo autónomo -->
+                    <article>
+                        <h3>O que é HTML Semântico?</h3>
+                        <p>HTML semântico refere-se ao uso de elementos HTML que têm <mark>significado e propósito específico</mark>, não apenas aparência visual. Estes elementos comunicam a estrutura e o significado do conteúdo tanto para desenvolvedores quanto para tecnologias assistivas.</p>
+                        
+                        <!-- time permite marcar datas com valor legível por máquinas -->
+                        <time datetime="2024-03-15">Atualizado em 15 de março de 2024</time>
+                    </article>
+
+                    <div class="info-box">
+                        <h4>✅ Benefícios do HTML Semântico:</h4>
+                        <ul>
+                            <li><strong>SEO melhorado:</strong> Motores de busca compreendem melhor o conteúdo</li>
+                            <li><strong>Acessibilidade:</strong> Leitores de ecrã navegam mais facilmente</li>
+                            <li><strong>Manutenibilidade:</strong> Código mais claro e organizad</li>
+                            <li><strong>Performance:</strong> Carregamento e processamento mais eficiente</li>
+                            <li><strong>Compatibilidade:</strong> Melhor suporte em diferentes dispositivos</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Comparação: Semântico vs Não-semântico -->
+                <section id="comparacao">
+                    <h2>⚖️ Semântico vs Não-semântico</h2>
+                    
+                    <!-- Exemplo visual: divs genéricas vs elementos semânticos -->
+                    <div class="code-comparison">
+                        <div>
+                            <h4 style="color: #dc3545;">❌ Não-semântico (antigo)</h4>
+                            <div class="code-example bad">
+<span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">id="header"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class="title"</span><span class="tag-highlight">&gt;</span><span class="content-highlight">Título</span><span class="tag-highlight">&lt;/div&gt;</span>
+<span class="tag-highlight">&lt;/div&gt;</span>
+
+<span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">id="nav"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class="menu"</span><span class="tag-highlight">&gt;</span><span class="content-highlight">Menu</span><span class="tag-highlight">&lt;/div&gt;</span>
+<span class="tag-highlight">&lt;/div&gt;</span>
+
+<span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">id="content"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class="article"</span><span class="tag-highlight">&gt;</span>
+    <span class="content-highlight">Conteúdo do artigo</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+<span class="tag-highlight">&lt;/div&gt;</span>
+
+<span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">id="sidebar"</span><span class="tag-highlight">&gt;</span>
+  <span class="content-highlight">Barra lateral</span>
+<span class="tag-highlight">&lt;/div&gt;</span>
+
+<span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">id="footer"</span><span class="tag-highlight">&gt;</span>
+  <span class="content-highlight">Rodapé</span>
+<span class="tag-highlight">&lt;/div&gt;</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: #28a745;">✅ Semântico (moderno)</h4>
+                            <div class="code-example good">
+<span class="tag-highlight">&lt;header&gt;</span>
+  <span class="tag-highlight">&lt;h1&gt;</span><span class="content-highlight">Título</span><span class="tag-highlight">&lt;/h1&gt;</span>
+<span class="tag-highlight">&lt;/header&gt;</span>
+
+<span class="tag-highlight">&lt;nav&gt;</span>
+  <span class="tag-highlight">&lt;ul&gt;</span>
+    <span class="tag-highlight">&lt;li&gt;</span><span class="content-highlight">Menu item</span><span class="tag-highlight">&lt;/li&gt;</span>
+  <span class="tag-highlight">&lt;/ul&gt;</span>
+<span class="tag-highlight">&lt;/nav&gt;</span>
+
+<span class="tag-highlight">&lt;main&gt;</span>
+  <span class="tag-highlight">&lt;article&gt;</span>
+    <span class="tag-highlight">&lt;h2&gt;</span><span class="content-highlight">Título do artigo</span><span class="tag-highlight">&lt;/h2&gt;</span>
+    <span class="tag-highlight">&lt;p&gt;</span><span class="content-highlight">Conteúdo do artigo</span><span class="tag-highlight">&lt;/p&gt;</span>
+  <span class="tag-highlight">&lt;/article&gt;</span>
+<span class="tag-highlight">&lt;/main&gt;</span>
+
+<span class="tag-highlight">&lt;aside&gt;</span>
+  <span class="content-highlight">Barra lateral</span>
+<span class="tag-highlight">&lt;/aside&gt;</span>
+
+<span class="tag-highlight">&lt;footer&gt;</span>
+  <span class="content-highlight">Rodapé</span>
+<span class="tag-highlight">&lt;/footer&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Elementos semânticos -->
+                <section id="elementos">
+                    <h2>🧱 Elementos Semânticos HTML5</h2>
+
+                    <article>
+                        <h3>Elementos de Estrutura</h3>
+                        
+                        <div class="element-demo">
+                            <h4>&lt;header&gt;</h4>
+                            <p><strong>Propósito:</strong> Cabeçalho de página ou seção</p>
+                            <p><strong>Conteúdo típico:</strong> Logo, título, navegação principal</p>
+                            <div class="code-example">
+&lt;header&gt;
+  &lt;h1&gt;Nome do Site&lt;/h1&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;
+                            </div>
+                        </div>
+
+                        <div class="element-demo">
+                            <h4>&lt;nav&gt;</h4>
+                            <p><strong>Propósito:</strong> Seção de navegação</p>
+                            <p><strong>Conteúdo típico:</strong> Menus, links de navegação</p>
+                            <div class="code-example">
+&lt;nav role="navigation"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#about"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+                            </div>
+                        </div>
+
+                        <div class="element-demo">
+                            <h4>&lt;main&gt;</h4>
+                            <p><strong>Propósito:</strong> Conteúdo principal da página</p>
+                            <p><strong>Nota:</strong> Apenas um &lt;main&gt; por página</p>
+                            <div class="code-example">
+&lt;main&gt;
+  &lt;h1&gt;Título Principal&lt;/h1&gt;
+  &lt;article&gt;...&lt;/article&gt;
+&lt;/main&gt;
+                            </div>
+                        </div>
+
+                        <div class="element-demo">
+                            <h4>&lt;article&gt;</h4>
+                            <p><strong>Propósito:</strong> Conteúdo independente e reutilizável</p>
+                            <p><strong>Exemplos:</strong> Post de blog, notícia, comentário</p>
+                            <div class="code-example">
+&lt;article&gt;
+  &lt;header&gt;
+    &lt;h2&gt;Título do Artigo&lt;/h2&gt;
+    &lt;time datetime="2024-03-15"&gt;15 Mar 2024&lt;/time&gt;
+  &lt;/header&gt;
+  &lt;p&gt;Conteúdo do artigo...&lt;/p&gt;
+&lt;/article&gt;
+                            </div>
+                        </div>
+
+                        <div class="element-demo">
+                            <h4>&lt;section&gt;</h4>
+                            <p><strong>Propósito:</strong> Seção temática do conteúdo</p>
+                            <p><strong>Nota:</strong> Deve ter um cabeçalho (h1-h6)</p>
+                            <div class="code-example">
+&lt;section&gt;
+  &lt;h2&gt;Produtos&lt;/h2&gt;
+  &lt;p&gt;Lista de produtos...&lt;/p&gt;
+&lt;/section&gt;
+                            </div>
+                        </div>
+
+                        <div class="element-demo">
+                            <h4>&lt;aside&gt;</h4>
+                            <p><strong>Propósito:</strong> Conteúdo relacionado mas secundário</p>
+                            <p><strong>Exemplos:</strong> Sidebar, widgets, anúncios</p>
+                            <div class="code-example">
+&lt;aside&gt;
+  &lt;h3&gt;Artigos Relacionados&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Artigo 1&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;
+                            </div>
+                        </div>
+
+                        <div class="element-demo">
+                            <h4>&lt;footer&gt;</h4>
+                            <p><strong>Propósito:</strong> Rodapé de página ou seção</p>
+                            <p><strong>Conteúdo típico:</strong> Copyright, links, contactos</p>
+                            <div class="code-example">
+&lt;footer&gt;
+  &lt;p&gt;&copy; 2024 Empresa. Todos os direitos reservados.&lt;/p&gt;
+  &lt;nav&gt;
+    &lt;a href="#privacidade"&gt;Privacidade&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/footer&gt;
+                            </div>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h3>Elementos de Conteúdo</h3>
+
+                        <div class="element-demo">
+                            <h4>&lt;figure&gt; e &lt;figcaption&gt;</h4>
+                            <p><strong>Propósito:</strong> Conteúdo ilustrativo com legenda</p>
+                            
+                            <figure style="margin: 1rem 0; text-align: center;">
+                                <div style="width: 200px; height: 150px; background: linear-gradient(45deg, #3498db, #2c3e50); margin: 0 auto; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                    Imagem de Exemplo
+                                </div>
+                                <figcaption>Figura 1: Exemplo de uso do elemento figure com legenda</figcaption>
+                            </figure>
+
+                            <div class="code-example">
+&lt;figure&gt;
+  &lt;img src="grafico.jpg" alt="Vendas 2024"&gt;
+  &lt;figcaption&gt;Gráfico de vendas 2024&lt;/figcaption&gt;
+&lt;/figure&gt;
+                            </div>
+                        </div>
+
+                        <div class="element-demo">
+                            <h4>&lt;details&gt; e &lt;summary&gt;</h4>
+                            <p><strong>Propósito:</strong> Conteúdo expansível</p>
+                            
+                            <details>
+                                <summary>Clique para expandir detalhes</summary>
+                                <p>Este conteúdo fica oculto até o utilizador clicar no summary. É útil para FAQs, informações adicionais, ou qualquer conteúdo que deve ser opcional.</p>
+                                <ul>
+                                    <li>Funciona sem JavaScript</li>
+                                    <li>Acessível por padrão</li>
+                                    <li>Pode ser estilizado com CSS</li>
+                                </ul>
+                            </details>
+
+                            <div class="code-example">
+&lt;details&gt;
+  &lt;summary&gt;FAQ: Como funciona?&lt;/summary&gt;
+  &lt;p&gt;Explicação detalhada...&lt;/p&gt;
+&lt;/details&gt;
+                            </div>
+                        </div>
+
+                        <div class="element-demo">
+                            <h4>&lt;time&gt;</h4>
+                            <p><strong>Propósito:</strong> Datas e horas legíveis por máquinas</p>
+                            <p>Exemplo: <time datetime="2024-03-15T14:30:00">15 de março de 2024, 14:30</time></p>
+                            
+                            <div class="code-example">
+&lt;time datetime="2024-03-15"&gt;15 de março de 2024&lt;/time&gt;
+&lt;time datetime="2024-03-15T14:30:00"&gt;hoje às 14:30&lt;/time&gt;
+                            </div>
+                        </div>
+
+                        <div class="element-demo">
+                            <h4>&lt;mark&gt;</h4>
+                            <p><strong>Propósito:</strong> Destacar texto relevante</p>
+                            <p>Este texto tem <mark>palavras destacadas</mark> para chamar atenção.</p>
+                            
+                            <div class="code-example">
+&lt;p&gt;Procurar por &lt;mark&gt;HTML semântico&lt;/mark&gt; no texto.&lt;/p&gt;
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- Estrutura completa -->
+                <section id="estrutura">
+                    <h2>🏗️ Estrutura Semântica Completa</h2>
+
+                    <div class="success-box">
+                        <h4>📋 Template de Página Semântica:</h4>
+                        <div class="code-example">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Título da Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Nome do Site&lt;/h1&gt;
+    &lt;nav role="navigation" aria-label="Navegação principal"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#sobre"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h2&gt;Título do Artigo&lt;/h2&gt;
+        &lt;p&gt;Por &lt;strong&gt;Autor&lt;/strong&gt; em &lt;time datetime="2024-03-15"&gt;15/03/2024&lt;/time&gt;&lt;/p&gt;
+      &lt;/header&gt;
+      
+      &lt;section&gt;
+        &lt;h3&gt;Introdução&lt;/h3&gt;
+        &lt;p&gt;Conteúdo da introdução...&lt;/p&gt;
+      &lt;/section&gt;
+      
+      &lt;section&gt;
+        &lt;h3&gt;Desenvolvimento&lt;/h3&gt;
+        &lt;p&gt;Conteúdo principal...&lt;/p&gt;
+        
+        &lt;figure&gt;
+          &lt;img src="imagem.jpg" alt="Descrição da imagem"&gt;
+          &lt;figcaption&gt;Legenda da imagem&lt;/figcaption&gt;
+        &lt;/figure&gt;
+      &lt;/section&gt;
+      
+      &lt;footer&gt;
+        &lt;p&gt;Tags: &lt;a href="#tag1"&gt;tag1&lt;/a&gt;, &lt;a href="#tag2"&gt;tag2&lt;/a&gt;&lt;/p&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;aside&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Artigos Relacionados&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#artigo1"&gt;Artigo 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#artigo2"&gt;Artigo 2&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+  &lt;/aside&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2024 Site Name. Todos os direitos reservados.&lt;/p&gt;
+    &lt;nav aria-label="Links do rodapé"&gt;
+      &lt;a href="#privacidade"&gt;Privacidade&lt;/a&gt;
+      &lt;a href="#termos"&gt;Termos&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Boas práticas -->
+                <section id="boas-praticas">
+                    <h2>💡 Boas Práticas</h2>
+
+                    <article>
+                        <h3>Hierarquia de Cabeçalhos</h3>
+                        <div class="info-box">
+                            <p><strong>Use h1-h6 de forma hierárquica:</strong></p>
+                            <ul>
+                                <li><code>h1</code> - Título principal (apenas um por página)</li>
+                                <li><code>h2</code> - Seções principais</li>
+                                <li><code>h3</code> - Subseções</li>
+                                <li><code>h4-h6</code> - Níveis mais específicos</li>
+                            </ul>
+                        </div>
+
+                        <div class="code-comparison">
+                            <div>
+                                <h4 style="color: #dc3545;">❌ Hierarquia incorreta</h4>
+                                <div class="code-example bad">
+&lt;h1&gt;Título Principal&lt;/h1&gt;
+&lt;h3&gt;Pula h2&lt;/h3&gt;
+&lt;h2&gt;Volta a h2&lt;/h2&gt;
+&lt;h5&gt;Pula para h5&lt;/h5&gt;
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 style="color: #28a745;">✅ Hierarquia correta</h4>
+                                <div class="code-example good">
+&lt;h1&gt;Título Principal&lt;/h1&gt;
+&lt;h2&gt;Seção Principal&lt;/h2&gt;
+&lt;h3&gt;Subseção&lt;/h3&gt;
+&lt;h4&gt;Sub-subseção&lt;/h4&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h3>Acessibilidade</h3>
+                        <div class="success-box">
+                            <ul>
+                                <li>Use <code>role</code> e <code>aria-label</code> quando necessário</li>
+                                <li>Forneça alternativas textuais para conteúdo visual</li>
+                                <li>Mantenha ordem lógica de tabulação</li>
+                                <li>Use contrastes adequados</li>
+                                <li>Teste com leitores de ecrã</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h3>SEO e Performance</h3>
+                        <div class="warning-box">
+                            <ul>
+                                <li>Use apenas um <code>&lt;h1&gt;</code> por página</li>
+                                <li>Inclua palavras-chave em cabeçalhos relevantes</li>
+                                <li>Use <code>&lt;main&gt;</code> para identificar conteúdo principal</li>
+                                <li>Estruture conteúdo de forma lógica</li>
+                                <li>Evite divs e spans desnecessários</li>
+                            </ul>
+                        </div>
+                    </article>
+                </section>
+
+                <section>
+                    <h2>🎯 Resumo</h2>
+                    <p>HTML semântico não é apenas sobre usar as tags certas - é sobre criar uma web mais acessível, compreensível e funcional para todos. Ao estruturar o conteúdo com significado, beneficiamos utilizadores, desenvolvedores e máquinas.</p>
+                </section>
+            </div>
+
+            <!-- Barra lateral semântica: conteúdo complementar -->
+            <aside role="complementary" aria-labelledby="sidebar-title">
+                <h3 id="sidebar-title">Navegação Rápida</h3>
+                <nav aria-labelledby="sidebar-nav">
+                    <ul>
+                        <li><a href="#conceitos">📚 Conceitos</a></li>
+                        <li><a href="#comparacao">⚖️ Comparação</a></li>
+                        <li><a href="#elementos">🧱 Elementos</a></li>
+                        <li><a href="#estrutura">🏗️ Estrutura</a></li>
+                        <li><a href="#boas-praticas">💡 Boas Práticas</a></li>
+                    </ul>
+                </nav>
+
+                <details style="margin-top: 2rem;">
+                    <summary>📖 Recursos Adicionais</summary>
+                    <ul style="margin-top: 1rem;">
+                        <li><a href="https://developer.mozilla.org/pt-BR/docs/Glossary/Semantics" target="_blank">MDN - Semântica</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank">WCAG Guidelines</a></li>
+                        <li><a href="https://validator.w3.org/" target="_blank">HTML Validator</a></li>
+                    </ul>
+                </details>
+
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin-top: 2rem;">
+                    <h4>💡 Dica do Dia</h4>
+                    <p style="font-size: 0.9rem; margin: 0;">Use o atributo <code>lang</code> no elemento html para especificar o idioma da página. Isto ajuda leitores de ecrã e motores de busca.</p>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Rodapé semântico: informação final e links auxiliares -->
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2024 Curso HTML, CSS & JavaScript. Material educativo para aprendizagem prática.</p>
+            <nav aria-label="Links do rodapé">
+                <a href="../index.html">Voltar ao Curso</a> | 
+                <a href="#topo">Voltar ao Topo</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Elementos ocultos para leitores de ecrã (visível só para tecnologias assistivas) -->
+    <div class="screen-reader-only">
+        <h2>Informações de Acessibilidade</h2>
+        <p>Esta página demonstra o uso de HTML semântico com foco em acessibilidade e estruturação significativa do conteúdo.</p>
+    </div>
+
+    <script>
+        // ========================================
+        // FUNCIONALIDADES DE DEMONSTRAÇÃO
+        // ========================================
+
+        // Destacar estrutura semântica na consola
+        window.onload = function() {
+            console.log('🌐 HTML5 Semântico carregado');
+            console.log('Estrutura da página:');
+            
+            // Mostrar hierarquia de elementos semânticos
+            const semanticElements = ['header', 'nav', 'main', 'article', 'section', 'aside', 'footer'];
+            semanticElements.forEach(element => {
+                const elements = document.querySelectorAll(element);
+                if (elements.length > 0) {
+                    console.log(`- ${elements.length} elemento(s) <${element}>`);
+                }
+            });
+            
+            // Verificar hierarquia de headings
+            const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            console.log(`\n📋 Hierarquia de cabeçalhos (${headings.length} total):`);
+            headings.forEach(heading => {
+                const level = heading.tagName.toLowerCase();
+                const text = heading.textContent.substring(0, 30);
+                console.log(`${level}: ${text}${text.length > 30 ? '...' : ''}`);
+            });
+        };
+
+        // Função para demonstrar navegação por landmarks
+        function navegarPorLandmarks() {
+            const landmarks = document.querySelectorAll('[role], header, nav, main, aside, footer');
+            console.log('\n🗺️ Landmarks de navegação:');
+            landmarks.forEach((element, index) => {
+                const role = element.getAttribute('role') || element.tagName.toLowerCase();
+                const label = element.getAttribute('aria-label') || element.getAttribute('aria-labelledby') || 'sem label';
+                console.log(`${index + 1}. <${element.tagName.toLowerCase()}> role="${role}" label="${label}"`);
+            });
+        }
+
+        // Executar demonstração após 2 segundos
+        setTimeout(navegarPorLandmarks, 2000);
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Foco para acessibilidade
+                    targetElement.setAttribute('tabindex', '-1');
+                    targetElement.focus();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

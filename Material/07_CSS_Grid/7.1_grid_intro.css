@@ -1,0 +1,41 @@
+/*
+  Licao 7.1: Introducao ao CSS Grid
+  - body: estilo base
+  - .ativos: grid container
+  - .ativo: item do grid
+*/
+
+/* body: tipografia e fundo */
+body {
+  font-family: system-ui, sans-serif; /* tipo de letra base */
+  margin: 24px; /* margem externa */
+  background: #f8fafc; /* cor de fundo */
+}
+
+/* .ativos: container grid com 3 colunas */
+.ativos {
+  display: grid; /* ativa o grid */
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+  gap: 12px; /* espaco entre itens */
+}
+
+/* .ativo: cartao de cada item */
+.ativo {
+  background: #ffffff; /* fundo branco */
+  border-radius: 8px; /* cantos arredondados */
+  padding: 16px; /* espaco interno */
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06); /* sombra suave */
+}
+
+/* h2 dentro de .ativo */
+.ativo h2 {
+  margin: 0 0 8px; /* espaco inferior */
+  font-size: 1rem; /* tamanho do titulo */
+}
+
+/* p dentro de .ativo */
+.ativo p {
+  margin: 0; /* remover margem padrao */
+  font-size: 0.9rem; /* tamanho do texto */
+  color: #475569; /* cor do texto */
+}

@@ -1,0 +1,147 @@
+/*
+  Licao 6.4: Layout Responsivo com Flexbox
+  - flex-wrap: permite quebra de linha
+  - flex: grow shrink basis
+  - layouts praticos: sidebar, cards, footer
+*/
+
+/* body: estilo base */
+body {
+  font-family: system-ui, sans-serif; /* tipo de letra */
+  margin: 24px; /* margem externa */
+  background: #f4f6f8; /* cor de fundo */
+}
+
+/* h1: titulo principal */
+h1 {
+  color: #0a66c2; /* cor azul */
+  margin-bottom: 24px; /* espaco inferior */
+}
+
+/* .exemplo: seccao de cada exemplo */
+.exemplo {
+  background: white; /* fundo branco */
+  padding: 20px; /* espaco interno */
+  margin-bottom: 24px; /* espaco entre seccoes */
+  border-radius: 8px; /* cantos arredondados */
+}
+
+/* h2: titulo de seccao */
+.exemplo h2 {
+  color: #0a66c2; /* cor azul */
+  margin-top: 0; /* remover margem superior */
+}
+
+/* ================================
+   EXEMPLO 1: FLEX-WRAP
+   ================================ */
+
+/* .container-wrap: permite quebra de linha */
+.container-wrap {
+  display: flex; /* ativa flexbox */
+  flex-wrap: wrap; /* PERMITE quebra de linha */
+  gap: 10px; /* espaco entre itens */
+}
+
+/* .item-wrap: itens com largura minima */
+.item-wrap {
+  flex: 1 1 150px; /* grow:1, shrink:1, basis:150px */
+  /* Traduzido: minimo 150px, cresce se houver espaco */
+  padding: 20px; /* espaco interno */
+  background: #0a66c2; /* azul */
+  color: white; /* texto branco */
+  text-align: center; /* texto centrado */
+  border-radius: 6px; /* cantos */
+}
+
+/* ================================
+   EXEMPLO 2: SIDEBAR + CONTEUDO
+   ================================ */
+
+/* .layout-pagina: container flex */
+.layout-pagina {
+  display: flex; /* ativa flexbox */
+  gap: 20px; /* espaco entre sidebar e conteudo */
+}
+
+/* .sidebar: largura fixa */
+.sidebar {
+  flex: 0 0 200px; /* NAO cresce, NAO encolhe, 200px fixo */
+  padding: 20px; /* espaco interno */
+  background: #0a66c2; /* azul */
+  color: white; /* texto branco */
+  border-radius: 6px; /* cantos */
+}
+
+/* .conteudo: preenche o resto */
+.conteudo {
+  flex: 1; /* cresce para preencher espaco */
+  padding: 20px; /* espaco interno */
+  background: #f1f5f9; /* cinza claro */
+  border-radius: 6px; /* cantos */
+}
+
+/* h3 dentro de sidebar e conteudo */
+.sidebar h3,
+.conteudo h3 {
+  margin-top: 0; /* sem margem superior */
+}
+
+/* ================================
+   EXEMPLO 3: GRID DE CARDS
+   ================================ */
+
+/* .cards-grid: grid flexivel */
+.cards-grid {
+  display: flex; /* ativa flexbox */
+  flex-wrap: wrap; /* permite quebra */
+  gap: 15px; /* espaco entre cards */
+}
+
+/* .card: cada card */
+.card {
+  flex: 1 1 200px; /* minimo 200px, cresce se houver espaco */
+  padding: 20px; /* espaco interno */
+  background: #f1f5f9; /* cinza claro */
+  border-radius: 8px; /* cantos */
+  border: 1px solid #e2e8f0; /* borda subtil */
+}
+
+/* h3 dentro do card */
+.card h3 {
+  color: #0a66c2; /* azul */
+  margin-top: 0; /* sem margem superior */
+}
+
+/* ================================
+   EXEMPLO 4: FOOTER
+   ================================ */
+
+/* .footer: footer com colunas */
+.footer {
+  display: flex; /* ativa flexbox */
+  flex-wrap: wrap; /* responsivo */
+  gap: 30px; /* espaco entre colunas */
+  padding: 30px; /* espaco interno */
+  background: #1e293b; /* azul escuro */
+  color: white; /* texto branco */
+  border-radius: 8px; /* cantos */
+}
+
+/* .footer-coluna: cada coluna */
+.footer-coluna {
+  flex: 1 1 150px; /* minimo 150px */
+}
+
+/* h4 no footer */
+.footer-coluna h4 {
+  color: #60a5fa; /* azul claro */
+  margin-top: 0; /* sem margem superior */
+  margin-bottom: 15px; /* espaco inferior */
+}
+
+/* p no footer */
+.footer-coluna p {
+  margin: 8px 0; /* espaco entre paragrafos */
+  color: #94a3b8; /* cinza claro */
+}

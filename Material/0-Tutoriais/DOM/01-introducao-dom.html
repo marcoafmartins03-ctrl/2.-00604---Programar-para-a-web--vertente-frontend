@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de DOM - Document Object Model</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1.2em;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #4a5568;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(76, 175, 80, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .demo-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .demo-title {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        button {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        button.secondary {
+            background: linear-gradient(45deg, #6c757d, #5a6268);
+        }
+
+        button.danger {
+            background: linear-gradient(45deg, #dc3545, #c82333);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 5px 0;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .output {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            font-size: 14px;
+        }
+
+        .element-exemplo {
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            background: #f0fff4;
+        }
+
+        .lista-dinamica {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .lista-dinamica li {
+            padding: 8px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .caixa-cor {
+            width: 100px;
+            height: 100px;
+            border: 3px solid #333;
+            border-radius: 10px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .carrinho-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .drag-area {
+            border: 3px dashed #4CAF50;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            background: #f0fff4;
+            transition: all 0.3s ease;
+        }
+
+        .drag-area.dragover {
+            background: #4CAF50;
+            color: white;
+            border-color: white;
+        }
+
+        .drag-element {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            border-radius: 10px;
+            cursor: move;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .drag-element:hover {
+            transform: scale(1.1);
+        }
+
+        .counter {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4CAF50;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-color: #4CAF50;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-color: #dc3545;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .tips {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .tips h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .tips ul {
+            color: #856404;
+            padding-left: 20px;
+        }
+
+        .tips li {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .nav-tab {
+                margin: 2px 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Tutorial de DOM</h1>
+            <p class="subtitle">Document Object Model - Guia Completo para Estudantes</p>
+            <p>Aprenda a manipular páginas web dinamicamente com JavaScript</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" onclick="mostrarSecao('introducao')">📚 Introdução</button>
+            <button class="nav-tab" onclick="mostrarSecao('seletores')">🎯 Seletores</button>
+            <button class="nav-tab" onclick="mostrarSecao('manipulacao')">🔧 Manipulação</button>
+            <button class="nav-tab" onclick="mostrarSecao('eventos')">⚡ Eventos</button>
+            <button class="nav-tab" onclick="mostrarSecao('exercicios')">💪 Exercícios</button>
+            <button class="nav-tab" onclick="mostrarSecao('avancado')">🚀 Avançado</button>
+        </nav>
+
+        <!-- Secção: Introdução -->
+        <section id="introducao" class="content-section active">
+            <h2>📚 Introdução ao DOM</h2>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">O que é o DOM?</h3>
+                <p>O <strong>Document Object Model (DOM)</strong> é uma representação em árvore da estrutura HTML de uma página web. Permite-nos manipular o conteúdo, estrutura e estilo de uma página web usando JavaScript.</p>
+                
+                <div class="code-example">
+// Estrutura básica do DOM
+document                  // Objeto raiz
+├── html
+│   ├── head
+│   │   ├── title
+│   │   └── meta
+│   └── body
+│       ├── div
+│       ├── p
+│       └── button
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">Elementos Básicos do DOM</h3>
+                <div id="elemento-basico" class="element-exemplo">
+                    <p>Este é um elemento de exemplo</p>
+                    <button onclick="alterarElementoBasico()">Clicar para alterar</button>
+                </div>
+                <div id="output-basico" class="output">Clique no botão para ver a manipulação do DOM...</div>
+            </div>
+
+            <div class="tips">
+                <h4>💡 Dicas Importantes:</h4>
+                <ul>
+                    <li>Sempre verificar se o elemento existe antes de o manipular</li>
+                    <li>O DOM está disponível apenas em ambientes de browser</li>
+                    <li>Usar o console do browser (F12) para debugging</li>
+                    <li>Testar em diferentes browsers para compatibilidade</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Secção: Seletores -->
+        <section id="seletores" class="content-section">
+            <h2>🎯 Seletores de Elementos</h2>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Métodos de Seleção</h3>
+                <div id="elemento-teste" class="element-exemplo">
+                    <p class="classe-teste">Parágrafo com classe</p>
+                    <span id="id-teste">Span com ID</span>
+                    <div class="classe-teste">Div com classe</div>
+                </div>
+                
+                <button onclick="demonstrarSeletores()">Demonstrar Seletores</button>
+                <div id="output-seletores" class="output">Clique no botão para ver os diferentes métodos de seleção...</div>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">Seletores CSS</h3>
+                <div class="code-example">
+// Diferentes métodos de seleção
+document.getElementById('id-teste')           // Por ID (único)
+document.getElementsByClassName('classe')    // Por classe (múltiplo)
+document.getElementsByTagName('div')         // Por tag (múltiplo)
+document.querySelector('.classe')            // Primeiro elemento com seletor CSS
+document.querySelectorAll('.classe')         // Todos os elementos com seletor CSS
+                </div>
+                
+                <button onclick="testarSeletores()">Testar Seletores</button>
+                <div id="output-seletores-css" class="output">Resultados dos seletores aparecerão aqui...</div>
+            </div>
+        </section>
+
+        <!-- Secção: Manipulação -->
+        <section id="manipulacao" class="content-section">
+            <h2>🔧 Manipulação de Conteúdo</h2>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Alterar Conteúdo</h3>
+                <div id="elemento-manipulacao" class="element-exemplo">
+                    <p>Conteúdo original</p>
+                </div>
+                
+                <button onclick="alterarInnerHTML()">Alterar com innerHTML</button>
+                <button onclick="alterarTextContent()">Alterar com textContent</button>
+                <button onclick="restaurarConteudo()">Restaurar</button>
+                
+                <div class="code-example">
+// Manipulação de conteúdo
+elemento.innerHTML = "&lt;strong&gt;HTML&lt;/strong&gt;";  // Permite HTML
+elemento.textContent = "Texto simples";              // Apenas texto
+elemento.innerText = "Texto formatado";              // Respeita formatação
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">Criar e Remover Elementos</h3>
+                <div id="container-elementos" class="element-exemplo">
+                    <p>Elemento original</p>
+                </div>
+                
+                <button onclick="criarElemento()">Criar Elemento</button>
+                <button onclick="removerElemento()">Remover Último</button>
+                <button onclick="limparContainer()">Limpar Tudo</button>
+                
+                <div class="code-example">
+// Criação de elementos
+const novoElemento = document.createElement('div');
+novoElemento.textContent = "Novo elemento";
+container.appendChild(novoElemento);
+
+// Remoção de elementos
+elemento.remove();                    // Método moderno
+container.removeChild(elemento);     // Método tradicional
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">Manipular Atributos</h3>
+                <img id="imagem-teste" src="https://via.placeholder.com/150x100/4CAF50/white?text=Imagem" alt="Imagem de teste">
+                
+                <button onclick="alterarAtributos()">Alterar Atributos</button>
+                <button onclick="removerAtributos()">Remover Atributos</button>
+                
+                <div class="code-example">
+// Manipulação de atributos
+elemento.setAttribute('src', 'nova-imagem.jpg');
+elemento.getAttribute('alt');
+elemento.removeAttribute('title');
+elemento.classList.add('nova-classe');
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção: Eventos -->
+        <section id="eventos" class="content-section">
+            <h2>⚡ Eventos do DOM</h2>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Eventos Básicos</h3>
+                <div id="area-eventos" class="element-exemplo">
+                    <button id="botao-evento">Clique aqui</button>
+                    <div id="output-eventos" class="output">Eventos serão registados aqui...</div>
+                </div>
+                
+                <div class="code-example">
+// Adicionar eventos
+elemento.addEventListener('click', function(evento) {
+    console.log('Elemento clicado!');
+    console.log('Evento:', evento);
+});
+
+// Remover eventos
+elemento.removeEventListener('click', funcao);
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">Eventos de Formulário</h3>
+                <form id="formulario-teste">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" placeholder="Introduza o seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="introduza@email.com">
+                    </div>
+                    <button type="submit">Enviar</button>
+                </form>
+                
+                <div id="output-formulario" class="output">Validação do formulário aparecerá aqui...</div>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">Eventos de Teclado e Rato</h3>
+                <div id="area-interacao" class="element-exemplo" style="min-height: 100px; background: #f0f0f0;">
+                    <p>Mova o rato aqui ou pressione teclas</p>
+                </div>
+                
+                <div id="output-interacao" class="output">Eventos de teclado e rato aparecerão aqui...</div>
+            </div>
+        </section>
+
+        <!-- Secção: Exercícios -->
+        <section id="exercicios" class="content-section">
+            <h2>💪 Exercícios Práticos</h2>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">1. Contador Interativo</h3>
+                <div class="counter">
+                    Contador: <span id="contador-numero">0</span>
+                </div>
+                <button onclick="incrementarContador()">+</button>
+                <button onclick="decrementarContador()">-</button>
+                <button onclick="resetarContador()" class="secondary">Reset</button>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">2. Lista Dinâmica</h3>
+                <div id="lista-interativa" class="lista-dinamica">
+                    <ul id="lista-itens">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                    </ul>
+                </div>
+                <input type="text" id="novo-item" placeholder="Introduza um novo item">
+                <button onclick="adicionarItemLista()">Adicionar Item</button>
+                <button onclick="removerItemLista()" class="danger">Remover Último</button>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">3. Carrinho de Compras</h3>
+                <div id="carrinho-compras">
+                    <h4>Produtos:</h4>
+                    <button onclick="adicionarProduto('Maçã', 1.50)">Maçã - €1.50</button>
+                    <button onclick="adicionarProduto('Laranja', 2.00)">Laranja - €2.00</button>
+                    <button onclick="adicionarProduto('Banana', 1.20)">Banana - €1.20</button>
+                    
+                    <h4>Itens no carrinho:</h4>
+                    <div id="itens-carrinho"></div>
+                    
+                    <h4>Total: €<span id="total-carrinho">0.00</span></h4>
+                    <button onclick="limparCarrinho()" class="danger">Limpar Carrinho</button>
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">4. Alterar Cores</h3>
+                <div id="caixa-cores" class="caixa-cor" style="background: blue;"></div>
+                <button onclick="alterarCorCaixa()">Alterar Cor</button>
+                <button onclick="corAleatoria()">Cor Aleatória</button>
+            </div>
+        </section>
+
+        <!-- Secção: Avançado -->
+        <section id="avancado" class="content-section">
+            <h2>🚀 Exemplos Avançados</h2>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Drag and Drop</h3>
+                <div class="drag-area" id="area-origem">
+                    <div class="drag-element" id="elemento-arrasto" draggable="true">
+                        Arrastar
+                    </div>
+                </div>
+                <div class="drag-area" id="area-destino">
+                    Largue aqui
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">Validação Avançada</h3>
+                <form id="formulario-avancado">
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" placeholder="+351 912 345 678">
+                        <div id="erro-telefone" class="alert" style="display: none;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" placeholder="Mínimo 8 caracteres">
+                        <div id="forca-password" class="output">Força da password aparecerá aqui...</div>
+                    </div>
+                    <button type="submit">Validar</button>
+                </form>
+            </div>
+
+            <div class="demo-card">
+                <h3 class="demo-title">Animação com DOM</h3>
+                <div id="elemento-animacao" style="width: 100px; height: 100px; background: linear-gradient(45deg, #ff6b6b, #4ecdc4); border-radius: 50%; position: relative;"></div>
+                <button onclick="animarElemento()">Animar</button>
+                <button onclick="pararAnimacao()">Parar</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="DOM.js"></script>
+    <script>
+        // Variáveis globais
+        let contador = 0;
+        let carrinho = [];
+        let totalCarrinho = 0;
+
+        // Funções de navegação
+        function mostrarSecao(id) {
+            // Ocultar todas as secções
+            document.querySelectorAll('.content-section').forEach(secao => {
+                secao.classList.remove('active');
+            });
+            
+            // Remover classe active de todos os tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Mostrar a secção selecionada
+            const secao = document.querySelector(`#${id}`);
+            if (secao) {
+                secao.classList.add('active');
+            }
+            
+            // Ativar o tab correspondente
+            const tab = event.target;
+            tab.classList.add('active');
+        }
+
+        // Funções da secção Introdução
+        function alterarElementoBasico() {
+            const elemento = document.getElementById('elemento-basico');
+            const output = document.getElementById('output-basico');
+            
+            if (elemento && output) {
+                elemento.innerHTML = '<strong>Elemento alterado com sucesso!</strong>';
+                output.textContent = '✅ Elemento manipulado com innerHTML';
+                
+                setTimeout(() => {
+                    elemento.style.backgroundColor = '#e8f5e8';
+                }, 500);
+            }
+        }
+
+        // Funções da secção Seletores
+        function demonstrarSeletores() {
+            const output = document.getElementById('output-seletores');
+            if (output) {
+                const elementoPorId = document.getElementById('id-teste');
+                const elementosPorClasse = document.getElementsByClassName('classe-teste');
+                const todosElementos = document.querySelectorAll('.classe-teste');
+                
+                output.textContent = `
+getElementById: ${elementoPorId ? elementoPorId.textContent : 'não encontrado'}
+getElementsByClassName: ${elementosPorClasse.length} elementos encontrados
+querySelectorAll: ${todosElementos.length} elementos encontrados
+                `;
+            }
+        }
+
+        function testarSeletores() {
+            const output = document.getElementById('output-seletores-css');
+            if (output) {
+                const paragrafos = document.querySelectorAll('p');
+                const botoes = document.querySelectorAll('button');
+                const inputs = document.querySelectorAll('input');
+                
+                output.textContent = `
+📊 Estatísticas da página:
+- Parágrafos: ${paragrafos.length}
+- Botões: ${botoes.length}
+- Inputs: ${inputs.length}
+- Parágrafos com classe 'classe-teste': ${document.querySelectorAll('p.classe-teste').length}
+                `;
+            }
+        }
+
+        // Funções da secção Manipulação
+        function alterarInnerHTML() {
+            const elemento = document.getElementById('elemento-manipulacao');
+            if (elemento) {
+                elemento.innerHTML = '<p><strong>Texto em negrito</strong> com <em>itálico</em></p>';
+            }
+        }
+
+        function alterarTextContent() {
+            const elemento = document.getElementById('elemento-manipulacao');
+            if (elemento) {
+                elemento.textContent = 'Texto simples sem HTML';
+            }
+        }
+
+        function restaurarConteudo() {
+            const elemento = document.getElementById('elemento-manipulacao');
+            if (elemento) {
+                elemento.innerHTML = '<p>Conteúdo original</p>';
+            }
+        }
+
+        function criarElemento() {
+            const container = document.getElementById('container-elementos');
+            if (container) {
+                const novoElemento = document.createElement('div');
+                novoElemento.textContent = `Elemento criado em ${new Date().toLocaleTimeString()}`;
+                novoElemento.style.backgroundColor = '#e8f5e8';
+                novoElemento.style.padding = '10px';
+                novoElemento.style.margin = '5px 0';
+                novoElemento.style.borderRadius = '5px';
+                container.appendChild(novoElemento);
+            }
+        }
+
+        function removerElemento() {
+            const container = document.getElementById('container-elementos');
+            if (container && container.children.length > 1) {
+                container.removeChild(container.lastElementChild);
+            }
+        }
+
+        function limparContainer() {
+            const container = document.getElementById('container-elementos');
+            if (container) {
+                container.innerHTML = '<p>Elemento original</p>';
+            }
+        }
+
+        function alterarAtributos() {
+            const imagem = document.getElementById('imagem-teste');
+            if (imagem) {
+                imagem.setAttribute('src', 'https://via.placeholder.com/150x100/ff6b6b/white?text=Alterada');
+                imagem.setAttribute('alt', 'Imagem alterada');
+                imagem.setAttribute('title', 'Nova imagem');
+            }
+        }
+
+        function removerAtributos() {
+            const imagem = document.getElementById('imagem-teste');
+            if (imagem) {
+                imagem.removeAttribute('title');
+                imagem.removeAttribute('alt');
+            }
+        }
+
+        // Funções da secção Eventos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar eventos do botão
+            const botao = document.getElementById('botao-evento');
+            const outputEventos = document.getElementById('output-eventos');
+            
+            if (botao && outputEventos) {
+                botao.addEventListener('click', function(evento) {
+                    outputEventos.textContent += '\n✅ Botão clicado!';
+                    console.log('Evento de clique:', evento);
+                });
+                
+                botao.addEventListener('mouseover', function() {
+                    outputEventos.textContent += '\n🖱️ Rato sobre o botão';
+                    this.style.backgroundColor = '#45a049';
+                });
+                
+                botao.addEventListener('mouseout', function() {
+                    outputEventos.textContent += '\n👋 Rato saiu do botão';
+                    this.style.backgroundColor = '';
+                });
+            }
+            
+            // Configurar eventos do formulário
+            const formulario = document.getElementById('formulario-teste');
+            const outputFormulario = document.getElementById('output-formulario');
+            
+            if (formulario && outputFormulario) {
+                formulario.addEventListener('submit', function(evento) {
+                    evento.preventDefault();
+                    
+                    const nome = document.getElementById('nome').value;
+                    const email = document.getElementById('email').value;
+                    
+                    if (nome.trim() === '') {
+                        outputFormulario.textContent = '❌ Por favor, introduza o seu nome';
+                        return;
+                    }
+                    
+                    if (!email.includes('@')) {
+                        outputFormulario.textContent = '❌ Por favor, introduza um email válido';
+                        return;
+                    }
+                    
+                    outputFormulario.textContent = `✅ Formulário válido!\nNome: ${nome}\nEmail: ${email}`;
+                });
+            }
+            
+            // Configurar eventos de interação
+            const areaInteracao = document.getElementById('area-interacao');
+            const outputInteracao = document.getElementById('output-interacao');
+            
+            if (areaInteracao && outputInteracao) {
+                areaInteracao.addEventListener('mousemove', function(evento) {
+                    outputInteracao.textContent = `🖱️ Rato em: ${evento.offsetX}, ${evento.offsetY}`;
+                });
+                
+                areaInteracao.addEventListener('click', function(evento) {
+                    outputInteracao.textContent += `\n👆 Clique em: ${evento.offsetX}, ${evento.offsetY}`;
+                });
+                
+                document.addEventListener('keydown', function(evento) {
+                    outputInteracao.textContent += `\n⌨️ Tecla pressionada: ${evento.key}`;
+                });
+            }
+        });
+
+        // Funções dos exercícios
+        function incrementarContador() {
+            contador++;
+            document.getElementById('contador-numero').textContent = contador;
+        }
+
+        function decrementarContador() {
+            contador--;
+            document.getElementById('contador-numero').textContent = contador;
+        }
+
+        function resetarContador() {
+            contador = 0;
+            document.getElementById('contador-numero').textContent = contador;
+        }
+
+        function adicionarItemLista() {
+            const input = document.getElementById('novo-item');
+            const lista = document.getElementById('lista-itens');
+            
+            if (input && lista && input.value.trim() !== '') {
+                const li = document.createElement('li');
+                li.textContent = input.value;
+                lista.appendChild(li);
+                input.value = '';
+            }
+        }
+
+        function removerItemLista() {
+            const lista = document.getElementById('lista-itens');
+            if (lista && lista.children.length > 0) {
+                lista.removeChild(lista.lastElementChild);
+            }
+        }
+
+        function adicionarProduto(nome, preco) {
+            carrinho.push({ nome, preco });
+            totalCarrinho += preco;
+            atualizarCarrinho();
+        }
+
+        function limparCarrinho() {
+            carrinho = [];
+            totalCarrinho = 0;
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const itensDiv = document.getElementById('itens-carrinho');
+            const totalSpan = document.getElementById('total-carrinho');
+            
+            if (itensDiv) {
+                itensDiv.innerHTML = carrinho.map(item => 
+                    `<div class="carrinho-item">
+                        <span>${item.nome}</span>
+                        <span>€${item.preco.toFixed(2)}</span>
+                    </div>`
+                ).join('');
+            }
+            
+            if (totalSpan) {
+                totalSpan.textContent = totalCarrinho.toFixed(2);
+            }
+        }
+
+        function alterarCorCaixa() {
+            const cores = ['red', 'green', 'blue', 'yellow', 'purple', 'orange', 'pink', 'brown'];
+            const caixa = document.getElementById('caixa-cores');
+            if (caixa) {
+                const corAtual = caixa.style.backgroundColor;
+                let proximaCor = cores[0];
+                
+                for (let i = 0; i < cores.length; i++) {
+                    if (cores[i] === corAtual || caixa.style.backgroundColor.includes(cores[i])) {
+                        proximaCor = cores[(i + 1) % cores.length];
+                        break;
+                    }
+                }
+                
+                caixa.style.backgroundColor = proximaCor;
+            }
+        }
+
+        function corAleatoria() {
+            const caixa = document.getElementById('caixa-cores');
+            if (caixa) {
+                const cor = '#' + Math.floor(Math.random()*16777215).toString(16);
+                caixa.style.backgroundColor = cor;
+            }
+        }
+
+        // Funções avançadas
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar drag and drop
+            const elemento = document.getElementById('elemento-arrasto');
+            const areaDestino = document.getElementById('area-destino');
+            
+            if (elemento && areaDestino) {
+                elemento.addEventListener('dragstart', function(e) {
+                    e.dataTransfer.setData('text', e.target.id);
+                    console.log('Arrasto iniciado');
+                });
+                
+                areaDestino.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('dragover');
+                });
+                
+                areaDestino.addEventListener('dragleave', function(e) {
+                    this.classList.remove('dragover');
+                });
+                
+                areaDestino.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                    const id = e.dataTransfer.getData('text');
+                    const elemento = document.getElementById(id);
+                    if (elemento) {
+                        this.appendChild(elemento);
+                        console.log('Elemento largado');
+                    }
+                });
+            }
+            
+            // Configurar validação avançada
+            const telefone = document.getElementById('telefone');
+            const erroTelefone = document.getElementById('erro-telefone');
+            
+            if (telefone && erroTelefone) {
+                telefone.addEventListener('input', function() {
+                    const valor = this.value;
+                    const regex = /^[\+]?[0-9\s\-\(\)]{9,}$/;
+                    
+                    if (valor && !regex.test(valor)) {
+                        erroTelefone.textContent = '❌ Formato de telefone inválido';
+                        erroTelefone.style.display = 'block';
+                        erroTelefone.className = 'alert alert-error';
+                    } else {
+                        erroTelefone.style.display = 'none';
+                    }
+                });
+            }
+            
+            const password = document.getElementById('password');
+            const forcaPassword = document.getElementById('forca-password');
+            
+            if (password && forcaPassword) {
+                password.addEventListener('input', function() {
+                    const valor = this.value;
+                    let forca = 0;
+                    let mensagem = '';
+                    
+                    if (valor.length >= 8) forca++;
+                    if (/[A-Z]/.test(valor)) forca++;
+                    if (/[a-z]/.test(valor)) forca++;
+                    if (/[0-9]/.test(valor)) forca++;
+                    if (/[^A-Za-z0-9]/.test(valor)) forca++;
+                    
+                    switch (forca) {
+                        case 0: case 1: mensagem = '🔴 Muito fraca'; break;
+                        case 2: mensagem = '🟡 Fraca'; break;
+                        case 3: mensagem = '🟠 Média'; break;
+                        case 4: mensagem = '🟢 Forte'; break;
+                        case 5: mensagem = '✅ Muito forte'; break;
+                    }
+                    
+                    forcaPassword.textContent = `Força: ${mensagem}`;
+                });
+            }
+        });
+
+        function animarElemento() {
+            const elemento = document.getElementById('elemento-animacao');
+            if (elemento) {
+                let posicao = 0;
+                const intervalo = setInterval(() => {
+                    posicao += 5;
+                    elemento.style.left = posicao + 'px';
+                    
+                    if (posicao >= 300) {
+                        clearInterval(intervalo);
+                        elemento.style.left = '0px';
+                    }
+                }, 50);
+            }
+        }
+
+        function pararAnimacao() {
+            const elemento = document.getElementById('elemento-animacao');
+            if (elemento) {
+                elemento.style.left = '0px';
+            }
+        }
+
+        // Inicialização
+        console.log('🎯 Tutorial de DOM carregado!');
+        console.log('Abrir o console (F12) para ver logs detalhados');
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+/*
+  Licao 6.2: Flex container vs itens
+  - body: estilo base
+  - .painel: flex container
+  - .cartao: base dos itens
+  - .cartao-critico / .cartao-normal: proporcao de espaco
+*/
+
+/* body: tipografia e margem */
+body {
+  font-family: system-ui, sans-serif; /* tipo de letra base */
+  margin: 24px; /* margem externa */
+}
+
+/* .painel: container flex */
+.painel {
+  display: flex; /* elemento pai torna-se flex container */
+  gap: 12px; /* espaco entre cartoes */
+}
+
+/* .cartao: base visual */
+.cartao {
+  padding: 16px; /* espaco interno */
+  border-radius: 6px; /* cantos arredondados */
+  background: #f0f4ff; /* cor de fundo */
+}
+
+/* .cartao-critico: ocupa mais espaco */
+.cartao-critico { flex: 2; } /* cresce o dobro */
+
+/* .cartao-normal: ocupa menos espaco */
+.cartao-normal  { flex: 1; } /* tamanho base */

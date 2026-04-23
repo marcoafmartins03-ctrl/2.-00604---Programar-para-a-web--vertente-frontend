@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padroes Responsivos Comuns</title>
+    <link rel="stylesheet" href="6B.3_patterns_responsivos.css">
+</head>
+<body>
+    <!--
+        PADROES RESPONSIVOS: 4 patterns comuns em sites responsivos:
+        1. Menu hamburger (CSS puro) | 2. Esconder/mostrar elementos
+        3. Tabela responsiva | 4. Grelha de cards (1 a 4 colunas)
+    -->
+
+    <!-- PADRAO 1: MENU HAMBURGER (checkbox escondido + label como icone) -->
+    <header class="cabecalho">
+        <div class="container">
+            <h1 class="logo">Padroes Responsivos</h1>
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="menu-hamburger">
+                <span></span><span></span><span></span>
+            </label>
+            <nav class="nav-menu">
+                <a href="#">Inicio</a>
+                <a href="#">Sobre</a>
+                <a href="#">Servicos</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PADRAO 2: ESCONDER/MOSTRAR conforme tamanho do ecra -->
+    <section class="seccao">
+        <h2>Esconder e Mostrar Elementos</h2>
+        <p>Os elementos abaixo aparecem ou desaparecem conforme o tamanho do ecra.</p>
+        <div class="esconder-desktop aviso-mobile">
+            Isto so aparece no <strong>MOBILE</strong> (abaixo de 768px).
+        </div>
+        <div class="esconder-mobile aviso-desktop">
+            Isto so aparece no <strong>DESKTOP</strong> (768px ou mais).
+        </div>
+        <div class="sempre-visivel">
+            Este elemento esta <strong>sempre visivel</strong> em qualquer ecra.
+        </div>
+    </section>
+
+    <!-- PADRAO 3: TABELA RESPONSIVA (scroll horizontal no mobile) -->
+    <section class="seccao">
+        <h2>Tabela Responsiva</h2>
+        <p>No mobile a tabela tem scroll horizontal. Redimensione para testar.</p>
+        <div class="tabela-container">
+            <table class="tabela-responsiva">
+                <thead>
+                    <tr>
+                        <th>Produto</th><th>Categoria</th><th>Preco</th>
+                        <th>Stock</th><th>Avaliacao</th><th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Portatil Pro 15</td><td>Informatica</td><td>1299.99</td>
+                        <td>45</td><td>4.5/5</td><td>Disponivel</td>
+                    </tr>
+                    <tr>
+                        <td>Rato Wireless</td><td>Perifericos</td><td>29.99</td>
+                        <td>200</td><td>4.2/5</td><td>Disponivel</td>
+                    </tr>
+                    <tr>
+                        <td>Monitor 27 4K</td><td>Monitores</td><td>549.99</td>
+                        <td>12</td><td>4.8/5</td><td>Pouco stock</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- PADRAO 4: GRELHA DE CARDS (1 col -> 2 -> 3 -> 4) -->
+    <section class="seccao">
+        <h2>Grelha Responsiva de Cards</h2>
+        <p>Cards adaptam-se: 1 coluna (mobile), 2 (480px+), 3 (768px+), 4 (1024px+).</p>
+        <div class="cards-grid">
+            <div class="grid-card"><h3>Card 1</h3><p>Conteudo do primeiro card.</p></div>
+            <div class="grid-card"><h3>Card 2</h3><p>Conteudo do segundo card.</p></div>
+            <div class="grid-card"><h3>Card 3</h3><p>Conteudo do terceiro card.</p></div>
+            <div class="grid-card"><h3>Card 4</h3><p>Conteudo do quarto card.</p></div>
+            <div class="grid-card"><h3>Card 5</h3><p>Conteudo do quinto card.</p></div>
+            <div class="grid-card"><h3>Card 6</h3><p>Conteudo do sexto card.</p></div>
+            <div class="grid-card"><h3>Card 7</h3><p>Conteudo do setimo card.</p></div>
+            <div class="grid-card"><h3>Card 8</h3><p>Conteudo do oitavo card.</p></div>
+        </div>
+    </section>
+
+    <footer class="rodape">
+        <p>Modulo 06B — CSS Responsivo — Aula 3: Padroes Responsivos</p>
+    </footer>
+</body>
+</html>

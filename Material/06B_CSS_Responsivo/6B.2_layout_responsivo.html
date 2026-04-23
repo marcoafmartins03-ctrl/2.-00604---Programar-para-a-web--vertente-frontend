@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta viewport obrigatorio para design responsivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Responsivo - Pagina Completa</title>
+    <link rel="stylesheet" href="6B.2_layout_responsivo.css">
+</head>
+<body>
+    <!--
+        LAYOUT RESPONSIVO COMPLETO
+        ==========================
+        Este ficheiro demonstra um layout de pagina real que se adapta
+        a todos os tamanhos de ecra. No mobile tudo empilha verticalmente,
+        em tablet e desktop os elementos ficam lado a lado.
+
+        Estrutura: Header > Hero > Servicos > Conteudo 2 colunas > Footer
+    -->
+
+    <!-- HEADER com navegacao -->
+    <header class="cabecalho">
+        <div class="container">
+            <div class="cabecalho-conteudo">
+                <h1 class="logo">MinhaMarca</h1>
+                <nav class="nav-principal">
+                    <a href="#">Inicio</a>
+                    <a href="#">Sobre</a>
+                    <a href="#">Servicos</a>
+                    <a href="#">Portfolio</a>
+                    <a href="#">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h2 class="hero-titulo">Bem-vindo ao Nosso Site</h2>
+            <p class="hero-subtitulo">
+                Criamos solucoes digitais que transformam o seu negocio.
+                Design moderno, responsivo e acessivel em todos os dispositivos.
+            </p>
+            <a href="#" class="hero-botao">Saber Mais</a>
+        </div>
+    </section>
+
+    <!-- SERVICOS - 3 cards -->
+    <section class="servicos">
+        <div class="container">
+            <h2 class="titulo-seccao">Os Nossos Servicos</h2>
+            <div class="servicos-grid">
+                <div class="card">
+                    <div class="card-icone">&#127912;</div>
+                    <h3>Design Web</h3>
+                    <p>Layouts modernos e responsivos adaptados ao seu publico-alvo.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icone">&#128187;</div>
+                    <h3>Desenvolvimento</h3>
+                    <p>Codigo limpo e otimizado com as melhores tecnologias.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icone">&#128640;</div>
+                    <h3>Marketing Digital</h3>
+                    <p>Estrategias para aumentar a visibilidade online do seu negocio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCAO 2 COLUNAS: imagem + texto -->
+    <section class="sobre-nos">
+        <div class="container">
+            <div class="sobre-grid">
+                <div class="sobre-imagem">
+                    <!-- Placeholder de imagem com cor de fundo -->
+                    <div class="imagem-placeholder">
+                        <span>Imagem 600x400</span>
+                    </div>
+                </div>
+                <div class="sobre-texto">
+                    <h2>Sobre Nos</h2>
+                    <p>Somos uma equipa apaixonada por tecnologia e design.
+                       Ha mais de 10 anos que ajudamos empresas a crescer
+                       no mundo digital.</p>
+                    <p>O nosso foco e criar experiencias que funcionam
+                       em qualquer dispositivo - do telemovel ao desktop.</p>
+                    <a href="#" class="botao-secundario">Conhecer Equipa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER com 3 colunas -->
+    <footer class="rodape">
+        <div class="container">
+            <div class="rodape-grid">
+                <div class="rodape-col">
+                    <h4>MinhaMarca</h4>
+                    <p>Solucoes digitais para o seu negocio desde 2015.</p>
+                </div>
+                <div class="rodape-col">
+                    <h4>Links Uteis</h4>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Servicos</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="rodape-col">
+                    <h4>Contactos</h4>
+                    <p>Email: info@minhamarca.pt</p>
+                    <p>Tel: +351 912 345 678</p>
+                </div>
+            </div>
+            <div class="rodape-baixo">
+                <p>Modulo 06B — CSS Responsivo — Aula 2: Layout Responsivo</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

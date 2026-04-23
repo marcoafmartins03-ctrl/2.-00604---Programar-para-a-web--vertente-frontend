@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM – Seletores</title>
+    <link rel="stylesheet" href="../template-styles.css">
+    <style>
+        .demo-grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+
+        .demo-grid > div {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px dashed #63b3ed;
+            background: #ebf8ff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>🎯 Seletores do DOM</h1>
+            <p>Como localizar elementos na página usando métodos modernos.</p>
+        </header>
+
+        <section>
+            <h2>🔎 Elementos da página</h2>
+            <div class="card">
+                <div class="demo-grid" id="zona-exemplo">
+                    <div id="id-exemplo">Elemento com ID</div>
+                    <div class="classe-exemplo">Elemento com classe</div>
+                    <div class="classe-exemplo destaque">Outro com classe</div>
+                    <div data-role="especial">Elemento com data-attribute</div>
+                </div>
+
+                <button type="button" onclick="demonstrarSeletores()">Executar demonstração</button>
+                <div id="output-seletores" class="output">Clique no botão para ver os resultados.</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function demonstrarSeletores() {
+            const logs = [];
+
+            const porId = document.getElementById('id-exemplo');
+            logs.push(`getElementById -> ${porId?.textContent}`);
+
+            const porClasse = document.getElementsByClassName('classe-exemplo');
+            logs.push(`getElementsByClassName -> ${porClasse.length} elementos`);
+
+            const primeiroSeletor = document.querySelector('.classe-exemplo.destaque');
+            logs.push(`querySelector('.classe-exemplo.destaque') -> ${primeiroSeletor?.textContent}`);
+
+            const todosData = document.querySelectorAll('[data-role="especial"]');
+            logs.push(`querySelectorAll('[data-role="especial"]') -> ${todosData.length}`);
+
+            document.getElementById('output-seletores').textContent = logs.join('\n');
+        }
+    </script>
+</body>
+</html>

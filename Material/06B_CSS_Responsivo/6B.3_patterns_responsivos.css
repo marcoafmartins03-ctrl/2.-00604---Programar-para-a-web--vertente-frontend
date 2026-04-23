@@ -1,0 +1,119 @@
+/*
+  PADROES RESPONSIVOS COMUNS (Mobile-First)
+  4 padroes: Menu hamburger | Esconder/mostrar | Tabela responsiva | Grelha de cards
+*/
+
+/* === RESET E GLOBAIS === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 15px; }
+
+.seccao {
+    background: white;
+    padding: 25px 15px;
+    margin: 20px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.seccao h2 { color: #2c3e50; margin-bottom: 10px; }
+.seccao > p { margin-bottom: 20px; color: #555; }
+
+
+/* PADRAO 1: MENU HAMBURGER (Pure CSS, sem JavaScript)
+   Truque: checkbox escondido + label como icone. :checked ~ .nav-menu mostra o menu. */
+.cabecalho { background-color: #2c3e50; padding: 15px 0; position: relative; }
+.cabecalho .container {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+}
+.logo { color: white; font-size: 1.3rem; }
+.menu-checkbox { display: none; } /* Checkbox escondido - controla o menu */
+/* Label como icone hamburger (3 barras) - so visivel no mobile */
+.menu-hamburger {
+    display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px;
+}
+.menu-hamburger span {
+    display: block; width: 25px; height: 3px;
+    background-color: white; border-radius: 2px; transition: all 0.3s;
+}
+/* Menu escondido no mobile por defeito */
+.nav-menu { display: none; width: 100%; flex-direction: column; gap: 5px; padding-top: 15px; }
+.nav-menu a {
+    color: #ecf0f1; text-decoration: none; padding: 10px 15px;
+    border-radius: 4px; transition: background-color 0.3s; display: block;
+}
+.nav-menu a:hover { background-color: #34495e; }
+/* Quando checkbox marcado: mostrar menu */
+.menu-checkbox:checked ~ .nav-menu { display: flex; }
+/* Animar hamburger para X quando aberto */
+.menu-checkbox:checked ~ .menu-hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.menu-checkbox:checked ~ .menu-hamburger span:nth-child(2) { opacity: 0; }
+.menu-checkbox:checked ~ .menu-hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+/* PADRAO 2: ESCONDER / MOSTRAR ELEMENTOS
+   .esconder-mobile: esconde em mobile, mostra em desktop (sidebars, info extra)
+   .esconder-desktop: mostra em mobile, esconde em desktop (CTAs, hamburger) */
+.esconder-mobile { display: none; }
+.esconder-desktop { display: block; }
+.aviso-mobile { background-color: #e74c3c; color: white; padding: 15px; border-radius: 5px; margin-bottom: 10px; text-align: center; }
+.aviso-desktop { background-color: #27ae60; color: white; padding: 15px; border-radius: 5px; margin-bottom: 10px; text-align: center; }
+.sempre-visivel { background-color: #3498db; color: white; padding: 15px; border-radius: 5px; text-align: center; }
+
+/* PADRAO 3: TABELA RESPONSIVA
+   Contentor com overflow-x: auto cria scroll horizontal quando a tabela nao cabe. */
+.tabela-container {
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    border: 1px solid #ddd; border-radius: 5px;
+}
+.tabela-responsiva { width: 100%; min-width: 600px; border-collapse: collapse; }
+.tabela-responsiva th,
+.tabela-responsiva td {
+    padding: 12px 15px; text-align: left;
+    border-bottom: 1px solid #eee; white-space: nowrap;
+}
+.tabela-responsiva thead { background-color: #2c3e50; color: white; }
+.tabela-responsiva tbody tr:hover { background-color: #f0f0f0; }
+
+/* PADRAO 4: GRELHA RESPONSIVA DE CARDS (CSS Grid)
+   1 coluna (mobile) -> 2 (480px) -> 3 (768px) -> 4 (1024px) */
+.cards-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+.grid-card { background: #ecf0f1; padding: 20px; border-radius: 8px; border-left: 4px solid #3498db; }
+.grid-card h3 { color: #2c3e50; margin-bottom: 8px; }
+.grid-card p { color: #555; font-size: 0.9rem; }
+.rodape { text-align: center; padding: 20px; color: #777; font-size: 0.85rem; }
+
+/* === @media (min-width: 480px) - Cards passam a 2 colunas === */
+@media (min-width: 480px) {
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* === @media (min-width: 768px) - TABLET === */
+/* Hamburger desaparece, nav horizontal. Esconder/mostrar troca. Cards: 3 colunas. */
+@media (min-width: 768px) {
+    .menu-hamburger { display: none; }
+    .nav-menu {
+        display: flex !important; width: auto;
+        flex-direction: row; padding-top: 0; gap: 5px;
+    }
+    .esconder-mobile { display: block; }
+    .esconder-desktop { display: none; }
+    .cards-grid { grid-template-columns: repeat(3, 1fr); }
+    .seccao { margin: 20px auto; max-width: 1100px; padding: 30px; }
+}
+
+/* === @media (min-width: 1024px) - Cards: 4 colunas. Fonte maior. === */
+@media (min-width: 1024px) {
+    .cards-grid { grid-template-columns: repeat(4, 1fr); }
+    body { font-size: 18px; }
+}
+
+/* RESUMO: 1.Hamburger(:checked~nav) 2.Esconder/Mostrar(classes reutilizaveis)
+   3.Tabela(overflow-x:auto) 4.Grelha(repeat(N,1fr) nos breakpoints) */

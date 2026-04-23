@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 6.4: Layout Responsivo com Flexbox
+========================================
+
+Neste ficheiro praticamos:
+- flex-wrap: permite que itens vão para nova linha
+- flex: 1 1 200px (grow, shrink, basis)
+
+CONCEITO CHAVE:
+flex-wrap: wrap permite layouts responsivos
+sem media queries!
+
+========================================
+EXEMPLO PRÁTICO: Grid de Cards
+========================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Responsivo Flexbox</title>
+  <link rel="stylesheet" href="6.4_layout_responsivo.css" />
+</head>
+<body>
+
+  <h1>Layout Responsivo com Flexbox</h1>
+
+  <!-- Exemplo 1: flex-wrap -->
+  <section class="exemplo">
+    <h2>1. flex-wrap: wrap</h2>
+    <p>Redimensiona a janela para ver os itens irem para nova linha:</p>
+
+    <div class="container-wrap">
+      <div class="item-wrap">Item 1</div>
+      <div class="item-wrap">Item 2</div>
+      <div class="item-wrap">Item 3</div>
+      <div class="item-wrap">Item 4</div>
+      <div class="item-wrap">Item 5</div>
+      <div class="item-wrap">Item 6</div>
+    </div>
+  </section>
+
+  <!-- Exemplo 2: Sidebar + Conteúdo -->
+  <section class="exemplo">
+    <h2>2. Sidebar + Conteúdo</h2>
+    <p>Sidebar fixa (200px) + conteúdo flexível:</p>
+
+    <div class="layout-pagina">
+      <aside class="sidebar">
+        <h3>Menu</h3>
+        <p>Largura fixa</p>
+      </aside>
+      <main class="conteudo">
+        <h3>Conteúdo Principal</h3>
+        <p>Este lado cresce para preencher o espaço disponível.</p>
+      </main>
+    </div>
+  </section>
+
+  <!-- Exemplo 3: Grid de Cards -->
+  <section class="exemplo">
+    <h2>3. Grid de Cards Responsivo</h2>
+    <p>Cards com largura mínima que se adaptam ao espaço:</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h3>Card 1</h3>
+        <p>Mínimo 200px de largura.</p>
+      </div>
+      <div class="card">
+        <h3>Card 2</h3>
+        <p>Cresce se houver espaço.</p>
+      </div>
+      <div class="card">
+        <h3>Card 3</h3>
+        <p>Responsivo sem media queries!</p>
+      </div>
+      <div class="card">
+        <h3>Card 4</h3>
+        <p>flex: 1 1 200px</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exemplo 4: Footer -->
+  <section class="exemplo">
+    <h2>4. Footer com Colunas</h2>
+
+    <footer class="footer">
+      <div class="footer-coluna">
+        <h4>Empresa</h4>
+        <p>Sobre nós</p>
+        <p>Equipa</p>
+      </div>
+      <div class="footer-coluna">
+        <h4>Serviços</h4>
+        <p>Web Design</p>
+        <p>Marketing</p>
+      </div>
+      <div class="footer-coluna">
+        <h4>Contacto</h4>
+        <p>Email</p>
+        <p>Telefone</p>
+      </div>
+    </footer>
+  </section>
+
+</body>
+</html>

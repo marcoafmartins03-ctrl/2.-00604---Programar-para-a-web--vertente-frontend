@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 7.1: Introdução ao CSS Grid
+========================================
+
+CSS Grid cria layouts bidimensionais (linhas e colunas).
+É ideal para dashboards ou catálogos de informação.
+
+PASSOS PRINCIPAIS
+1. Definir o elemento pai com `display: grid`.
+2. Ajustar colunas/linhas com `grid-template-columns`.
+3. Controlar o espaçamento com `gap`.
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grid — mapa de ativos</title>
+  <!-- CSS externo (ficheiro dedicado) -->
+  <link rel="stylesheet" href="7.1_grid_intro.css" />
+</head>
+<body>
+  <!-- Grid com 3 colunas para listar ativos de segurança -->
+  <!-- class="ativos" aplica o grid container -->
+  <section class="ativos">
+    <!-- class="ativo" aplica o estilo de cada card -->
+    <article class="ativo">
+      <h2>Servidor Web</h2>
+      <p>Status: protegido</p>
+    </article>
+    <!-- repetimos a mesma classe para manter o layout consistente -->
+    <article class="ativo">
+      <h2>Firewall Perimetral</h2>
+      <p>Última auditoria: 24h</p>
+    </article>
+    <article class="ativo">
+      <h2>Base de Dados</h2>
+      <p>Backup: ativo</p>
+    </article>
+  </section>
+</body>
+</html>

@@ -1,0 +1,23 @@
+/*
+  Licao 4.2: Box Model
+  - body: estilo base da pagina
+  - .alerta: demonstracao de width, padding, border e margin
+*/
+
+/* body: tipografia e fundo */
+body {
+  font-family: system-ui, sans-serif; /* tipo de letra base */
+  margin: 24px; /* espaco externo do body */
+  background: #f8fafc; /* cor de fundo da pagina */
+}
+
+/* .alerta: caixa com camadas do box model */
+.alerta {
+  width: 260px; /* largura fixa da caixa */
+  padding: 16px; /* espaco interno (padding) */
+  border: 4px solid #e63946; /* borda com cor */
+  margin: 20px auto; /* espaco externo e centrado horizontal */
+  background: #ffe5e9; /* cor de fundo */
+  border-radius: 6px; /* cantos arredondados */
+  text-align: center; /* alinhar texto ao centro */
+}

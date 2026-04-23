@@ -1,0 +1,34 @@
+/*
+  Licao 5.1: display e position
+  - .caixa: bloco base para comparar layouts
+  - .inline: mostra inline-block
+  - .fixo: demonstra position: fixed
+*/
+
+/* .caixa: base visual para as caixas */
+.caixa {
+  width: 120px; /* largura da caixa */
+  height: 80px; /* altura da caixa */
+  margin: 8px; /* espaco externo */
+  background: #e0e0e0; /* cor de fundo */
+  text-align: center; /* texto centrado horizontalmente */
+  line-height: 80px; /* centra o texto verticalmente */
+  font-family: sans-serif; /* fonte simples */
+}
+
+/* .inline: coloca caixas na mesma linha */
+.inline {
+  display: inline-block; /* mistura comportamento inline e bloco */
+}
+
+/* .fixo: fixa o elemento no canto inferior direito */
+.fixo {
+  position: fixed; /* fixa na janela do browser */
+  bottom: 12px; /* distancia ao fundo */
+  right: 12px; /* distancia a direita */
+  background: #0a66c2; /* cor de fundo */
+  color: #fff; /* cor do texto */
+  padding: 8px 12px; /* espaco interno */
+  border-radius: 4px; /* cantos arredondados */
+  font-family: sans-serif; /* fonte do botao */
+}

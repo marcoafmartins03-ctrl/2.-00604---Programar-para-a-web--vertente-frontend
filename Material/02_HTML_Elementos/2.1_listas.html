@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 1: LISTAS EM HTML
+========================================
+
+Nesta lição vamos aprender sobre os três tipos de listas em HTML:
+- Listas não ordenadas (ul)
+- Listas ordenadas (ol)
+- Listas de definição (dl)
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas HTML - Lição 1</title>
+</head>
+<body>
+    <h1>Tipos de Listas em HTML</h1>
+
+    <!-- Lista não ordenada (ul): a ordem dos itens não é relevante -->
+    <h2>Lista Não Ordenada (ul)</h2>
+    <p>Usada quando a ordem dos itens não é importante:</p>
+    <!-- Cada item da lista é um <li> e deve estar dentro de ul/ol -->
+    <ul>
+        <li>Maçãs</li>
+        <li>Bananas</li>
+        <li>Laranjas</li>
+        <li>Uvas</li>
+    </ul>
+
+    <!-- Lista ordenada (ol): a ordem dos itens é relevante -->
+    <h2>Lista Ordenada (ol)</h2>
+    <p>Usada quando a ordem dos itens é importante:</p>
+    <ol>
+        <li>Acordar</li>
+        <li>Tomar banho</li>
+        <li>Tomar pequeno-almoço</li>
+        <li>Ir trabalhar</li>
+    </ol>
+
+    <!-- Lista ordenada com atributos: type muda o estilo; start define o número inicial -->
+    <h3>Lista com Numeração Personalizada</h3>
+    <ol type="A" start="3">
+        <li>Terceiro item (C)</li>
+        <li>Quarto item (D)</li>
+        <li>Quinto item (E)</li>
+    </ol>
+
+    <!-- type="i" usa numeração romana -->
+    <ol type="i">
+        <li>Primeiro item (i)</li>
+        <li>Segundo item (ii)</li>
+        <li>Terceiro item (iii)</li>
+    </ol>
+
+    <!-- Listas aninhadas: uma lista dentro de um item de outra lista -->
+    <h2>Listas Aninhadas</h2>
+    <ul>
+        <li>Frutas
+            <ul>
+                <li>Tropicais
+                    <ul>
+                        <li>Manga</li>
+                        <li>Papaia</li>
+                        <li>Abacaxi</li>
+                    </ul>
+                </li>
+                <li>Cítricas
+                    <ul>
+                        <li>Laranja</li>
+                        <li>Limão</li>
+                        <li>Lima</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Vegetais
+            <ol>
+                <li>Cenoura</li>
+                <li>Brócolos</li>
+                <li>Espinafres</li>
+            </ol>
+        </li>
+    </ul>
+
+    <!-- Lista de definição: dt = termo, dd = definição (pode haver várias) -->
+    <h2>Lista de Definição (dl)</h2>
+    <p>Usada para termos e suas definições:</p>
+    <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language - linguagem de marcação para páginas web</dd>
+        
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets - linguagem para estilização de páginas web</dd>
+        
+        <dt>JavaScript</dt>
+        <dd>Linguagem de programação para interatividade em páginas web</dd>
+        
+        <dt>Responsivo</dt>
+        <dd>Design que se adapta a diferentes tamanhos de ecrã</dd>
+        <dd>Técnica essencial para desenvolvimento web moderno</dd>
+    </dl>
+
+    <!-- Lista com links: href aponta para âncoras, sites, email ou telefone -->
+    <h2>Lista com Links</h2>
+    <ul>
+        <!-- href="#secao1" liga a um id na mesma página -->
+        <li><a href="#secao1">Ir para Seção 1</a></li>
+        <li><a href="#secao2">Ir para Seção 2</a></li>
+        <!-- target="_blank" abre em nova aba; usar rel por segurança -->
+        <li><a href="https://www.mozilla.org" target="_blank" rel="noopener noreferrer">Mozilla Developer Network</a></li>
+        <!-- mailto abre o cliente de email -->
+        <li><a href="mailto:exemplo@email.com">Enviar Email</a></li>
+    </ul>
+</body>
+</html>

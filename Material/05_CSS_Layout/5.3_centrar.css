@@ -1,0 +1,128 @@
+/*
+  Licao 5.3: Centrar elementos (sem Flexbox)
+  - .centrar-margin: usa margin: auto
+  - .centrar-texto: usa text-align: center
+  - .centrar-vertical: usa line-height = height
+  - .card-centrado: exemplo pratico
+*/
+
+/* body: estilo base */
+body {
+  font-family: system-ui, sans-serif; /* tipo de letra */
+  margin: 24px; /* margem externa */
+  background: #f4f6f8; /* cor de fundo */
+}
+
+/* h1: titulo principal */
+h1 {
+  color: #0a66c2; /* cor azul */
+  margin-bottom: 24px; /* espaco inferior */
+}
+
+/* .exemplo: seccao de cada exemplo */
+.exemplo {
+  background: white; /* fundo branco */
+  padding: 20px; /* espaco interno */
+  margin-bottom: 24px; /* espaco entre seccoes */
+  border-radius: 8px; /* cantos arredondados */
+}
+
+/* h2: titulo de seccao */
+.exemplo h2 {
+  color: #0a66c2; /* cor azul */
+  margin-top: 0; /* remover margem superior */
+}
+
+/* ================================
+   TECNICA 1: margin: auto
+   ================================ */
+
+/* .centrar-margin: centrado horizontal */
+.centrar-margin {
+  width: 300px; /* OBRIGATORIO: precisa de width! */
+  margin-left: auto; /* margem esquerda automatica */
+  margin-right: auto; /* margem direita automatica */
+  /* Abreviado: margin: 0 auto; */
+  padding: 20px; /* espaco interno */
+  background: #10b981; /* verde */
+  color: white; /* texto branco */
+  text-align: center; /* texto centrado */
+  border-radius: 6px; /* cantos */
+}
+
+/* ================================
+   TECNICA 2: text-align: center
+   ================================ */
+
+/* .centrar-texto: pai com text-align */
+.centrar-texto {
+  text-align: center; /* centra filhos inline */
+  padding: 20px; /* espaco interno */
+  background: #f1f5f9; /* cinza claro */
+  border-radius: 6px; /* cantos */
+}
+
+/* .botao: elemento inline-block */
+.botao {
+  display: inline-block; /* permite margin e padding */
+  padding: 10px 20px; /* espaco interno */
+  margin: 5px; /* espaco entre botoes */
+  background: #0a66c2; /* azul */
+  color: white; /* texto branco */
+  border-radius: 4px; /* cantos */
+}
+
+/* ================================
+   TECNICA 3: line-height = height
+   ================================ */
+
+/* .centrar-vertical: altura fixa com line-height igual */
+.centrar-vertical {
+  width: 300px; /* largura fixa */
+  height: 80px; /* altura fixa */
+  line-height: 80px; /* IGUAL a height! */
+  margin: 0 auto; /* centrar horizontal tambem */
+  background: #f59e0b; /* laranja */
+  color: white; /* texto branco */
+  text-align: center; /* texto centrado horizontal */
+  border-radius: 6px; /* cantos */
+  font-weight: bold; /* negrito */
+}
+
+/* ================================
+   EXEMPLO: Card Centrado
+   ================================ */
+
+/* .card-centrado: card centrado com margin: auto */
+.card-centrado {
+  width: 280px; /* largura fixa */
+  margin: 0 auto; /* CENTRAR horizontal */
+  padding: 30px; /* espaco interno */
+  background: white; /* fundo branco */
+  border-radius: 8px; /* cantos */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra */
+  text-align: center; /* texto centrado */
+}
+
+/* h3 dentro do card */
+.card-centrado h3 {
+  color: #0a66c2; /* azul */
+  margin-top: 0; /* sem margem superior */
+}
+
+/* .btn: botao do card */
+.btn {
+  display: inline-block; /* permite padding */
+  padding: 12px 30px; /* espaco interno */
+  background: #0a66c2; /* azul */
+  color: white; /* texto branco */
+  border: none; /* sem borda */
+  border-radius: 6px; /* cantos */
+  font-size: 1rem; /* tamanho normal */
+  cursor: pointer; /* cursor de mao */
+}
+
+/* .btn hover: efeito ao passar rato */
+.btn:hover {
+  background: #084d92; /* azul mais escuro */
+}

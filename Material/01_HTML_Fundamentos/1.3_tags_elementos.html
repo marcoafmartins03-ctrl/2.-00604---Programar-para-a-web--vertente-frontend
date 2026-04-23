@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 3: TAGS E ELEMENTOS HTML
+========================================
+
+Nesta lição vamos aprender sobre tags, elementos e atributos HTML.
+Compreender a diferença entre estes conceitos é fundamental.
+
+CONCEITOS:
+- Tag: <tagname> ou <tagname></tagname>
+- Elemento: Tag + conteúdo
+- Atributo: Propriedades das tags
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags e Elementos - Lição 3</title>
+</head>
+<body>
+    <!-- h1 é o título principal da página e deve ser único -->
+    <h1>Compreender Tags e Elementos</h1>
+
+    <!-- p é um parágrafo; id é único, class pode ser reutilizada em vários elementos -->
+    <p id="paragrafo-principal" class="texto-destaque">
+        <!-- strong e em dão ênfase semântica ao texto -->
+        Este é um <strong>parágrafo</strong> com <em>formatação</em>.
+    </p>
+
+    <!-- Tags auto-fechadas (void elements) não têm conteúdo interno -->
+    <!-- img usa src (caminho), alt (texto alternativo) e pode ter dimensões -->
+    <img src="exemplo.jpg" alt="Imagem de exemplo" width="200" height="150">
+    <!-- br cria uma quebra de linha; hr cria uma linha horizontal -->
+    <br>
+    <hr>
+    
+    <!-- Lista não ordenada (ul) com itens (li) -->
+    <ul>
+        <li>Primeiro item</li>
+        <li>Segundo item</li>
+        <li>Terceiro item</li>
+    </ul>
+
+    <!-- Lista ordenada (ol) com itens numerados (li) -->
+    <ol>
+        <li>Passo 1</li>
+        <li>Passo 2</li>
+        <li>Passo 3</li>
+    </ol>
+
+    <!-- Link: href é o destino; target define onde abre; title mostra dica ao passar o rato -->
+    <!-- Em target="_blank", usar rel para segurança -->
+    <a href="https://www.example.com" target="_blank" rel="noopener noreferrer" title="Exemplo">
+        Clique aqui para visitar exemplo.com
+    </a>
+
+    <!-- Div é um contentor de bloco; class aceita várias classes separadas por espaços -->
+    <!-- data-* guarda informação extra (útil para JavaScript) -->
+    <div id="container" class="caixa azul" data-info="informação adicional">
+        <p>Conteúdo dentro de uma div</p>
+    </div>
+
+    <!-- Span é inline: não cria nova linha e serve para destacar partes do texto -->
+    <p>Este texto tem uma <span style="color: red;">palavra vermelha</span> no meio.</p>
+</body>
+</html>

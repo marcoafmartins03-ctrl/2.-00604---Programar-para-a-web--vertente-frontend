@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 8.5: Bibliotecas de Componentes
+========================================
+
+Bibliotecas de componentes para Tailwind aceleram
+o desenvolvimento fornecendo elementos prontos.
+
+Tipos de bibliotecas:
+1. Copy/Paste (só HTML): HyperUI, Meraki UI, Mamba UI
+2. Com JavaScript: Flowbite, Preline, Tailwind Elements
+3. Para React/Vue: Headless UI, shadcn/ui
+4. Plugins Tailwind: DaisyUI
+
+Como escolher:
+- Sem JS? → Copy/paste (HyperUI, Meraki)
+- Dropdowns/Modals? → Com JS (Flowbite)
+- React? → Headless UI ou shadcn/ui
+- Classes semânticas? → DaisyUI
+========================================
+-->
+<html lang="pt">
+<head>
+  <!-- UTF-8 para suportar acentos -->
+  <meta charset="utf-8" />
+  <!-- Viewport para comportamento responsivo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lição 8.5: Bibliotecas de Componentes</title>
+  <!-- Tailwind via CDN para demonstração -->
+  <!-- Neste ficheiro o layout base usa utilitários Tailwind + CSS complementar próprio -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Estilos adicionais para a lição */
+    /* Classe base das caixas de categoria (barra colorida à esquerda) */
+    .categoria {
+      border-left: 4px solid;
+      padding-left: 1rem;
+    }
+    /* Cores por tipo de biblioteca para leitura rápida */
+    .categoria-copypaste { border-color: #10b981; }
+    .categoria-js { border-color: #3b82f6; }
+    .categoria-react { border-color: #8b5cf6; }
+    .categoria-plugin { border-color: #f59e0b; }
+
+    /* Estilo comum das badges (labels de estado/custo) */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    /* Variantes cromáticas das badges */
+    .badge-free { background: #d1fae5; color: #065f46; }
+    .badge-paid { background: #fef3c7; color: #92400e; }
+    .badge-js { background: #dbeafe; color: #1e40af; }
+
+    /* Blocos <pre> com visual de editor para exemplos de código */
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+    /* Cores sintáticas para simular highlighting em snippets HTML */
+    code { font-family: 'Monaco', 'Consolas', monospace; }
+    .tag { color: #7dd3fc; }
+    .attr { color: #fcd34d; }
+    .value { color: #86efac; }
+    .comment { color: #64748b; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Container principal da aula -->
+  <div class="max-w-4xl mx-auto px-6 py-10">
+
+    <!-- Título -->
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">
+      Lição 8.5: Bibliotecas de Componentes
+    </h1>
+    <p class="text-lg text-gray-600 mb-8">
+      Componentes prontos para acelerar o desenvolvimento com Tailwind
+    </p>
+
+    <!-- ========================================
+         SECÇÃO 1: INTRODUÇÃO
+    ======================================== -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">O que são bibliotecas de componentes?</h2>
+
+      <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+        <p class="mb-4">
+          São coleções de elementos de interface <strong>prontos a usar</strong>:
+          botões, cards, formulários, navegação, modais, etc.
+        </p>
+
+        <!-- Grelha em 2 colunas a partir de ecrãs médios -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-green-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-green-800 mb-2">✓ Vantagens</h3>
+            <ul class="text-sm text-green-700 space-y-1">
+              <li>• Desenvolvimento mais rápido</li>
+              <li>• Design consistente</li>
+              <li>• Testados e responsivos</li>
+              <li>• Acessibilidade incluída</li>
+            </ul>
+          </div>
+          <div class="bg-amber-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-amber-800 mb-2">⚠ Considerações</h3>
+            <ul class="text-sm text-amber-700 space-y-1">
+              <li>• Dependência externa</li>
+              <li>• Menos controlo visual</li>
+              <li>• Possível peso extra</li>
+              <li>• Curva de aprendizagem</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECÇÃO 2: TIPOS DE BIBLIOTECAS
+    ======================================== -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6">Tipos de Bibliotecas</h2>
+      <!-- Cada cartão usa mesma estrutura para facilitar comparação lado a lado -->
+
+      <!-- Tipo 1: Copy/Paste -->
+      <div class="categoria categoria-copypaste bg-white p-6 rounded-lg shadow-sm mb-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-2xl">📋</span>
+          <h3 class="text-xl font-semibold">1. Copy/Paste (só HTML)</h3>
+          <span class="badge badge-free">Grátis</span>
+        </div>
+
+        <p class="text-gray-600 mb-4">
+          Copias o código HTML diretamente para o teu projeto.
+          <strong>Não precisa de JavaScript</strong> - funciona só com classes Tailwind.
+        </p>
+
+        <div class="bg-gray-50 p-4 rounded mb-4">
+          <p class="text-sm font-medium text-gray-700 mb-2">Exemplos:</p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• <strong>HyperUI</strong> - hyperui.dev (componentes variados)</li>
+            <li>• <strong>Meraki UI</strong> - merakiui.com (moderno, limpo)</li>
+            <li>• <strong>Mamba UI</strong> - mambaui.com (simples)</li>
+            <li>• <strong>Flowrift</strong> - flowrift.com (marketing)</li>
+          </ul>
+        </div>
+
+        <p class="text-sm text-green-700">
+          <strong>Quando usar:</strong> Projetos simples, landing pages, sem interatividade complexa.
+        </p>
+      </div>
+
+      <!-- Tipo 2: Com JavaScript -->
+      <div class="categoria categoria-js bg-white p-6 rounded-lg shadow-sm mb-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-2xl">⚡</span>
+          <h3 class="text-xl font-semibold">2. Com JavaScript</h3>
+          <span class="badge badge-js">Requer JS</span>
+        </div>
+
+        <p class="text-gray-600 mb-4">
+          Componentes interativos: dropdowns, modais, tabs, accordions.
+          <strong>Precisam de um script JS</strong> para funcionar.
+        </p>
+        <!-- Normalmente usam atributos data-* para ligar HTML ao comportamento JS -->
+
+        <div class="bg-gray-50 p-4 rounded mb-4">
+          <p class="text-sm font-medium text-gray-700 mb-2">Exemplos:</p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• <strong>Flowbite</strong> - flowbite.com (muito popular, grátis + pro)</li>
+            <li>• <strong>Preline</strong> - preline.co (dashboards, admin)</li>
+            <li>• <strong>Tailwind Elements</strong> - tw-elements.com (estilo Bootstrap)</li>
+          </ul>
+        </div>
+
+        <p class="text-sm text-blue-700">
+          <strong>Quando usar:</strong> Quando precisas de interatividade sem usar React/Vue.
+        </p>
+      </div>
+
+      <!-- Tipo 3: Para React/Vue -->
+      <div class="categoria categoria-react bg-white p-6 rounded-lg shadow-sm mb-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-2xl">⚛️</span>
+          <h3 class="text-xl font-semibold">3. Para React/Vue</h3>
+          <span class="badge badge-free">Grátis</span>
+        </div>
+
+        <p class="text-gray-600 mb-4">
+          Componentes para frameworks JavaScript modernos.
+          <strong>Importas como componentes</strong> no teu projeto React/Vue.
+        </p>
+
+        <div class="bg-gray-50 p-4 rounded mb-4">
+          <p class="text-sm font-medium text-gray-700 mb-2">Exemplos:</p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• <strong>Headless UI</strong> - headlessui.com (oficial Tailwind)</li>
+            <li>• <strong>shadcn/ui</strong> - ui.shadcn.com (React, muito popular)</li>
+            <li>• <strong>Radix UI</strong> - radix-ui.com (primitivas acessíveis)</li>
+          </ul>
+        </div>
+
+        <p class="text-sm text-purple-700">
+          <strong>Quando usar:</strong> Projetos React ou Vue com Tailwind.
+        </p>
+      </div>
+
+      <!-- Tipo 4: Plugin Tailwind -->
+      <div class="categoria categoria-plugin bg-white p-6 rounded-lg shadow-sm mb-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-2xl">🔌</span>
+          <h3 class="text-xl font-semibold">4. Plugin Tailwind (DaisyUI)</h3>
+          <span class="badge badge-free">Grátis</span>
+        </div>
+
+        <p class="text-gray-600 mb-4">
+          Instala-se como plugin no Tailwind. Adiciona <strong>classes semânticas</strong>
+          como <code class="bg-gray-100 px-1 rounded">btn</code>,
+          <code class="bg-gray-100 px-1 rounded">card</code>,
+          <code class="bg-gray-100 px-1 rounded">navbar</code>.
+        </p>
+
+        <div class="bg-gray-50 p-4 rounded mb-4">
+          <p class="text-sm font-medium text-gray-700 mb-2">DaisyUI - daisyui.com</p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Classes semânticas (como Bootstrap)</li>
+            <li>• 30+ temas incluídos</li>
+            <li>• Combina com classes Tailwind normais</li>
+            <li>• Muito popular e bem documentado</li>
+          </ul>
+        </div>
+
+        <p class="text-sm text-amber-700">
+          <strong>Quando usar:</strong> Se preferes classes tipo Bootstrap mas com Tailwind.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECÇÃO 3: COMPARAÇÃO VISUAL
+    ======================================== -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6">Comparação: O mesmo botão</h2>
+
+      <div class="bg-white p-6 rounded-lg shadow-sm">
+        <p class="text-gray-600 mb-6">
+          Vê como se escreve um botão primário em cada abordagem:
+        </p>
+
+        <!-- Tailwind Puro -->
+        <div class="mb-6">
+          <h3 class="font-semibold mb-2">Tailwind Puro (muitas classes)</h3>
+          <pre><code><span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="value">"bg-blue-500 hover:bg-blue-600
+        text-white font-medium py-2 px-4
+        rounded-lg transition"</span><span class="tag">&gt;</span>
+  Clica aqui
+<span class="tag">&lt;/button&gt;</span></code></pre>
+          <button class="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition">
+            Clica aqui
+          </button>
+        </div>
+
+        <!-- DaisyUI -->
+        <div class="mb-6">
+          <h3 class="font-semibold mb-2">DaisyUI (classe semântica)</h3>
+          <pre><code><span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="value">"btn btn-primary"</span><span class="tag">&gt;</span>
+  Clica aqui
+<span class="tag">&lt;/button&gt;</span>
+
+<span class="comment">&lt;!-- Requer plugin DaisyUI instalado --&gt;</span></code></pre>
+        </div>
+
+        <!-- Flowbite -->
+        <div class="mb-6">
+          <h3 class="font-semibold mb-2">Flowbite (classes Tailwind organizadas)</h3>
+          <pre><code><span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="value">"button"</span>
+        <span class="attr">class</span>=<span class="value">"text-white bg-blue-700 hover:bg-blue-800
+        focus:ring-4 focus:ring-blue-300 font-medium
+        rounded-lg text-sm px-5 py-2.5"</span><span class="tag">&gt;</span>
+  Clica aqui
+<span class="tag">&lt;/button&gt;</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECÇÃO 4: EXEMPLO PRÁTICO - FLOWBITE
+    ======================================== -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6">Exemplo Prático: Usar Flowbite</h2>
+
+      <div class="bg-white p-6 rounded-lg shadow-sm">
+        <h3 class="font-semibold mb-4">Passo 1: Incluir o script</h3>
+        <!-- O script deve ser carregado após o HTML do componente -->
+        <pre class="mb-6"><code><span class="comment">&lt;!-- No final do &lt;body&gt; --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="value">"https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span></code></pre>
+
+        <h3 class="font-semibold mb-4">Passo 2: Usar um componente (Dropdown)</h3>
+        <pre class="mb-6"><code><span class="comment">&lt;!-- Botão que abre o dropdown --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">data-dropdown-toggle</span>=<span class="value">"meuMenu"</span>
+        <span class="attr">class</span>=<span class="value">"bg-blue-700 text-white px-4 py-2 rounded"</span><span class="tag">&gt;</span>
+  Menu ▼
+<span class="tag">&lt;/button&gt;</span>
+
+<span class="comment">&lt;!-- Conteúdo do dropdown (inicialmente oculto) --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="value">"meuMenu"</span> <span class="attr">class</span>=<span class="value">"hidden z-10 bg-white rounded shadow w-44"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;ul</span> <span class="attr">class</span>=<span class="value">"py-2 text-sm"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="value">"#"</span> <span class="attr">class</span>=<span class="value">"block px-4 py-2 hover:bg-gray-100"</span><span class="tag">&gt;</span>Perfil<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="value">"#"</span> <span class="attr">class</span>=<span class="value">"block px-4 py-2 hover:bg-gray-100"</span><span class="tag">&gt;</span>Definições<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="value">"#"</span> <span class="attr">class</span>=<span class="value">"block px-4 py-2 hover:bg-gray-100"</span><span class="tag">&gt;</span>Sair<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+
+        <p class="text-sm text-gray-600">
+          <strong>Nota:</strong> O atributo <code class="bg-gray-100 px-1 rounded">data-dropdown-toggle</code>
+          liga o botão ao menu. O JavaScript do Flowbite trata do resto!
+        </p>
+        <!-- Padrão semelhante ao Bootstrap: HTML + classes + data-atributos + JS -->
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECÇÃO 5: GUIA RÁPIDO DE ESCOLHA
+    ======================================== -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6">Guia Rápido: Qual escolher?</h2>
+
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <!-- Tabela de decisão: cenário real -> biblioteca recomendada -->
+        <table class="w-full text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="text-left p-4">Situação</th>
+              <th class="text-left p-4">Recomendação</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="p-4">Landing page simples, sem interação</td>
+              <td class="p-4"><strong>HyperUI</strong> ou <strong>Meraki UI</strong> (copy/paste)</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-4">Preciso de dropdown/modal/tabs</td>
+              <td class="p-4"><strong>Flowbite</strong> (grátis, bem documentado)</td>
+            </tr>
+            <tr>
+              <td class="p-4">Dashboard ou painel admin</td>
+              <td class="p-4"><strong>Preline</strong> ou <strong>Windmill UI</strong></td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-4">Projeto React</td>
+              <td class="p-4"><strong>shadcn/ui</strong> ou <strong>Headless UI</strong></td>
+            </tr>
+            <tr>
+              <td class="p-4">Quero classes simples tipo Bootstrap</td>
+              <td class="p-4"><strong>DaisyUI</strong> (plugin)</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-4">Qualidade premium, suporte oficial</td>
+              <td class="p-4"><strong>Tailwind UI</strong> (pago)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECÇÃO 6: RECURSOS
+    ======================================== -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6">Links Úteis</h2>
+
+      <!-- Catálogo final organizado por tipo de biblioteca -->
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-green-700 mb-3">Copy/Paste (Grátis)</h3>
+          <ul class="text-sm space-y-2">
+            <li>• <a href="https://hyperui.dev" class="text-blue-600 hover:underline">hyperui.dev</a></li>
+            <li>• <a href="https://merakiui.com" class="text-blue-600 hover:underline">merakiui.com</a></li>
+            <li>• <a href="https://mambaui.com" class="text-blue-600 hover:underline">mambaui.com</a></li>
+            <li>• <a href="https://flowrift.com" class="text-blue-600 hover:underline">flowrift.com</a></li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-blue-700 mb-3">Com JavaScript</h3>
+          <ul class="text-sm space-y-2">
+            <li>• <a href="https://flowbite.com" class="text-blue-600 hover:underline">flowbite.com</a></li>
+            <li>• <a href="https://preline.co" class="text-blue-600 hover:underline">preline.co</a></li>
+            <li>• <a href="https://tw-elements.com" class="text-blue-600 hover:underline">tw-elements.com</a></li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-purple-700 mb-3">React/Vue</h3>
+          <ul class="text-sm space-y-2">
+            <li>• <a href="https://headlessui.com" class="text-blue-600 hover:underline">headlessui.com</a></li>
+            <li>• <a href="https://ui.shadcn.com" class="text-blue-600 hover:underline">ui.shadcn.com</a></li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-amber-700 mb-3">Plugin / Premium</h3>
+          <ul class="text-sm space-y-2">
+            <li>• <a href="https://daisyui.com" class="text-blue-600 hover:underline">daisyui.com</a> (grátis)</li>
+            <li>• <a href="https://tailwindui.com" class="text-blue-600 hover:underline">tailwindui.com</a> (pago)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo Final -->
+    <section class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
+      <!-- Gradiente suave para destacar a conclusão da lição -->
+      <h2 class="text-xl font-semibold mb-4">Resumo</h2>
+      <ul class="space-y-2 text-gray-700">
+        <li>✓ Bibliotecas aceleram o desenvolvimento mas a base é sempre HTML/CSS</li>
+        <li>✓ Para começar: <strong>HyperUI</strong> (copy/paste) ou <strong>Flowbite</strong> (com JS)</li>
+        <li>✓ Explora os sites, copia componentes, adapta ao teu projeto</li>
+        <li>✓ Não precisas de usar tudo - escolhe o que faz sentido para o projeto</li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+========================================
+LIÇÃO 4: HEADINGS E PARÁGRAFOS
+========================================
+
+Nesta lição vamos aprender sobre:
+- Hierarquia de cabeçalhos (h1 a h6)
+- Parágrafos e formatação de texto
+- Importância semântica dos headings
+
+========================================
+EXEMPLO PRÁTICO
+========================================
+-->
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headings e Parágrafos - Lição 4</title>
+</head>
+<body>
+    <!-- Hierarquia de headings -->
+    <!-- h1-h6 definem a hierarquia do conteúdo (não usar apenas para tamanho) -->
+    <h1>Título Principal (H1)</h1>
+    <p>Este é o cabeçalho mais importante da página. Deve haver apenas um por página.</p>
+
+    <h2>Subtítulo (H2)</h2>
+    <p>Os H2 são usados para seções principais do conteúdo.</p>
+
+    <h3>Sub-subtítulo (H3)</h3>
+    <p>Os H3 são usados para subsecções dentro de uma seção H2.</p>
+
+    <h4>Título de Nível 4 (H4)</h4>
+    <h5>Título de Nível 5 (H5)</h5>
+    <h6>Título de Nível 6 (H6)</h6>
+
+    <!-- article representa um conteúdo autónomo; section agrupa temas relacionados -->
+    <article>
+        <h1>Artigo Principal</h1>
+        
+        <section>
+            <h2>Introdução</h2>
+            <p>Este parágrafo apresenta o tópico principal do artigo. 
+            Os parágrafos são os blocos fundamentais de texto em HTML.</p>
+            
+            <h3>Conceitos Básicos</h3>
+            <p>Aqui explicamos os conceitos fundamentais necessários 
+            para compreender o resto do artigo.</p>
+            
+            <h4>Definições Importantes</h4>
+            <p>Algumas definições que precisamos estabelecer antes de continuar.</p>
+        </section>
+
+        <section>
+            <h2>Desenvolvimento</h2>
+            <p>Nesta seção desenvolvemos as ideias principais.</p>
+            
+            <p>Cada parágrafo deve conter uma ideia principal. 
+            Quando mudamos de ideia, devemos criar um novo parágrafo.</p>
+            
+            <h3>Exemplo Prático</h3>
+            <p>Vamos ver um exemplo concreto de como aplicar estes conceitos.</p>
+        </section>
+
+        <section>
+            <h2>Conclusão</h2>
+            <p>Para concluir, é importante lembrar que a hierarquia de headings
+            não é apenas visual, mas também semântica. Os leitores de ecrã
+            e motores de busca utilizam esta informação.</p>
+        </section>
+    </article>
+
+    <!-- Formatação adicional de texto -->
+    <h2>Formatação de Texto</h2>
+    <!-- strong/em têm significado semântico (ênfase/importância) -->
+    <p>Podemos usar <strong>texto forte</strong> e <em>texto enfatizado</em>.</p>
+    <!-- b/i são apresentação visual (uso mais limitado) -->
+    <p>Também temos <b>texto bold</b> e <i>texto itálico</i>.</p>
+    <!-- mark destaca texto com realce -->
+    <p>Para <mark>destacar texto</mark> podemos usar a tag mark.</p>
+    <!-- small reduz o tamanho do texto; u sublinha (usar com critério) -->
+    <p>Texto <small>pequeno</small> e texto <u>sublinhado</u>.</p>
+</body>
+</html>

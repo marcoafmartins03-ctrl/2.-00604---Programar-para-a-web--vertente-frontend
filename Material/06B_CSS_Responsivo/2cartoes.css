@@ -1,0 +1,150 @@
+/* ========================================
+   INTRO RESPONSIVO — DOIS CARTOES COM FLEX
+   ========================================
+
+   Este e o exemplo MAIS SIMPLES de design responsivo.
+   Temos apenas 2 cartoes que mudam de:
+     - posicao (empilhados → lado a lado)
+     - cor (cores diferentes por tamanho de ecra)
+
+   CONCEITO: Mobile-First
+   Escrevemos primeiro o CSS para telemovel (o mais pequeno).
+   Depois usamos @media para adicionar regras para ecras maiores.
+
+   Breakpoint usado: 768px (tamanho tipico de tablet)
+*/
+
+/* ================================
+   BASE — MOBILE (telemovel)
+   ================================
+   Estas regras aplicam-se SEMPRE.
+   No telemovel, os cartoes ficam EMPILHADOS (coluna).
+*/
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 24px;
+  background: #f4f6f8;
+}
+
+h1 {
+  color: #333;
+}
+
+/* O container usa flexbox para posicionar os cartoes.
+   flex-direction: column = os cartoes ficam um em CIMA do outro. */
+.container {
+  display: flex;           /* ativa flexbox */
+  flex-direction: column;  /* empilha verticalmente (mobile) */
+  gap: 16px;               /* espaco entre os cartoes */
+}
+
+/* Estilo base dos cartoes */
+.cartao {
+  padding: 24px;
+  border-radius: 12px;
+  color: white;
+}
+
+/* NO MOBILE: cartao A fica VERDE */
+.cartao-azul {
+  background: #10b981;  /* verde */
+}
+
+/* NO MOBILE: cartao B fica ROXO */
+.cartao-laranja {
+  background: #8b5cf6;  /* roxo */
+}
+
+/* Indicadores — no mobile so aparece o indicador mobile */
+.indicador {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.indicador-mobile {
+  display: block;           /* visivel no mobile */
+  background: #fecaca;
+  color: #dc2626;
+}
+
+.indicador-desktop {
+  display: none;            /* escondido no mobile */
+}
+
+/* ================================
+   DESKTOP — A PARTIR DE 768px
+   ================================
+
+   @media (min-width: 768px) significa:
+   "Aplica estas regras QUANDO o ecra tem 768px ou mais."
+
+   Tudo o que esta DENTRO deste bloco so funciona em ecras grandes.
+   O CSS base (acima) continua a aplicar-se — nos so ADICIONAMOS
+   ou SUBSTITUIMOS propriedades.
+*/
+
+@media (min-width: 768px) {
+
+  /* Mudar de coluna para LINHA — cartoes ficam lado a lado */
+  .container {
+    flex-direction: row;   /* lado a lado (desktop) */
+  }
+
+  /* Cada cartao ocupa metade do espaco */
+  .cartao {
+    flex: 1;               /* cresce igualmente */
+  }
+
+  /* NO DESKTOP: cartao A fica AZUL (substitui o verde do mobile) */
+  .cartao-azul {
+    background: #2563eb;   /* azul */
+  }
+
+  /* NO DESKTOP: cartao B fica LARANJA (substitui o roxo do mobile) */
+  .cartao-laranja {
+    background: #f59e0b;   /* laranja */
+  }
+
+  /* Trocar indicadores */
+  .indicador-mobile {
+    display: none;          /* esconder no desktop */
+  }
+
+  .indicador-desktop {
+    display: block;         /* mostrar no desktop */
+    background: #bbf7d0;
+    color: #16a34a;
+  }
+}
+
+/* ========================================
+   RESUMO DO QUE ACONTECE:
+   ========================================
+
+   MOBILE (< 768px):
+     container: flex-direction: column (empilhados)
+     cartao A: verde
+     cartao B: roxo
+     indicador: "Estas no MOBILE"
+
+   DESKTOP (>= 768px):
+     container: flex-direction: row (lado a lado)
+     cartao A: azul
+     cartao B: laranja
+     indicador: "Estas no DESKTOP"
+
+   SO MUDAMOS 3 COISAS:
+     1. flex-direction: column → row  (posicao)
+     2. background dos cartoes        (cor)
+     3. display dos indicadores       (visibilidade)
+
+   EXPERIMENTA:
+     1. Abre este ficheiro no browser
+     2. Arrasta o canto da janela para a esquerda (mais pequeno)
+     3. Ve os cartoes empilharem e mudarem de cor
+     4. Abre o DevTools (F12) → icone de telemovel para simular
+*/

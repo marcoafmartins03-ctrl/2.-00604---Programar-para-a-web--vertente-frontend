@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>10.4 Lite - Catalogo Dinamico</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    .container {
+      max-width: 920px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #dbe2ea;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+    }
+    .grelha {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .produto {
+      border: 1px solid #dbe2ea;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .preco {
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>10.4 Lite - Catalogo Dinamico</h1>
+    <p>Versao minima para iniciantes: renderizar e pesquisar por nome.</p>
+
+    <section class="card">
+      <label for="pesquisa">Pesquisar produto</label>
+      <input id="pesquisa" type="text" placeholder="Ex.: teclado" />
+    </section>
+
+    <section class="card">
+      <div id="lista-produtos" class="grelha"></div>
+    </section>
+  </main>
+
+  <script src="10.4_lite_catalogo_dinamico.js"></script>
+</body>
+</html>

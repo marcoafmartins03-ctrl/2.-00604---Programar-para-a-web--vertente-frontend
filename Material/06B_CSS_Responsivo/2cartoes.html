@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- META VIEWPORT: obrigatorio para responsividade!
+       Diz ao browser para usar a largura real do ecra.
+       Sem esta linha, o telemovel mostra a pagina em miniatura. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Intro Responsivo - Dois Cartoes</title>
+  <link rel="stylesheet" href="2cartoes.css">
+</head>
+<body>
+
+  <h1>Dois Cartoes Responsivos</h1>
+  <p>Redimensiona a janela do browser para ver a mudanca!</p>
+
+  <!-- Container flex com 2 cartoes simples -->
+  <div class="container">
+
+    <div class="cartao cartao-azul">
+      <h2>Cartao A</h2>
+      <p>Este cartao fica azul no desktop e verde no mobile.</p>
+    </div>
+
+    <div class="cartao cartao-laranja">
+      <h2>Cartao B</h2>
+      <p>Este cartao fica laranja no desktop e roxo no mobile.</p>
+    </div>
+
+  </div>
+
+  <!-- Indicador visual do tamanho atual -->
+  <p class="indicador indicador-mobile">Estás no MOBILE (menos de 768px)</p>
+  <p class="indicador indicador-desktop">Estás no DESKTOP (768px ou mais)</p>
+
+</body>
+</html>
