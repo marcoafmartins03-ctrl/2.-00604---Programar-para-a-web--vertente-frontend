@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login e Registo | Oficina Verde</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"]
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-orange-50 via-white to-emerald-50 text-slate-900 font-display">
+    <main class="mx-auto flex w-full max-w-4xl flex-col gap-8 px-6 py-12">
+      <header class="space-y-2">
+        <p class="inline-flex w-fit rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-orange-700">
+          Acesso simples
+        </p>
+        <h1 class="text-3xl font-semibold md:text-4xl">Oficina Verde</h1>
+        <p class="max-w-xl text-slate-600">
+          Login ou registo rapido para aceder ao painel de projetos.
+        </p>
+      </header>
+
+      <section class="grid gap-6 md:grid-cols-2">
+        <form class="space-y-4 rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-sm">
+          <div class="space-y-1">
+            <h2 class="text-xl font-semibold">Login</h2>
+            <p class="text-sm text-slate-500">Bem-vindo de volta.</p>
+          </div>
+
+          <div class="space-y-2">
+            <label for="login-email" class="text-sm font-medium">Email</label>
+            <input
+              id="login-email"
+              name="email"
+              type="email"
+              placeholder="nome@email.com"
+              required
+              class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-200"
+            >
+          </div>
+
+          <div class="space-y-2">
+            <label for="login-password" class="text-sm font-medium">Palavra-passe</label>
+            <input
+              id="login-password"
+              name="password"
+              type="password"
+              minlength="6"
+              required
+              class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-200"
+            >
+          </div>
+
+          <button type="submit" class="w-full rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-600">
+            Entrar
+          </button>
+          <a class="block text-sm text-orange-600 hover:underline" href="#">Esqueci a palavra-passe</a>
+        </form>
+
+        <form class="space-y-4 rounded-2xl border border-emerald-200 bg-white/90 p-6 shadow-sm">
+          <div class="space-y-1">
+            <h2 class="text-xl font-semibold">Registo</h2>
+            <p class="text-sm text-slate-500">Cria a tua conta em minutos.</p>
+          </div>
+
+          <div class="space-y-2">
+            <label for="signup-name" class="text-sm font-medium">Nome completo</label>
+            <input
+              id="signup-name"
+              name="name"
+              type="text"
+              placeholder="Ana Silva"
+              required
+              class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+            >
+          </div>
+
+          <div class="space-y-2">
+            <label for="signup-email" class="text-sm font-medium">Email</label>
+            <input
+              id="signup-email"
+              name="email"
+              type="email"
+              placeholder="nome@email.com"
+              required
+              class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+            >
+          </div>
+
+          <div class="space-y-2">
+            <label for="signup-password" class="text-sm font-medium">Palavra-passe</label>
+            <input
+              id="signup-password"
+              name="password"
+              type="password"
+              minlength="6"
+              required
+              class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+            >
+          </div>
+
+          <button type="submit" class="w-full rounded-full border border-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50">
+            Criar conta
+          </button>
+          <p class="text-xs text-slate-500">Se ja tens conta, faz login ao lado.</p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

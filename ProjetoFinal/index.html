@@ -10,52 +10,70 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    
     <header>
         <nav role="navigation" aria-label="Navegação Principal">
-            <a href="index.html"><img src="assets/logo.png" alt="logo de AprenderEnglish" height="80"></a>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+            <ul class="botoesnav">
+                <a href="index.html"><img class="logo" src="assets/logo.png" alt="logo de AprenderEnglish" height="80"></a>
+                <li class="botaonav"><a href="index.html" aria-describedby="nav-início">Início</a></li>
+                <li class="botaonav"><a href="blog.html" aria-describedby="nav-blog">Blog</a></li>
+                <li class="botaonav"><a href="contacto.html" aria-describedby="nav-contacto">Contacto</a></li>
             </ul>
         </nav>
+
+        <section>
+            <!-- Hero -->
+            <img class="hero" src="assets/background.png" alt="fundo de página com um livro e um balão de fala com a bandeira do Reino Unido"">
+
+            <h1>Welcome!</h1>
+            <h2>Toca a Aprender <em>English</em>!</h2>
+        </section>
     </header>
 
-    <!-- Hero -->
-    <img src="assets/background.png" alt="fundo de página com um livro e um balão de fala com a bandeira do Reino Unido"">
-
-    <h1>Welcome!</h1>
-    <h2>Toca a Aprender <em>English</em>!</h2>
 
     <main>
-        <button>
-            <p>Voltar ao Início</p>
-        </button>
-        <hr>
-        <section>
+
+        <section id="sobre">
             <h2>Sobre o Aprender<em>English</em></h2>
-            <p><strong><span style="color:#1b2b58;">Aprender <em>English</em></span></strong> é o seu espaço para dominar o inglês de forma prática, clara e sem complicação.</p>
-            <p>Aqui encontrará dicas, gramática, vocabulário e muito mais para evoluir no seu próprio ritmo.</p>
+            <div class="alinharcentro">
+                <p class="inline"><strong><span style="color:#1b2b58;">Aprender <em>English</em></span></strong> é o seu espaço para dominar o inglês de forma prática, clara e sem complicação.</p>
+                <p class="inline">Aqui encontrará dicas, gramática, vocabulário e muito mais para evoluir no seu próprio ritmo.</p>
+            </div>
+            
         </section>
-        <hr>
-        <section>
-            <h2>Porquê aprender inglês</h2>
 
-            <!-- Cima Esquerdo -->
-            <p>Acesso a mais conteúdos e informação</p>
-            <img src="assets/info.png" alt="">
+        <section id="motivos">
+            <h2 id="motivosTitulo">Porquê aprender inglês</h2>
 
-            <!-- Cima Direito -->
-            <p>Desenvolvimento cognitivo</p>
-            <img src="assets/brain.png" alt="">
+            <article>
+                <div class="cartao inline">
+                    <!-- Cima Esquerdo -->
+                    <p>Acesso a mais conteúdos e informação</p>
+                    <img class="icone" src="assets/info.png" alt="ícone de informação">
+                </div>
 
-            <!-- Baixo Esquerdo -->
-            <p>Amizades com gente de todo o mundo</p>
-            <img src="assets/high-five.png" alt="">
+                <div class="cartao inline">
+                    <!-- Cima Direito -->
+                    <p >Desenvolvimento cognitivo</p>
+                    <img class="icone" src="assets/brain.png" alt="ícone de cérebro">
+                </div>
 
-            <!-- Baixo Direito -->
-            <p>Acesso a mais oportunidades profissionais</p>
-            <img src="assets/work.png" alt="">
+                <div class="cartao inline">
+                    <!-- Baixo Esquerdo -->
+                    <p>Amizades com gente de todo o mundo</p>
+                    <img class="icone" src="assets/high-five.png" alt="ícone de duas pessoas a darem mais cinco">
+                </div>
+
+
+                <div class="cartao inline">
+                    <!-- Baixo Direito -->
+                    <p>Acesso a mais oportunidades profissionais</p>
+                    <img class="icone" src="assets/work.png" alt="ícone de mala de trabalho">
+                </div>
+
+            </article>
+
         </section>
         
     </main>
@@ -70,6 +88,8 @@
         <p>A língua inglesa é uma janela para o mundo — e você já começou a abri-la.</p>
         <p>&copy; 2025 Aprender <em>English</em> · Todos os direitos reservados.</p>
     </footer>
+
+    <p><a href="#inicio">Voltar Tudo</a></p>
 
 </body>
 </html>
