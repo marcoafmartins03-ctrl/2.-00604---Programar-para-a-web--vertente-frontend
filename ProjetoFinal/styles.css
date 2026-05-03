@@ -1,102 +1,364 @@
+/* VARIÁVEIS */
 :root {
-    --azul_escuro: #1b2b58;
-    --vermelho: #d92730;
-    --amarelo: #f5be2f;
-    --verde: #7ebe9f;
-    --amarelo_claro:#ffe192;
-    --branco: #f3f4f7;
+  --azul_escuro: #1b2b58;
+  --vermelho: #d92730;
 }
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
-}
-
-nav{
-    background-color: #1b2b58;
-}
-
-
-.botoesnav{
-    display: inline-flex;
-    margin: 10px 0px;
-    justify-content: center;
-    align-items: center;
-}
-
-.botaonav{
-    background-color: red;
-    padding: 20px;
-    margin-right: 30px;
-    display: inline-flex;
-    text-align: center;
-    width: 50px;
-}
-
-.logo{
-    margin: 0px 30px 0px 20px;
-}
-
-
-
-
-.hero{
-  height: 100vh;
-  width: 100vw;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f3f4f7;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
-
-h2{
-    text-align: center;
+/* =============================================
+   NAVBAR
+   ============================================= */
+nav {
+  background-color: var(--azul_escuro);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.alinharcentro{
-    text-align: center;
+nav .logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.inline{
-    display: inline-block;
+nav .logo span {
+  color: var(--vermelho);
 }
 
-.cartao{
-    background: #f5be2f;
-    border-radius: 50px;
-    text-align: center;
-    line-height: 80px;
-    padding: 12px;
-    margin: 13px;
+nav .logo img {
+  height: 40px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 8px;
 }
 
-.icone{
-    background: #f5be2f;
-    border-radius: 10000px;
-    padding: 7px;
-    height: 30px;
+nav .logo .sem-logo {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  width: 40px;
+  height: 40px;
+  border: 2px dashed #aaa;
+  border-radius: 4px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 10px;
+  color: #aaa;
+  letter-spacing: 0;
+  font-weight: normal;
 }
 
-#motivos{
-    background-color: #1b2b58;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
-#motivosTitulo {
-    color:#f3f4f7;
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
 }
 
-#sobre{
-    background-color:#f3f4f7;
+nav ul li a:hover {
+  color: var(--vermelho);
 }
 
-footer{
-    background-color: #f5be2f;
+nav ul li a.active {
+  color: var(--vermelho);
+  font-weight: bold;
+}
+
+/* =============================================
+   RODAPÉ
+   ============================================= */
+footer {
+  background-color: var(--azul_escuro);
+  color: #aaa;
+  text-align: center;
+  padding: 16px;
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+footer span {
+  color: var(--vermelho);
+}
+
+/* =============================================
+   HERO (index.html)
+   ============================================= */
+.hero {
+  background-color: var(--azul_escuro);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.hero h1 span {
+  color: var(--vermelho);
+}
+
+.hero p {
+  font-size: 16px;
+  color: #ccc;
+  max-width: 500px;
+  margin: 0 auto 24px auto;
+}
+
+.hero a {
+  background-color: var(--vermelho);
+  color: white;
+  padding: 10px 24px;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 4px;
+}
+
+/* =============================================
+   CARDS / SECÇÕES (index.html)
+   ============================================= */
+.secoes {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 220px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: 4px solid var(--azul_escuro);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.card h3 {
+  color: var(--azul_escuro);
+  margin-bottom: 8px;
+  font-size: 17px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* =============================================
+   CABEÇALHO DE PÁGINA (blog.html / contacto.html)
+   ============================================= */
+.page-header {
+  background-color: var(--azul_escuro);
+  color: white;
+  text-align: center;
+  padding: 36px 20px;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.page-header p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* =============================================
+   ARTIGOS (blog.html)
+   ============================================= */
+.artigos {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.artigo {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.artigo img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  background-color: #e0e0e0;
+}
+
+.artigo .img-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: #dce3f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 13px;
+  border-bottom: 1px solid #ddd;
+}
+
+.artigo-corpo {
+  padding: 18px 20px;
+}
+
+/* Etiquetas */
+.etiqueta {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.etiqueta.hoje {
+  background-color: #d4edda;
+  color: #256234;
+}
+
+.etiqueta.ontem {
+  background-color: #fff3cd;
+  color: #7d5a00;
+}
+
+.etiqueta.atualizado {
+  background-color: #d0e8fb;
+  color: #0d4f85;
+}
+
+.artigo-corpo h2 {
+  font-size: 18px;
+  color: var(--azul_escuro);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.artigo-meta {
+  font-size: 13px;
+  color: #888;
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.artigo-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.artigo-corpo a.ler-mais {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--vermelho);
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.artigo-corpo a.ler-mais:hover {
+  text-decoration: underline;
+}
+
+/* =============================================
+   FORMULÁRIO DE CONTACTO (contacto.html)
+   ============================================= */
+.contacto-wrap {
+  max-width: 560px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.formulario {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 30px;
+}
+
+.campo {
+  margin-bottom: 20px;
+}
+
+.campo label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--azul_escuro);
+  margin-bottom: 6px;
+}
+
+.campo input,
+.campo textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fafafa;
+  color: #333;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--azul_escuro);
+  background-color: white;
+}
+
+.campo textarea {
+  height: 140px;
+  resize: vertical;
+}
+
+.btn-enviar {
+  background-color: var(--vermelho);
+  color: white;
+  border: none;
+  padding: 11px 28px;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-enviar:hover {
+  background-color: #b81f25;
 }
