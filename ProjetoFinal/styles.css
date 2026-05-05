@@ -1,10 +1,10 @@
-/* VARIÁVEIS */
+
 :root {
   --azul_escuro: #1b2b58;
   --vermelho: #d92730;
 }
 
-/* RESET */
+
 * {
   margin: 0;
   padding: 0;
@@ -17,9 +17,7 @@ body {
   color: #333;
 }
 
-/* =============================================
-   NAVBAR
-   ============================================= */
+
 nav {
   background-color: var(--azul_escuro);
   padding: 12px 24px;
@@ -83,9 +81,7 @@ nav ul li a.active {
   font-weight: bold;
 }
 
-/* =============================================
-   RODAPÉ
-   ============================================= */
+
 footer {
   background-color: var(--azul_escuro);
   color: #aaa;
@@ -99,9 +95,7 @@ footer span {
   color: var(--vermelho);
 }
 
-/* =============================================
-   HERO (index.html)
-   ============================================= */
+
 .hero {
   background-color: var(--azul_escuro);
   color: white;
@@ -134,9 +128,7 @@ footer span {
   border-radius: 4px;
 }
 
-/* =============================================
-   CARDS / SECÇÕES (index.html)
-   ============================================= */
+
 .secoes {
   max-width: 900px;
   margin: 40px auto;
@@ -168,9 +160,7 @@ footer span {
   line-height: 1.5;
 }
 
-/* =============================================
-   CABEÇALHO DE PÁGINA (blog.html / contacto.html)
-   ============================================= */
+
 .page-header {
   background-color: var(--azul_escuro);
   color: white;
@@ -188,9 +178,7 @@ footer span {
   color: #ccc;
 }
 
-/* =============================================
-   ARTIGOS (blog.html)
-   ============================================= */
+
 .artigos {
   max-width: 860px;
   margin: 40px auto;
@@ -233,7 +221,7 @@ footer span {
   padding: 18px 20px;
 }
 
-/* Etiquetas */
+
 .etiqueta {
   display: inline-block;
   font-size: 11px;
@@ -296,9 +284,7 @@ footer span {
   text-decoration: underline;
 }
 
-/* =============================================
-   FORMULÁRIO DE CONTACTO (contacto.html)
-   ============================================= */
+
 .contacto-wrap {
   max-width: 560px;
   margin: 40px auto;
