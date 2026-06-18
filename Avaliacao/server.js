@@ -57,23 +57,23 @@ function validarFilme(dados) {
   const anoAtual = new Date().getFullYear();
 
   if (!titulo || titulo.trim().length < 2) {
-    return "Titulo deve ter pelo menos 2 caracteres";
+    return "O título deve ter pelo menos 2 caracteres";
   }
 
   if (!realizador || !realizador.trim()) {
-    return "Realizador obrigatorio";
+    return "Realizador obrigatório";
   }
 
   if (!generosValidos.includes(genero)) {
-    return "Genero invalido";
+    return "Género inválido";
   }
 
   if (!ano || ano < 1900 || ano > anoAtual) {
-    return "Ano invalido";
+    return "Ano inválido";
   }
 
   if (!["filme", "serie"].includes(tipo)) {
-    return "Tipo invalido";
+    return "Tipo inválido";
   }
 
   if (
@@ -81,7 +81,7 @@ function validarFilme(dados) {
     avaliacao !== undefined &&
     (avaliacao < 1 || avaliacao > 5)
   ) {
-    return "Avaliacao deve estar entre 1 e 5";
+    return "A avaliação deve estar entre 1 e 5";
   }
 
   return null;
@@ -118,7 +118,7 @@ app.get("/api/filmes/:id", async (req, res) => {
 
     if (filmes.length === 0) {
       return res.status(404).json({
-        erro: "Filme nao encontrado"
+        erro: "Filme não encontrado"
       });
     }
 
@@ -191,7 +191,7 @@ app.put("/api/filmes/:id", async (req, res) => {
 
     if (filme.length === 0) {
       return res.status(404).json({
-        erro: "Filme nao encontrado"
+        erro: "Filme não encontrado"
       });
     }
 
@@ -260,7 +260,7 @@ app.patch("/api/filmes/:id/visto", async (req, res) => {
 
     if (filme.length === 0) {
       return res.status(404).json({
-        erro: "Filme nao encontrado"
+        erro: "Filme não encontrado"
       });
     }
 
@@ -296,7 +296,7 @@ app.delete("/api/filmes/:id", async (req, res) => {
 
     if (filme.length === 0) {
       return res.status(404).json({
-        erro: "Filme nao encontrado"
+        erro: "Filme não encontrado"
       });
     }
 
